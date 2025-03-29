@@ -1,8 +1,5 @@
-import productsReducer from "./features/productsSlice";
-
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import persistReducer from "redux-persist/es/persistReducer";
-import persistStore from "redux-persist/es/persistStore";
+import globalReducer from "./globalSlice.js"
 
 const isServer = typeof window === "undefined"; // ✅ Check for server environment
 
@@ -11,19 +8,15 @@ if (!isServer) {
   storage = require("redux-persist/lib/storage").default; // ✅ Dynamically import storage
 }
 
-const persistConfig = {
-  key: "persist",
-  blacklist: ["cart.createYourOwnPizzaMAX_TOPPINGS"],
-  storage: storage || undefined,
-};
+// const persistConfig = {
+//   key: "persist",
+//   storage: storage || undefined,
+// };
 
 const rootReducer = combineReducers({
-  products: productsReducer,
+  global: globalReducer
 });
 
-const persistedReducer = isServer
-  ? rootReducer // ✅ Use non-persisted reducer on server
-  : persistReducer(persistConfig, rootReducer);
 
 const makeConfiguredStore = () => {
   return configureStore({
@@ -41,16 +34,16 @@ export const makeStore = () => {
   }
 
   let store = configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
       }),
   });
 
-  if (!isServer) {
-    store.__persistor = persistStore(store); // ✅ Persistor only runs on client
-  }
+  // if (!isServer) {
+  //   store.__persistor = persistStore(store); // ✅ Persistor only runs on client
+  // }
 
   return store;
 };
