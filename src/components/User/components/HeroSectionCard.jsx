@@ -1,6 +1,7 @@
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+
 
 const HeroSectionCard = ({
   imageUrl,
@@ -13,7 +14,7 @@ const HeroSectionCard = ({
   children,
   routeMap
 }) => {
-    const navigate = useNavigate()
+    const router = useRouter()
   return (
     <>
       <div
@@ -36,7 +37,7 @@ const HeroSectionCard = ({
         </div>
       </div>
       <div
-        onClick={() => navigate(`/itinerary/${routeMap}`)}
+        onClick={() => router.push(`/itinerary/${routeMap}`)}
         className={`relative md:hidden sm:hidden  py-4 px-2 flex-none w-[55%] h-[20vh] a rounded-lg bg-cover bg-center transition-transform duration-300 ${
           isActive ? 'transform scale-110 z-50 ' : 'transform'
         } ${extraClasses}`}
