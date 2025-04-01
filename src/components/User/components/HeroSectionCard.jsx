@@ -1,3 +1,5 @@
+"use client"
+
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { FaArrowRight } from 'react-icons/fa'
@@ -15,6 +17,9 @@ const HeroSectionCard = ({
   routeMap
 }) => {
     const router = useRouter()
+
+  console.log(imageUrl)
+
   return (
     <>
       <div

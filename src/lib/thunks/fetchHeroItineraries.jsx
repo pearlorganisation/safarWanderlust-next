@@ -24,12 +24,12 @@ export const fetchHeroItineraries = () => async (dispatch) => {
           itin_pdf: Itinerary.itin_pdf,
           route_map:Itinerary.route_map
         }))
-
+        console.log('hero itineraries res', HeroItineraries)
         dispatch(setValue({ key: 'HeroItineraries', value: HeroItineraries }));
       }
     })
   } catch (error) {
-    console.error(error)
+    console.error('hero itineraries err', error)
   } finally {
     dispatch(setValue({ key: 'to_show_loader', value: false }))
   }

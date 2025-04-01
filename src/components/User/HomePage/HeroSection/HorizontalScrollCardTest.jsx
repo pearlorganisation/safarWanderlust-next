@@ -2,9 +2,8 @@
 
 import React, { useRef, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-// import { useNavigate } from 'react-router-dom'
-import HeroSectionCard from '../../components/HeroSectionCard'
 import { useRouter } from 'next/navigation'
+import HeroSectionCard from '../../components/HeroSectionCard'
 
 const Carousel = ({ setActiveIndexM }) => {
   const carouselRef = useRef(null)
@@ -13,8 +12,12 @@ const Carousel = ({ setActiveIndexM }) => {
   const [isJumping, setIsJumping] = useState(false) // Flag to manage smooth scrolling
 
   // Fetch hero itineraries from the Redux store
-  const HeroItineraries =
-    useSelector((state) => state.global.HeroItineraries) || []
+  const HeroItineraries = useSelector((state) => state.global.HeroItineraries) || []
+  const global = useSelector((state) => state.global)
+  // console.log('Hero itineraries', HeroItineraries)
+  // console.log('Global', global)
+
+
   const router = useRouter()
 
   // Duplicate the itineraries array

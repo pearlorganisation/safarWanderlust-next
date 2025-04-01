@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { BASE_URL } from './baseUrl'
 import { localStorageHelper } from '../helper/storageHelper'
+import QueryString from 'qs'
 
 const axiosClient = axios.create({
   baseURL: BASE_URL,
@@ -20,7 +21,7 @@ axiosClient.interceptors.request.use(
       config.headers['Authorization'] = `Bearer ${token}`
     }
     config.paramsSerializer = (params) => {
-      return qs.stringify(params, {
+      return QueryString.stringify(params, {
         arrayFormat: 'brackets',
         encode: false
       })

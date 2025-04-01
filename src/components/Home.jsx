@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import Background from "@/_assets/svgs/logo/HeroSectionImage.webp";
 import mobileImage from "@/_assets/svgs/logo/BG.webp";
 import { useDispatch, useSelector } from "react-redux";
+
 import { fetchHomeCategories } from "@/lib/thunks/fetchHomeCategories";
 import { fetchBanner } from "@/lib/thunks/fetchBanner";
 import { fetchCategoriesAndItineraries } from "@/lib/thunks/fetchCategoriesAndItineraries ";
@@ -68,7 +69,7 @@ function Home() {
         }}
       >
         <div className="mt-[45rem] max-w-screen sm:mt-[40rem] lg:mt-[45rem] xl:mt-[45rem]">
-          {/* <FeaturedSection /> */}
+          <FeaturedSection />
         </div>
         <AwardFooter />
       </div>
