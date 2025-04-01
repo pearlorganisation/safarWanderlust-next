@@ -1,3 +1,5 @@
+"use client"
+
 // axiosClient.js
 import axios from 'axios'
 import { BASE_URL } from './baseUrl'
@@ -72,6 +74,7 @@ export const patch = async (endpoint, data) => {
     throw error
   }
 }
+
 export const remove = async (endpoint, params = {}) => {
   try {
     const response = await axiosClient.delete(endpoint, { params })
