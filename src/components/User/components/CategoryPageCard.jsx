@@ -1,6 +1,9 @@
+'use client';
 import React from 'react'
-import { Helmet } from 'react-helmet-async'
-import { useNavigate } from 'react-router-dom'
+// import { Helmet } from 'react-helmet-async'
+// import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation';
+
 
 const CategoryPageCard = ({
   id,
@@ -12,22 +15,22 @@ const CategoryPageCard = ({
   index,
   route_map
 }) => {
-  const navigate = useNavigate()
+  const navigate = useRouter()
   return (
     <div
       onClick={() => navigate(`/explore/${route_map}`)}
       className={`relative group flex-none    rounded-md  shadow-lg`}
     >
-      <Helmet>
+      {/* <Helmet> */}
         {/* <title>{`${title} - Explore Travel Options`}</title> */}
-        <meta name="description" content={`${description}`} />
+        {/* <meta name="description" content={`${description}`} />
         <meta name="keywords" content={`${title}, travel, category, explore`} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
         <meta property="og:url" content={`/explore/${route_map}`} />
-        <meta property="og:type" content="article" />
-      </Helmet>
+        <meta property="og:type" content="article" /> */}
+      {/* </Helmet> */}
       {/* Show Skeleton if image hasn't loaded */}
       {!imageLoaded ? (
         <div className="animate-pulse bg-gray-300 w-full h-full"></div>

@@ -1,8 +1,10 @@
+"use client"
+
 import { useDispatch, useSelector } from 'react-redux'
-import ImagePopup from '../../components/ImagePopUp'
 import React, { useEffect, useState } from 'react'
-import CustomModal from '../../../../components/CustomModal'
-import { fetchGalleryImages } from '../../../../redux/thunks/fetchGalleryImages'
+import { fetchGalleryImages } from '@/lib/thunks/fetchGalleryImages'
+import CustomModal from '@/components/CustomModal'
+import ImagePopup from '../../components/ImagePopUp'
 
 const Gallery = () => {
   const [isPopupOpen, setPopupOpen] = useState(false)

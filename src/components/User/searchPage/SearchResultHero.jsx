@@ -1,7 +1,9 @@
+"use client"
+
 import React, { useState, useEffect } from 'react'
 import { FiSearch } from 'react-icons/fi'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchsearchTrips } from '../../../redux/thunks/fetchsearchTrips' // Assuming the thunk path is correct
+import { fetchsearchTrips } from '@/lib/thunks/fetchsearchTrips' // Assuming the thunk path is correct
 
 const SearchResultsHero = () => {
   const dispatch = useDispatch()

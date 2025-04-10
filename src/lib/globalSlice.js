@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { setTextRange } from 'typescript'
 
 const initialState = {
   to_show_loader: false,
@@ -31,6 +32,8 @@ const globalSlice = createSlice({
   reducers: {
     setValue: (state, action) => {
       const { key, value } = action.payload
+      console.log('key', key)
+      console.log('value', value)
       state[key] = value
     },
     setCategories: (state, action) => {
@@ -47,7 +50,11 @@ const globalSlice = createSlice({
     },
     setFeaturedCategory: (state, action) => {
       state.featuredCategory = action.payload
+    },
+    setTermAndCondition: (state, action) => {
+      state.termAndCondition = action.payload
     }
+    
   }
 })
 
@@ -57,6 +64,7 @@ export const {
   setItineraries,
   setHomeCategories,
   setBanners,
-  setFeaturedCategory
+  setFeaturedCategory,
+  setTermAndCondition
 } = globalSlice.actions
 export default globalSlice.reducer

@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect } from 'react'
 import ExploreTrekking from './ExploreTrekking'
 import ExplorePageResult from './ExplorePageResult'
@@ -8,15 +10,17 @@ import WhySafarWandarLust from '../searchPage/WhySWL'
 import PartnersSection from './PartnersSection'
 import Testimonial from '../HomePage/reviewSection/ReviewSection'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategoriesById } from '../../../redux/thunks/fetchCategoriesById'
-import { fetchTrendingItineraries } from '../../../redux/thunks/fetchTrendingItineraries'
-import { useParams } from 'react-router-dom'
-import { fetchCategoriesByName } from '../../../redux/thunks/fetchCategoriesByName'
+// import { useParams } from 'react-router-dom'
+import { useParams } from "next/navigation";
+import { fetchCategoriesByName } from '@/lib/thunks/fetchCategoriesByName'
+import { fetchTrendingItineraries } from '@/lib/thunks/fetchTrendingItineraries'
 
 function ExplorePage() {
       const category = useSelector((state) => state.global.CategoryByID) || []
       const dispatch = useDispatch();
-       const { id } = useParams()
+      //  const { id } = useParams()
+      const params = useParams();
+      const { id } = params; 
 
             useEffect(() => {
               dispatch(fetchCategoriesByName(id));

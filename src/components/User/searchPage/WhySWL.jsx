@@ -1,8 +1,8 @@
 import React from 'react'
-import Icon2 from '../../../assets/svgs/user/seamless_experience.svg'
-import Icon3 from '../../../assets/svgs/user/seamless_experience.svg'
-import Icon4 from '../../../assets/svgs/user/unforgettable_memories.svg'
-import Icon1 from '../../../assets/svgs/user/personalized_itineraries.svg'
+import Icon2 from '@/_assets/svgs/user/seamless_experience.svg'
+import Icon3 from '@/_assets/svgs/user/seamless_experience.svg'
+import Icon4 from '@/_assets/svgs/user/unforgettable_memories.svg'
+import Icon1 from '@/_assets/svgs/user/personalized_itineraries.svg'
 const WhySafarWandarLust = () => {
   const benefits1 = [
     {

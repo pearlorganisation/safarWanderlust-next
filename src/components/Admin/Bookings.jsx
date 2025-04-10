@@ -1,30 +1,37 @@
+"use client"
+
 import CustomText from '../../components/CustomText'
 import AdminTopbar from '../../components/AdminTopbar'
 import React, { useEffect, useState } from 'react'
 import CustomButton from '../../components/CustomButton'
-import AddIcon from '../../assets/svgs/logo/AddIcon'
-import EditIcon from '../../assets/svgs/logo/EditIcon'
-import ThreedotIcon from '../../assets/svgs/logo/ThreedotIcon'
-import { light } from '../../assets/themes/themes'
+// import AddIcon from '@/_assets/svgs/logo/AddIcon'
+// import EditIcon from '@/_assets/svgs/logo/EditIcon'
+import ThreedotIcon from '@/_assets/svgs/logo/ThreedotIcon'
+import { light } from '@/_assets/themes/themes'
 import CustomModal from '../../components/CustomModal'
 import CustomSelect from '../../components/CustomSelect'
-import CustomInputFile from '../../components/CustomInputFile'
-import { MdLocationPin } from 'react-icons/md'
-import CustomRadioButtonGroup from '../../components/CustomRadioButtonGroup'
-import { Pagination, PaginationItem, styled } from '@mui/material'
+// import CustomInputFile from '../../components/CustomInputFile'
+// import { MdLocationPin } from 'react-icons/md'
+// import CustomRadioButtonGroup from '../../components/CustomRadioButtonGroup'
+// import { Pagination, PaginationItem, styled } from '@mui/material'
 import { API_ENDPOINTS } from '../../constants/apiEndpoints'
 import { get, patch, post, put } from '../../constants/axiosClient'
 import { useDispatch, useSelector } from 'react-redux'
-import globalSlice, { setValue } from '../../redux/globalSlice'
+import globalSlice, { setValue } from '@/lib/globalSlice'
 import PaginationComp from '../../components/PaginationComp'
-import CustomInput from '../../components/CustomInput'
-import CustomAccordion from '../../components/CustomAccordion'
-import { useNavigate } from 'react-router-dom'
+// import CustomInput from '../../components/CustomInput'
+// import CustomAccordion from '../../components/CustomAccordion'
+// import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { PAGES } from '../../constants/PagesName'
 import moment from 'moment'
 import { localStorageHelper } from '../../helper/storageHelper'
+import useAuthRedirect from '@/hooks/useAuthRedirect'
 
 function Bookings() {
+
+  useAuthRedirect();
+
   const [state, setState] = useState({
     is_modalopen: false,
     fetched_data: [],
@@ -39,7 +46,7 @@ function Bookings() {
     selected_batch: {}
   })
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const router = useRouter()
   const globalState = useSelector((state) => state.global)
   const fetch_All_Bookings = async (iti_id, batch_id, next_cursor = 0) => {
     dispatch(setValue({ key: 'to_show_loader', value: true }))
@@ -84,8 +91,9 @@ function Bookings() {
         err_response.success == false &&
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
-        localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        // localStorageHelper.removeItem('login_data')
+        // router.push(PAGES.LOGIN, { replace: true })
+        console.log('logging out')
       }
     }
   }
@@ -111,7 +119,7 @@ function Bookings() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }

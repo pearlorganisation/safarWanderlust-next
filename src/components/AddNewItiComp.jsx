@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect } from 'react'
 import CustomModal from './CustomModal'
 import CustomInput from './CustomInput'
@@ -9,19 +11,20 @@ import DraggableInputList from './DraggableInputList'
 import DraggableHotelList from './DraggableHotelList'
 import PackageComp from './PackageComp'
 import CustomButton from './CustomButton'
-import { setValue } from '../redux/globalSlice'
+// import { setValue } from '@lib/globalSlice'
 import { API_ENDPOINTS } from '../constants/apiEndpoints'
 import { get, post, put } from '../constants/axiosClient'
 import { localStorageHelper } from '../helper/storageHelper'
 import { PAGES } from '../constants/PagesName'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import InfiniteInputBox from './InfiniteInputBox'
 import moment from 'moment-timezone'
 import {
   CLOUD_NAME,
   UPLOAD_PRESET_NAME
 } from '../constants/CloudinaryConstants'
+import { setValue } from '@/lib/globalSlice'
 
 function AddNewItiComp({
   state,
@@ -35,7 +38,7 @@ function AddNewItiComp({
   fetch_iti = () => {}
 }) {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const router = useRouter()
   const getAllCategories = async () => {
     dispatch(setValue({ key: 'to_show_loader', value: true }))
     try {
@@ -64,7 +67,7 @@ function AddNewItiComp({
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -444,7 +447,7 @@ function AddNewItiComp({
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -538,7 +541,7 @@ function AddNewItiComp({
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }

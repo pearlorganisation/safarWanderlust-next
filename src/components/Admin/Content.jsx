@@ -1,11 +1,13 @@
+"use client"
+
 import CustomText from '../../components/CustomText'
 import AdminTopbar from '../../components/AdminTopbar'
 import React, { useEffect, useRef, useState } from 'react'
 import CustomButton from '../../components/CustomButton'
-import AddIcon from '../../assets/svgs/logo/AddIcon'
-import EditIcon from '../../assets/svgs/logo/EditIcon'
-import ThreedotIcon from '../../assets/svgs/logo/ThreedotIcon'
-import { light } from '../../assets/themes/themes'
+import AddIcon from '@/_assets/svgs/logo/AddIcon'
+import EditIcon from '@/_assets/svgs/logo/EditIcon'
+import ThreedotIcon from '@/_assets/svgs/logo/ThreedotIcon'
+import { light } from '@/_assets/themes/themes'
 import CustomModal from '../../components/CustomModal'
 import CustomSelect from '../../components/CustomSelect'
 import CustomInputFile from '../../components/CustomInputFile'
@@ -20,11 +22,11 @@ import {
 import { API_ENDPOINTS } from '../../constants/apiEndpoints'
 import { get, patch, post, put, remove } from '../../constants/axiosClient'
 import { useDispatch, useSelector } from 'react-redux'
-import globalSlice, { setValue } from '../../redux/globalSlice'
+import globalSlice, { setValue } from '@/lib/globalSlice'
 import PaginationComp from '../../components/PaginationComp'
 import CustomInput from '../../components/CustomInput'
 import CustomAccordion from '../../components/CustomAccordion'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { PAGES } from '../../constants/PagesName'
 import { FaFolder } from 'react-icons/fa6'
 import { SlCalender } from 'react-icons/sl'
@@ -32,15 +34,19 @@ import { FiMapPin } from 'react-icons/fi'
 import { CgArrowsExchangeAlt } from 'react-icons/cg'
 import moment from 'moment'
 import InfiniteInputBox from '../../components/InfiniteInputBox'
-import { showConfirmationDialog } from '../../App'
 import { localStorageHelper } from '../../helper/storageHelper'
 import UploadNewBannerComp from '../../components/UploadNewBannerComp'
 import {
   UPLOAD_PRESET_NAME,
   CLOUD_NAME
 } from '../../constants/CloudinaryConstants'
+import { showConfirmationDialog } from '../Dialog/ShowConfirmationDialog'
+import useAuthRedirect from '@/hooks/useAuthRedirect'
 
 function Content() {
+
+  
+  useAuthRedirect();
   const [state, setState] = useState({
     is_modalopen: false,
     fetched_data: [],
@@ -115,8 +121,15 @@ function Content() {
   const [cancellationdata, setcancellationdata] = useState([])
   const globalState = useSelector((state) => state.global)
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const router = useRouter()
   const dateref = useRef()
+
+
+  // useEffect(()=> {
+  //     if(localStorageHelper.getItem('login_data') == null){
+  //       router.push(PAGES.LOGIN, { replace: true })
+  //     }
+  //   }, [])
 
   const fetch_All_Content_Data = async () => {
     dispatch(setValue({ key: 'to_show_loader', value: true }))
@@ -156,8 +169,9 @@ function Content() {
         err_response.success == false &&
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
-        localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        // localStorageHelper.removeItem('login_data')
+        // router.push(PAGES.LOGIN, { replace: true })
+        console.log('logging out')
       }
     }
   }
@@ -190,7 +204,7 @@ function Content() {
   //       err_response.message == 'VALIDATION_INVALID_TOKEN'
   //     ) {
   //       localStorageHelper.removeItem('login_data')
-  //       navigate(PAGES.LOGIN, { replace: true })
+  //       router.push(PAGES.LOGIN, { replace: true })
   //     }
   //   }
   // }
@@ -216,7 +230,7 @@ function Content() {
   //       err_response.message == 'VALIDATION_INVALID_TOKEN'
   //     ) {
   //       localStorageHelper.removeItem('login_data')
-  //       navigate(PAGES.LOGIN, { replace: true })
+  //       router.push(PAGES.LOGIN, { replace: true })
   //     }
   //   }
   // }
@@ -245,7 +259,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -291,7 +305,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -323,7 +337,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -384,7 +398,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -432,7 +446,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -483,7 +497,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -541,7 +555,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -585,7 +599,7 @@ function Content() {
           err_response.message == 'VALIDATION_INVALID_TOKEN'
         ) {
           localStorageHelper.removeItem('login_data')
-          navigate(PAGES.LOGIN, { replace: true })
+          router.push(PAGES.LOGIN, { replace: true })
         }
       }
     }
@@ -643,7 +657,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -699,7 +713,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -756,7 +770,7 @@ function Content() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -1200,7 +1214,7 @@ function Content() {
           err_response.message == 'VALIDATION_INVALID_TOKEN'
         ) {
           localStorageHelper.removeItem('login_data')
-          navigate(PAGES.LOGIN, { replace: true })
+          router.push(PAGES.LOGIN, { replace: true })
         }
       }
     }
@@ -1978,7 +1992,7 @@ function Content() {
                       pill_rounded
                       padding="py-3 px-16"
                       md_round={false}
-                      onClick={() => navigate(PAGES.DASHBOARD)}
+                      onClick={() => router.push(PAGES.DASHBOARD)}
                     />
                   </div>
                 </div>

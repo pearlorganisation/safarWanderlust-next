@@ -1,7 +1,9 @@
+"use client"
+
 import React, { useEffect } from 'react'
 import TripsSection from './TripSection'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchFeaturedCategory } from '../../../../redux/thunks/fetchFeaturedCategory'
+import { fetchFeaturedCategory } from '@/lib/thunks/fetchFeaturedCategory'
 
 const TripsPage = () => {
   const categories = useSelector((state) => state.global.featuredCategory) || []

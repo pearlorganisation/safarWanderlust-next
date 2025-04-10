@@ -1,9 +1,9 @@
 export const SidebarAllowedPages = [
-  '/Admin/Itinerary',
-  '/Admin/Dashboard',
-  '/Admin/Category',
-  '/Admin/AdminPage',
-  '/Admin/Bookings',
-  '/Admin/Request',
-  '/Admin/Content'
+  '/admin/itinerary',
+  '/admin/dashboard',
+  '/admin/category',
+  '/admin/adminpage',
+  '/admin/bookings',
+  '/admin/request',
+  '/admin/content'
 ]

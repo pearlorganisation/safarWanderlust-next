@@ -1,5 +1,8 @@
+"use client"
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
+
 
 const HomeCategoryCard = ({
   id,
@@ -12,10 +15,10 @@ const HomeCategoryCard = ({
   index,
   route_map
 }) => {
-  const navigate = useNavigate()
+  const router = useRouter()
   return (
     <div
-      onClick={() => navigate(`/explore/${route_map}`)}
+      onClick={() => router.push(`/explore/${route_map}`)}
       className={`relative group flex-none w-[250px] h-[400px] font-titleRegular rounded-md overflow-hidden shadow-lg ${
         index % 2 === 0 ? 'mt-16' : 'mb-16'
       }`}
@@ -50,14 +53,14 @@ const HomeCategoryCard = ({
           <h3 className="text-base  ">{title}</h3>
           {/* <p className="text-xs pl-5 pr-5 mb-4">{description}</p> */}
         </div>
-        {/* <div>
+        <div>
           <button
             className="text-sm font-titleMedium text-white bg-transparent hover:border-b-2  hover:border-orange-500 hover:text-orange-500 transition duration-300"
-            onClick={() => navigate(`/explore/${route_map}`)}
+            onClick={() => router.push(`/explore/${route_map}`)}
           >
-            Itinerary &rarr;
+            {/* Itinerary &rarr; */}
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   )

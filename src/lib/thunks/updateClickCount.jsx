@@ -1,3 +1,4 @@
+"use client"
 import { setValue } from '../globalSlice'
 import { put } from '../../constants/axiosClient'
 import { API_ENDPOINTS } from '../../constants/apiEndpoints'

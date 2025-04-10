@@ -1,36 +1,42 @@
+"use client"
+
 import CustomText from '../../components/CustomText'
 import AdminTopbar from '../../components/AdminTopbar'
 import React, { useEffect, useState } from 'react'
 import CustomButton from '../../components/CustomButton'
-import AddIcon from '../../assets/svgs/logo/AddIcon'
-import EditIcon from '../../assets/svgs/logo/EditIcon'
-import ThreedotIcon from '../../assets/svgs/logo/ThreedotIcon'
-import { light } from '../../assets/themes/themes'
+// import AddIcon from '@/_assets/svgs/logo/AddIcon'
+// import EditIcon from '@/_assets/svgs/logo/EditIcon'
+import ThreedotIcon from '@/_assets/svgs/logo/ThreedotIcon'
+// import { light } from '@/_assets/themes/themes'
 import CustomModal from '../../components/CustomModal'
 import CustomSelect from '../../components/CustomSelect'
-import CustomInputFile from '../../components/CustomInputFile'
-import { MdLocationPin } from 'react-icons/md'
+// import CustomInputFile from '../../components/CustomInputFile'
+// import { MdLocationPin } from 'react-icons/md'
 import CustomRadioButtonGroup from '../../components/CustomRadioButtonGroup'
 import { MenuItem, Pagination, PaginationItem, styled } from '@mui/material'
 import { API_ENDPOINTS } from '../../constants/apiEndpoints'
 import { get, patch, post, put } from '../../constants/axiosClient'
 import { useDispatch, useSelector } from 'react-redux'
-import globalSlice, { setValue } from '../../redux/globalSlice'
+import globalSlice, { setValue } from '@/lib/globalSlice'
 import PaginationComp from '../../components/PaginationComp'
-import CustomInput from '../../components/CustomInput'
-import CustomAccordion from '../../components/CustomAccordion'
-import { useNavigate } from 'react-router-dom'
+// import CustomInput from '../../components/CustomInput'
+// import CustomAccordion from '../../components/CustomAccordion'
+import { useRouter } from 'next/navigation'
 import { PAGES } from '../../constants/PagesName'
 import moment from 'moment'
-import SinglePerson from '../../assets/svgs/logo/SinglePerson'
-import Upgraph from '../../assets/svgs/logo/Upgraph'
-import Downgraph from '../../assets/svgs/logo/Downgraph'
+import SinglePerson from '@/_assets/svgs/logo/SinglePerson'
+import Upgraph from '@/_assets/svgs/logo/Upgraph'
+import Downgraph from '@/_assets/svgs/logo/Downgraph'
 import { TiTick } from 'react-icons/ti'
 import { ImCross } from 'react-icons/im'
 import { localStorageHelper } from '../../helper/storageHelper'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+import useAuthRedirect from '@/hooks/useAuthRedirect'
 
 function Requests() {
+
+  useAuthRedirect();
+
   const [state, setState] = useState({
     is_modalopen: false,
     fetched_data: [],
@@ -81,13 +87,14 @@ function Requests() {
         err_response.success == false &&
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
-        localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        // localStorageHelper.removeItem('login_data')
+        // router.push(PAGES.LOGIN, { replace: true })
+        console.log('logging out')
       }
     }
   }
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const router = useRouter()
   const CurrentYear = moment().year()
   const CurrentMonth = moment().format('MMMM')
   const fetch_All_REQUEST = async ({ isCall = false, cursor_id = null }) => {
@@ -136,7 +143,7 @@ function Requests() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -179,7 +186,7 @@ function Requests() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }

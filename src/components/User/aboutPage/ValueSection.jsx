@@ -1,5 +1,5 @@
 import React from 'react'
-import Backgroud from '../../../assets/svgs/user/AboutPageBg.svg'
+import Backgroud from '@/_assets/svgs/user/AboutPageBg.svg'
 
 const ValuesSection = () => {
   return (

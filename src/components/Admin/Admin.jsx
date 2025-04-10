@@ -1,27 +1,35 @@
+"use client"
+
 import CustomText from '../../components/CustomText'
 import AdminTopbar from '../../components/AdminTopbar'
 import React, { useEffect, useState } from 'react'
 import CustomButton from '../../components/CustomButton'
-import AddIcon from '../../assets/svgs/logo/AddIcon'
-import EditIcon from '../../assets/svgs/logo/EditIcon'
-import ThreedotIcon from '../../assets/svgs/logo/ThreedotIcon'
-import { light } from '../../assets/themes/themes'
+import AddIcon from '@/_assets/svgs/logo/AddIcon'
+// import EditIcon from '@/_assets/svgs/logo/EditIcon'
+import ThreedotIcon from '@/_assets/svgs/logo/ThreedotIcon'
+import { light } from '@/_assets/themes/themes'
 import CustomModal from '../../components/CustomModal'
 import CustomSelect from '../../components/CustomSelect'
-import CustomInputFile from '../../components/CustomInputFile'
-import { MdLocationPin } from 'react-icons/md'
-import CustomRadioButtonGroup from '../../components/CustomRadioButtonGroup'
-import { Pagination, PaginationItem, styled } from '@mui/material'
+// import CustomInputFile from '../../components/CustomInputFile'
+// import { MdLocationPin } from 'react-icons/md'
+// import CustomRadioButtonGroup from '../../components/CustomRadioButtonGroup'
+// import { Pagination, PaginationItem, styled } from '@mui/material'
 import { API_ENDPOINTS } from '../../constants/apiEndpoints'
 import { get, patch, post, put, remove } from '../../constants/axiosClient'
 import { useDispatch, useSelector } from 'react-redux'
-import globalSlice, { setValue } from '../../redux/globalSlice'
-import PaginationComp from '../../components/PaginationComp'
+import globalSlice, { setValue } from '@/lib/globalSlice'
+// import PaginationComp from '../../components/PaginationComp'
 import CustomInput from '../../components/CustomInput'
-import CustomAccordion from '../../components/CustomAccordion'
-import { showConfirmationDialog } from '../../App'
+// import CustomAccordion from '../../components/CustomAccordion'
 import { localStorageHelper } from '../../helper/storageHelper'
+import { showConfirmationDialog } from '../Dialog/ShowConfirmationDialog'
+import useAuthRedirect from '@/hooks/useAuthRedirect'
+
+
 function Admin() {
+
+
+  useAuthRedirect();
   const [state, setState] = useState({
     is_modalopen: false,
     is_pass_modalopen: false,
@@ -61,8 +69,9 @@ function Admin() {
         err_response.success == false &&
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
-        localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        // localStorageHelper.removeItem('login_data')
+        // navigate(PAGES.LOGIN, { replace: true })
+        console.log('logging out')
       }
     }
   }

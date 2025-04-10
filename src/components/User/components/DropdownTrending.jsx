@@ -1,16 +1,21 @@
-import { useNavigate } from "react-router-dom";
+"use client"
+
+
+// import { useNavigate } from "react-router-dom";
+import { useRouter } from 'next/navigation';
 
 const DropdownTrending = ({ title,  items , setState}) => {
 
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
+    const router = useRouter();
 
   return (
     <div className=" w-[95%] mx-auto">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold ">{title}</h3>
         <button
-          onClick={() => navigate('/trending')}
+          onClick={() => router.push('/trending')}
           className="flex items-center justify-center text-sm p-2 transition duration-300 hover:rounded-full "
         >
           <span className="mr-2">Show More</span>
@@ -41,7 +46,7 @@ const DropdownTrending = ({ title,  items , setState}) => {
                 ...prevState,
                 isTreddingDropdownOpen: false
               }))
-              navigate(`/itinerary/${item.route_map}`, {
+              router.push(`/itinerary/${item.route_map}`, {
                 state: { refresh: true }
               })}
             }

@@ -1,7 +1,7 @@
 import { Checkbox } from '@mui/material'
 import React from 'react'
 import CustomText from './CustomText'
-import { light } from '../assets/themes/themes'
+import { light } from '@/_assets/themes/themes'
 
 function CustomCheckboxWithLabel({
   content,

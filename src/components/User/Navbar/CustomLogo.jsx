@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from '@/_assets/svgs/logo/safar_wanderlust_bag_icon.webp'
+import Image from "next/image"; 
 
 
 function CustomLogo({logoOnly,className='',imageStyle=''}) {
@@ -8,11 +9,20 @@ function CustomLogo({logoOnly,className='',imageStyle=''}) {
       className={` flex justify-start  items-center ${className}`}
       style={{ cursor: 'pointer' }}
     >
-      <img
+      {/* <img
         className={`object-center  h-14 aspect-square w-12 md:h-16 ${imageStyle}`}
         src={Logo}
         alt=""
-      />
+      /> */}
+      <Image
+          onClick={() => router.push("/")}
+          className="h-[64px] w-[48px] cursor-pointer"
+          src={Logo}
+          alt="Safar Wanderlust"
+          width={48} // Explicit width
+          height={64} // Explicit height
+          priority // Loads the image faster
+        />
       {!logoOnly && (
         <div className="">
           <h1

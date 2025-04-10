@@ -1,6 +1,7 @@
 import React from 'react'
-import groupTraking from '../../../assets/images/unsplash_7BjmDICVloE.png'
-import invertedComma from '../../../assets/svgs/user/invetedComma.svg'
+import groupTraking from '@/_assets/images/unsplash_7BjmDICVloE.png'
+import invertedComma from '@/_assets/svgs/user/invetedComma.svg'
+import Image from 'next/image'
 
 const AboutPaageHeroSection = () => {
   return (
@@ -16,7 +17,7 @@ const AboutPaageHeroSection = () => {
       {/* Left: Image */}
       <div className="w-[90%] flex items-center justify-center  mx-28 my-10">
         <div className="w-[40%] h-[50vh] ">
-          <img
+          <Image
             src={groupTraking}
             alt="Group of people trekking"
             className="w-[30vw] h-[60vh] object-fill"
@@ -24,7 +25,7 @@ const AboutPaageHeroSection = () => {
         </div>
         <div className="w-[40%] h-[45vh]  text-left">
           <div className='mb-4'>
-            <img src={invertedComma} alt="" />
+            <Image src={invertedComma} alt="" className="w-[7vw] h-[7vh] object-fill"/>
           </div>
           <p className="mb-4">
             Safar Wanderlust offers a unique travel experience by crafting

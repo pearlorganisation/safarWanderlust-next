@@ -1,6 +1,7 @@
+"use client";
 import React from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-import Logo from '../../../assets/svgs/logo/Safarlogo.svg';
+import Logo from '@/_assets/svgs/logo/Safarlogo.svg';
 
 const Footer = () => {
   return (

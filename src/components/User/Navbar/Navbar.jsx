@@ -4,14 +4,13 @@ import React, { useEffect, useState } from 'react'
 
 // import { SlLocationPin } from 'react-icons/sl'
 import { GoSearch } from 'react-icons/go'
+// import Image from "next/image"; 
 
 
 import Toggle from '@/components/TogelButton'
 import OfferBar from './OfferBar'
 import SearchBar from './SearchBar'
-// import TripForm from './TripForm'
-// import DropdownTrending from '@/components/DropdownTrending'
-// import DropdownCategory from '@/components/DropdownCategory'
+import TripForm from './TripForm'
 import CustomModal from '@/components/CustomModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchNavbarCategories } from '@/lib/thunks/fetchNavBarCategories'
@@ -22,6 +21,9 @@ import { RxCross2 } from 'react-icons/rx'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import CustomLogo from './CustomLogo'
+import DropdownTrending from '../components/DropdownTrending'
+import DropdownCategory from '../components/DropdownCategory'
+import Logo from '@/_assets/svgs/logo/safar_wanderlust_bag_icon.webp'
 
 
 
@@ -86,6 +88,15 @@ const Navbar = () => {
               className="h-[66px] w-[136px]"
               src={Logo}
               alt="Safar Wanderlust"
+            /> */}
+            {/* <Image
+                onClick={() => router.push("/")}
+                className="h-[66px] w-[48px] cursor-pointer"
+                src={Logo}
+                alt="Safar Wanderlust"
+                width={48} // Explicit width
+                height={66} // Explicit height
+                priority // Loads the image faster
             /> */}
             <div onClick={() => router.push('/')}>
               <CustomLogo />
@@ -200,7 +211,7 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-6">
-                  {/* {navBarCategories.map((data, index) => (
+                  {navBarCategories.map((data, index) => (
                     <DropdownCategory
                       emoji={data.image}
                       items={data.itinerary}
@@ -208,7 +219,7 @@ const Navbar = () => {
                       key={index}
                       setState={setState}
                     />
-                  ))} */}
+                  ))}
                 </div>
               </div>
             )}
@@ -253,14 +264,14 @@ const Navbar = () => {
                        : 'w-[95%] top-10 left-10'
                    }`}
               >
-                {/* <DropdownTrending
+                <DropdownTrending
 
                   title="Trending"
                   emoji="📈"
                   items={trendingItineraries?.slice(0, 12)}
                   setState={setState}
                   
-                /> */}
+                />
               </div>
             )}
 
@@ -373,7 +384,7 @@ const Navbar = () => {
         }
         restContent={
           <div className="w-[60vw]">
-            {/* <TripForm state={state} setState={setState} /> */}
+            <TripForm state={state} setState={setState} />
           </div>
         }
       />

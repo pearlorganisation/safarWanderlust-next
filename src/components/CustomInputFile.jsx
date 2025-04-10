@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useId, useState } from 'react'
 import CustomText from './CustomText'
 import { CircularProgress } from '@mui/material'

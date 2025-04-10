@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import { FaRegClock, FaMountain, FaBinoculars, FaStar } from 'react-icons/fa'
 

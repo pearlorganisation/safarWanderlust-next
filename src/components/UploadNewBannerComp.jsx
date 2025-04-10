@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import CustomModal from './CustomModal'
-import { setValue } from '../redux/globalSlice'
+import { setValue } from '@/lib/globalSlice'
 import { get, post } from '../constants/axiosClient'
 import { API_ENDPOINTS } from '../constants/apiEndpoints'
 import { localStorageHelper } from '../helper/storageHelper'
@@ -11,7 +11,8 @@ import CustomSelect from './CustomSelect'
 import CustomInputFile from './CustomInputFile'
 import moment from 'moment'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import CustomButton from './CustomButton'
 
 function UploadNewBannerComp({
@@ -21,7 +22,8 @@ function UploadNewBannerComp({
   Fetch_content_after_banner_upload = () => {}
 }) {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const router = useRouter()
   const dateref = useRef()
   const getAllCategories = async () => {
     dispatch(setValue({ key: 'to_show_loader', value: true }))
@@ -51,7 +53,7 @@ function UploadNewBannerComp({
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -116,7 +118,7 @@ function UploadNewBannerComp({
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }

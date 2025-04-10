@@ -9,11 +9,11 @@ export const fetchTermAndCondition = () => async (dispatch) => {
     await get(API_ENDPOINTS.USERS.GET_TERM_CONDITIONS).then((d) => {
 
       if ( d.success == true) {
-        const termAndCOnditions = d.data
+        const termAndCondition = d.data
         dispatch(
           setValue({
             key: 'termAndCondition',
-            value: termAndCOnditions
+            value: termAndCondition
           })
         )
         // Optionally, you can also set itineraries if needed

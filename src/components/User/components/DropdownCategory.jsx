@@ -1,7 +1,11 @@
-import { useNavigate } from "react-router-dom"
+"use client"
+
+// import { useNavigate } from "react-router-dom"
+import { useRouter } from "next/navigation"
 
 const DropdownCategory = ({ title, emoji, items, setState }) => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const router = useRouter()
   return (
     <div>
       <h3 className="text-xl font-bold mb-4">
@@ -20,7 +24,7 @@ const DropdownCategory = ({ title, emoji, items, setState }) => {
                   ...prevState,
                   isDropdownOpen: false
                 }))
-              navigate(`/itinerary/${item.route_map}`)}}
+              router.push(`/itinerary/${item.route_map}`)}}
             style={{
               backgroundImage: `url(${item.view_images[0]})`
             }}

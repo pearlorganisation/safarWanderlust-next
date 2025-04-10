@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import CustomeSelectTravler from '../components/CustomeSelectTravler'
 import CustomText from '../../../components/CustomText'
 import { useDispatch } from 'react-redux'
-import { addPeopleDetails } from '../../../redux/thunks/addPeopleDetails'
-import { useNavigate } from 'react-router-dom'
+import { addPeopleDetails } from '@/lib/thunks/addPeopleDetails'
+import { useRouter } from 'next/navigation'
 import CustomInput from '../../../components/CustomInput'
 
 const TravellerForm = ({
@@ -20,7 +20,7 @@ const TravellerForm = ({
   prepeople = []
 }) => {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const router = useRouter()
   const [people, setPeople] = useState(
     prepeople.length > 0
       ? prepeople.map((person) => ({
@@ -163,7 +163,7 @@ const TravellerForm = ({
     if (!validateFields()) return
     dispatch(addPeopleDetails(people))
     onClose()
-    navigate(`/booking/summary`)
+    router.push(`/booking/summary`)
   }
 
   return (

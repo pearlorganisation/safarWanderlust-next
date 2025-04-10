@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from 'react'
 import ItenerayImageSection from './itenerayImageSection'
 import ItinerarySection from './ItinerarySection'
@@ -8,11 +10,12 @@ import Testimonial from '../HomePage/reviewSection/ReviewSection'
 import PartnersSection from '../explorePage/PartnersSection'
 import TravellerForm from './TravellerForm'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchItenerayByName } from '../../../redux/thunks/fetchItenerayByName'
 import FeaturesIcons from './featureIcons'
-import CustomModal from '../../../components/CustomModal'
-import { useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+
+import { useParams } from "next/navigation";
+import { fetchItenerayByName } from '@/lib/thunks/fetchItenerayByName'
+import CustomModal from '@/components/CustomModal'
+// import { Helmet } from 'react-helmet-async'
 
 function ItineraryPage() {
   const dispatch = useDispatch()
@@ -41,7 +44,7 @@ function ItineraryPage() {
 
   return (
     <div>
-      <Helmet>
+      {/* <Helmet>
         <title>
           {iteneray.title || 'Itinerary Details'} - Safar Wanderlust
         </title>
@@ -73,7 +76,7 @@ function ItineraryPage() {
         )}
         <meta property="og:type" content="article" />
         <meta property="og:url" content={window.location.href} />
-      </Helmet>
+      </Helmet> */}
 
       <ItenerayImageSection
         allImages={iteneray.allImages}

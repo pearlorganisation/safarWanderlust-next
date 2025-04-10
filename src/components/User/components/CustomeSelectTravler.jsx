@@ -1,8 +1,9 @@
 import React from 'react'
-import CustomText from '../../../components/CustomText'
-import { light } from '../../../assets/themes/themes'
+// import CustomText from '../../../components/CustomText'
+import { light } from '@/_assets/themes/themes'
 import { FormControl, Select, MenuItem } from '@mui/material'
 import { styled } from '@mui/system'
+import CustomText from '@/components/CustomText'
 
 export default function CustomSelectTravler({
   top_title,

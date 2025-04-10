@@ -1,26 +1,38 @@
+"use client"
+
 import React, { useEffect, useState } from 'react'
-import '../../index.css'
+// import '../../index.css'
 import CustomText from '../../components/CustomText'
-import { light } from '../../assets/themes/themes'
+import { light } from '@/_assets/themes/themes'
 import CustomCheckboxWithLabel from '../../components/CustomCheckboxWithLabel'
 import CustomButton from '../../components/CustomButton'
 import AdminTopbar from '../../components/AdminTopbar'
-import AddIcon from '../../assets/svgs/logo/AddIcon'
-import EditIcon from '../../assets/svgs/logo/EditIcon'
-import ThreedotIcon from '../../assets/svgs/logo/ThreedotIcon'
+import AddIcon from '@/_assets/svgs/logo/AddIcon' //
+import EditIcon from '@/_assets/svgs/logo/EditIcon' //
+import ThreedotIcon from '@/_assets/svgs/logo/ThreedotIcon' //
 import { API_ENDPOINTS } from '../../constants/apiEndpoints'
 import { get, patch, post, put, remove } from '../../constants/axiosClient'
 import { useDispatch, useSelector } from 'react-redux'
-import { setValue } from '../../redux/globalSlice'
+// import { setValue } from '../../redux/globalSlice'
 import PaginationComp from '../../components/PaginationComp'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { PAGES } from '../../constants/PagesName'
 import moment from 'moment'
-import { showConfirmationDialog } from '../../App'
+
+// import { showConfirmationDialog } from '../../App'
 import { localStorageHelper } from '../../helper/storageHelper'
-import AddNewItiComp from '../../components/AddNewItiComp'
+import AddNewItiComp from '../AddNewItiComp'
+import { showConfirmationDialog } from '../Dialog/ShowConfirmationDialog'
+import { setValue } from '@/lib/globalSlice'
+import useAuthRedirect from '@/hooks/useAuthRedirect'
+
+
+
 
 function Itinerary() {
+  
+  useAuthRedirect();
+
   const dispatch = useDispatch()
   const [state, setState] = useState({
     is_modalopen: false,
@@ -61,7 +73,7 @@ function Itinerary() {
   const [dayintro, setdayintro] = useState([])
   const [hotelinfo, sethotelinfo] = useState([])
   const [packagedetails, setpackagedetails] = useState([])
-  const navigate = useNavigate()
+  const router = useRouter()
   const fetch_itinerary = async (next_cursor = 0) => {
     dispatch(setValue({ key: 'to_show_loader', value: true }))
     try {
@@ -94,8 +106,9 @@ function Itinerary() {
         err_response.success == false &&
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
-        localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        // localStorageHelper.removeItem('login_data')
+        // router.push(PAGES.LOGIN, { replace: true })
+        console.log('logging out')
       }
     }
   }
@@ -149,7 +162,7 @@ function Itinerary() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -189,7 +202,7 @@ function Itinerary() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -226,7 +239,7 @@ function Itinerary() {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -295,7 +308,7 @@ function Itinerary() {
           err_response.message == 'VALIDATION_INVALID_TOKEN'
         ) {
           localStorageHelper.removeItem('login_data')
-          navigate(PAGES.LOGIN, { replace: true })
+          router.push(PAGES.LOGIN, { replace: true })
         }
       }
     }

@@ -1,7 +1,10 @@
+"use client"
+
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { setValue } from '../../../../redux/globalSlice';
+
+import { useRouter } from 'next/navigation';
+import { setValue } from '@/lib/globalSlice';
 import { get, post, put, remove } from '../../../../constants/axiosClient';
 import { API_ENDPOINTS } from '../../../../constants/apiEndpoints';
 import { PAGES } from '../../../../constants/PagesName';
@@ -9,7 +12,7 @@ import { localStorageHelper } from '../../../../helper/storageHelper';
 
 export const useReviews = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleError = (error) => {
     dispatch(setValue({ key: 'to_show_loader', value: false }));
@@ -17,7 +20,7 @@ export const useReviews = () => {
     const err_response = error?.response?.data;
     if (err_response?.success === false && err_response?.message === 'VALIDATION_INVALID_TOKEN') {
       localStorageHelper.removeItem('login_data');
-      navigate(PAGES.LOGIN, { replace: true });
+      router.push(PAGES.LOGIN, { replace: true });
     }
   };
 

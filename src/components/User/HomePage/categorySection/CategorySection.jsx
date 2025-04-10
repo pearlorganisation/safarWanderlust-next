@@ -1,8 +1,12 @@
+"use client"
+
 import React, { useRef, useState, useEffect } from 'react'
-import Card from '../../components/HomeCategoryCard' // Import the Card component
+
+import Card from '../../components/HomeCategoryCard' 
 import { useDispatch, useSelector } from 'react-redux'
 import CategoryPageCard from '../../components/CategoryPageCard'
-import { fetchHomeCategories } from '../../../../redux/thunks/fetchHomeCategories'
+
+// import { fetchHomeCategories } from '@/redux/thunks/fetchHomeCategories'
 
 const CategorySection = () => {
   const categories = useSelector((state) => state.global.homeCategories) || []

@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomText from './CustomText'
-import { light } from '../assets/themes/themes'
+import { light } from '@/_assets/themes/themes'
 import { FormControl, Select, MenuItem, InputLabel } from '@mui/material'
 import { border, styled } from '@mui/system'
 

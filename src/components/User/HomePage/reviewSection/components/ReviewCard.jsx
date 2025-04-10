@@ -1,7 +1,11 @@
-import { useNavigate } from 'react-router-dom'
+"use client"
+
+
+// import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 
 const ReviewCard = ({ review, page }) => {
-  const navigate = useNavigate()
+  const router = useRouter()
 
   return (
     <div
@@ -92,9 +96,9 @@ const ReviewCard = ({ review, page }) => {
               )}
             </div>
 
-            <button
+            {/* <button
               onClick={() =>
-                navigate(
+                router.push(
                   review?.itineraryId
                     ? `/itinerary/${review?.itinerary?.route_map}`
                     : '/explore/all-trips'
@@ -106,7 +110,22 @@ const ReviewCard = ({ review, page }) => {
         transition-all duration-200 ease-in-out"
             >
               Browse Trips →
-            </button>
+            </button> */}
+            <button
+  onClick={() =>
+    router.push(
+      review?.itineraryId
+        ? `/itinerary/${review?.itinerary?.route_map}`
+        : '/explore/all-trips'
+        )
+      }
+        className="inline-flex items-center rounded-full bg-orange-500 hover:bg-orange-600
+        px-2.5 md:px-4 py-1 md:py-2 text-[12px] md:text-sm font-medium text-white whitespace-nowrap
+        transition-all duration-200 ease-in-out"
+      >
+        Browse Trips →
+      </button>
+
           </div>
         </div>
       )}

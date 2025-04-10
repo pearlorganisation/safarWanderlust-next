@@ -1,10 +1,20 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+"use client"
+
+import { fetchTermAndCondition } from '@/lib/thunks/fetchTermAndCondition';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 function TermAndConditionSection() {
 
-          const termAndCondition =
-            useSelector((state) => state.global.termAndCondition) || []
+  const dispatch = useDispatch();
+  const { termAndCondition } = useSelector((state) => state.global.termAndCondition) || [];
+  
+  useEffect(()=> {
+    dispatch(fetchTermAndCondition());
+  },[] )
+          // const termAndCondition =
+          //   useSelector((state) => state.global.termAndCondition) || []
+            console.log("term and condition -", termAndCondition); 
 
   return (
     <div className=" space-y-6 shadow-lg p-3 mb-5 mx-16 bg-white rounded">
@@ -16,12 +26,15 @@ function TermAndConditionSection() {
           If you proceed to pay you will be agreeing to our terms and conditions
         </p>
       )}
+      
       <ol className="list-decimal list-inside mx-auto space-y-2 text-gray-700 text-sm text-left max-w-7xl">
-        {termAndCondition.map((point, index) => (
+        {/* {Array.isArray(termAndCondition) && termAndCondition.map((point, index) => (
           <li key={index} className="text-base md:text-base">
             {point}
           </li>
-        ))}
+        ))} */}
+
+        <h1> Array of Terms and Conditions</h1>
       </ol>
     </div>
   )

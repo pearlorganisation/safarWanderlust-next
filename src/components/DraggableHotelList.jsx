@@ -1,4 +1,8 @@
+"use client"
+
 import React, { useEffect, useState } from 'react'
+
+
 import { FaPlus, FaMinus } from 'react-icons/fa'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import { List, ListItem, IconButton, Box, Rating } from '@mui/material'

@@ -5,6 +5,8 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { MdKeyboardArrowUp } from 'react-icons/md';
 
 const DayAccordion = ({ dayDetail,activeDay,setActiveDay }) => {
+
+  // console.log(dayDetail, "dayDetail")
   
   const [isPopUpOpen,setPopUpOpen] = useState(false);
   const [popUpImage,setPopUpImage] = useState(null);
@@ -14,6 +16,20 @@ const DayAccordion = ({ dayDetail,activeDay,setActiveDay }) => {
   const toggleDay = (day) => {
     setActiveDay(activeDay === day ? null : day)
   }
+
+  // const toggleDay = () => {
+  //   setActiveDay(prevDay => prevDay === dayDetail.day ? null : dayDetail.day);
+  // };
+  
+  // const [activeDays, setActiveDays] = useState({});
+
+// const toggleDay = (id) => {
+//   setActiveDays((prev) => ({
+//     ...prev,
+//     [id]: !prev[id], // Toggle only for the specific day
+//   }));
+// };
+
 
   const { day, title, description, activiteis, places } = dayDetail // Destructure properties
 
@@ -51,6 +67,7 @@ const DayAccordion = ({ dayDetail,activeDay,setActiveDay }) => {
       <div className="md:block hidden mb-4">
         <button
           onClick={() => toggleDay(day)}
+          // onClick={() => toggleDay(dayDetail.id)}
           className="bg-white text-black px-6 py-3 rounded-full w-full text-left flex justify-between items-center"
         >
           <div>
@@ -231,6 +248,7 @@ const DayAccordion = ({ dayDetail,activeDay,setActiveDay }) => {
       <div className="md:hidden block mb-2">
         <button
           onClick={() => toggleDay(day)}
+          // onClick={() => toggleDay(dayDetail.id)}
           className="bg-white flex items-center justify-between  text-black text-sm px-2 py-2 rounded-full w-full text-left"
         >
           <div className=" flex items-center">

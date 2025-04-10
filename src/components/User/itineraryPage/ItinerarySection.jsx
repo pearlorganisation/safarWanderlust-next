@@ -1,29 +1,29 @@
-import React, { useState } from 'react'
-import { FaRegListAlt } from 'react-icons/fa'
-import HotelCarousel from './HotelCarousel'
-import DayAccordion from './itinerarySection/DayAccordion'
-import { GoDotFill } from 'react-icons/go'
+import React, { useState } from "react";
+import { FaRegListAlt } from "react-icons/fa";
+import HotelCarousel from "./HotelCarousel";
+import DayAccordion from "./itinerarySection/DayAccordion";
+import { GoDotFill } from "react-icons/go";
 
 const ItinerarySection = ({
   notes,
   dayDetails,
   hotels,
   inclusions_exclusions,
-  cancellation_policy
+  cancellation_policy,
 }) => {
   // State to manage active accordion for itinerary days
-  const [activeDay, setActiveDay] = useState(dayDetails&&dayDetails[0])
+  const [activeDay, setActiveDay] = useState(dayDetails && dayDetails[0]);
 
   // Function to toggle accordion for itinerary days
   const toggleDay = (day) => {
-    setActiveDay(activeDay === day ? null : day)
-  }
+    setActiveDay(activeDay === day ? null : day);
+  };
 
   return (
     <>
       <div className="bg-gray-900 font-titleRegular p-5 my-2 text-white min-h-screen md:block hidden">
         {/* Sticky Navigation */}
-        <nav className="bg-gray-800 mx-24  mt-10   rounded-full p-4  top-20 z-50">
+        <nav className="bg-gray-800 mx-12  mt-10   rounded-full p-4  top-20 z-50">
           <ul className="flex justify-evenly items-center space-x-6">
             <li>
               <a
@@ -54,21 +54,21 @@ const ItinerarySection = ({
         {/* Itinerary Section */}
         <section
           id="itinerary"
-          className="mx-24 p-10 my-4 bg-gray-800 rounded-3xl"
+          className="mx-12 p-10 my-4 bg-gray-800 rounded-3xl"
         >
           <h2 className="text-2xl font-bold mb-4 ml-4">Itinerary</h2>
 
           {/* Dynamic Day Accordions */}
           {dayDetails?.map((day, index) => (
             <DayAccordion
-              key={index}
+              key={day.day || index} //ensure a unique key
               day={day.day}
               title={day.title}
               content={day.description}
               dayDetail={day}
               activities={day.activiteis
                 .map((activity) => activity.description)
-                .join(', ')}
+                .join(", ")}
               images={day.activiteis.flatMap((activity) => activity.images)}
               activeDay={activeDay}
               setActiveDay={toggleDay}
@@ -79,10 +79,10 @@ const ItinerarySection = ({
         {/* Hotels Section */}
         <section
           id="hotels"
-          className="mx-24 px-10 my-4 bg-gray-800  rounded-3xl"
+          className="mx-12 px-10 my-4 bg-gray-800  rounded-3xl"
         >
           {/* <h2 className="text-3xl mb-4">Hotels</h2> */}
-          {hotels && hotels.length > 0 && hotels[0].name != '' && (
+          {hotels && hotels.length > 0 && hotels[0].name != "" && (
             <HotelCarousel hotels={hotels} />
           )}
         </section>
@@ -90,22 +90,22 @@ const ItinerarySection = ({
         {/* Inclusion & Exclusion Section */}
         <section
           id="inclusion"
-          className="mx-24 px-20 py-10 my-4 bg-gray-800 rounded-3xl"
+          className="mx-12 px-20 py-10 my-4 bg-gray-800 rounded-3xl"
         >
           <h2 className="text-2xl font-bold mb-4">Inclusion & Exclusion</h2>
           <div className="rounded-lg bg-gray-700/85  mx-auto py-10 px-20">
             <div className="grid grid-cols-2">
               <div className="space-y-2">
                 {inclusions_exclusions?.inclusions?.map((i, index) => (
-                  <div className='flex items-start'>
-                    <div>✅</div> <p key={index}> {i}</p>
+                  <div key={`inc-${index}`} className="flex items-start">
+                    <div>✅</div> <p> {i}</p>
                   </div>
                 ))}
               </div>
               <div className="space-y-2">
                 {inclusions_exclusions?.exclusions?.map((i, index) => (
-                  <div className='flex items-start'>
-                    <div>❌</div> <p key={index}> {i}</p>
+                  <div key={`exc-${index}`} className="flex items-start">
+                    <div>❌</div> <p> {i}</p>
                   </div>
                 ))}
               </div>
@@ -116,7 +116,7 @@ const ItinerarySection = ({
         {/* Cancellation Policy Section */}
         <section
           id="cancellation"
-          className="mx-24 px-20 py-10 my-4 bg-gray-800  rounded-3xl"
+          className="mx-12 px-20 py-10 my-4 bg-gray-800  rounded-3xl"
         >
           <div className="flex items-center mb-4">
             <FaRegListAlt color="white" className="text-white text-xl mr-2" />
@@ -127,7 +127,10 @@ const ItinerarySection = ({
           <div className="rounded-lg bg-gray-700/85  mx-auto py-10 px-20">
             <ul className="space-y-4">
               {cancellation_policy?.policies.map((policy, index) => (
-                <li className="flex items-start space-x-2" key={index}>
+                <li
+                  className="flex items-start space-x-2"
+                  key={`policy-${index}`}
+                >
                   <div className="mt-1 w-4 h-4 bg-white rounded-full flex-shrink-0"></div>
                   <p>{policy}</p>
                 </li>
@@ -139,7 +142,7 @@ const ItinerarySection = ({
         {/* Note Section */}
         <section
           id="note"
-          className="mx-24 px-20 py-10 my-4 bg-gray-800 rounded-3xl"
+          className="mx-12 px-20 py-10 my-4 bg-gray-800 rounded-3xl"
         >
           <div className="flex items-center mb-4">
             <div className="bg-white text-xl min-h-4 min-w-4 mr-2"></div>
@@ -202,25 +205,29 @@ const ItinerarySection = ({
           <h2 className="text-base font-bold mb-4">Itinerary</h2>
 
           {/* Dynamic Day Accordions */}
-          {dayDetails?.map((day, index) => (
-            <DayAccordion
-              key={index}
-              day={day.day}
-              title={day.title}
-              content={day.description}
-              dayDetail={day}
-              activities={day.activiteis
-                .map((activity) => activity.description)
-                .join(', ')}
-              images={day.activiteis.flatMap((activity) => activity.images)}
-              activeDay={activeDay}
-              setActiveDay={toggleDay}
-            />
-          ))}
+          {dayDetails?.map((day, index) => {
+            console.log("My index", index);
+            console.log("My day", day);
+            return (
+              <DayAccordion
+                key={`${index}day`}
+                day={day.day}
+                title={day.title}
+                content={day.description}
+                dayDetail={day}
+                activities={day.activiteis
+                  .map((activity) => activity.description)
+                  .join(", ")}
+                images={day.activiteis.flatMap((activity) => activity.images)}
+                activeDay={activeDay}
+                setActiveDay={toggleDay}
+              />
+            );
+          })}
         </section>
 
         {/* Hotels Section */}
-        {hotels && hotels.length > 0 && hotels[0].name != '' && (
+        {hotels && hotels.length > 0 && hotels[0].name != "" && (
           <section
             id="hotelsMobile"
             className="mx-4  px-4 py-8   my-4 bg-gray-800 rounded-lg "
@@ -232,7 +239,7 @@ const ItinerarySection = ({
         {/* Inclusion & Exclusion Section */}
         <section
           id="inclusionMobile"
-          class=" mx-4 px-1 my-2 py-8 bg-gray-800 rounded-lg"
+          className=" mx-4 px-1 my-2 py-8 bg-gray-800 rounded-lg"
         >
           <h2 className="text-base font-titleRegular  mb-4 pl-2">
             Inclusion & Exclusion
@@ -240,16 +247,19 @@ const ItinerarySection = ({
           <div className="rounded-lg bg-gray-700/85  mx-2  px-2 py-3">
             <div className="space-y-4 text-sm">
               <div className="space-y-1 font-titleRegular">
-                {inclusions_exclusions?.inclusions?.map((i, index) => (
-                  <div className="flex items-start">
-                    <div>✅</div> <p key={index}>{i}</p>
-                  </div>
-                ))}
+                {inclusions_exclusions?.inclusions?.map((i, index) => {
+                  // console.log(i, "i");
+                  return (
+                    <div className="flex items-start" key={`${i}${index}`}>
+                      <div>✅</div> <p>{i}</p>
+                    </div>
+                  );
+                })}
               </div>
               <div className="space-y-1">
                 {inclusions_exclusions?.exclusions?.map((i, index) => (
-                  <div className="flex items-start">
-                    <div>❌</div> <p key={index}>{i}</p>
+                  <div className="flex items-start"  key={`${i}${index}`}>
+                    <div>❌</div> <p>{i}</p>
                   </div>
                 ))}
               </div>
@@ -289,7 +299,7 @@ const ItinerarySection = ({
           </div>
           <div
             className="rounded-lg bg-gray-700/85 text-sm  mx-auto  px-5"
-            style={{ fontSize: '0.775rem' }}
+            style={{ fontSize: "0.775rem" }}
           >
             <ol className="space-y-2 font-titleRegular list-disc py-5">
               {notes?.map((noteItem, index) => (
@@ -302,7 +312,7 @@ const ItinerarySection = ({
         </section>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ItinerarySection
+export default ItinerarySection;

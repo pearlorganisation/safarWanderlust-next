@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect } from 'react'
 import SearchResultsHero from './SearchResultHero'
 import SearchResultItenary from './SearchResultItenary'
@@ -6,8 +8,8 @@ import OtherItineraries from './OtherItineraries'
 import WhySafarWandarLust from './WhySWL'
 import Testimonial from '../HomePage/reviewSection/ReviewSection'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchBanner } from '../../../redux/thunks/fetchBanner'
-import { fetchReviews } from '../../../redux/thunks/fetchReviews'
+import { fetchReviews } from '@/lib/thunks/fetchReviews'
+import { fetchBanner } from '@/lib/thunks/fetchBanner'
 
 function SearchPage() {
   const dispatch = useDispatch()

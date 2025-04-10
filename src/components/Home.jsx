@@ -14,13 +14,15 @@ import { fetchGalleryImages } from "@/lib/thunks/fetchGalleryImages";
 
 import AwardFooter from "./User/HomePage/HeroSection/AwardsFooter";
 import FeaturedSection from "./User/HomePage/HeroSection/FeaturedSection";
-// import CategorySection from "./User/HomePage/categorySection/CategorySection";
-// import ItineraryPSection from "./User/HomePage/itenerarySection/IteneraySection";
-// import BannerSlider from "./User/HomePage/banners/BannerSlider";
-// import TripsPage from "./User/HomePage/tripSection/TripPage";
-// import JourneySection from "./User/HomePage/journeysection/JourneySection";
-// import Gallery from "./User/HomePage/galaryView/GalaryView";
-// import Testimonial from './User/HomePage/reviewSection/ReviewSection'
+import CategorySection from "./User/HomePage/categorySection/CategorySection";
+import ItineraryPSection from "./User/HomePage/itenerarySection/IteneraySection";
+import BannerSlider from "./User/HomePage/banners/BannerSlider";
+import TripsPage from "./User/HomePage/tripSection/TripPage";
+import JourneySection from "./User/HomePage/journeysection/JourneySection";
+import Gallery from "./User/HomePage/galaryView/GalaryView";
+import Testimonial from './User/HomePage/reviewSection/ReviewSection'
+import Footer from "./User/Footer/Footer";
+import { fetchTermAndCondition } from "@/lib/thunks/fetchTermAndCondition";
 
 
 function Home() {
@@ -32,6 +34,7 @@ function Home() {
       dispatch(fetchHomeCategories());
     }
     dispatch(fetchBanner());
+    dispatch(fetchTermAndCondition());
     dispatch(fetchCategoriesAndItineraries());
     dispatch(fetchHeroItineraries());
     dispatch(fetchGalleryImages());
@@ -83,13 +86,14 @@ function Home() {
           <FeaturedSection />
         </div>
       </div>
-      {/* <CategorySection />
-      <ItineraryPSection />
-      <BannerSlider />
-      <TripsPage />
+       <CategorySection />
+       <ItineraryPSection />
+       <BannerSlider />
+       <TripsPage />
       <JourneySection />
       <Gallery />
-      <Testimonial /> */}
+     <Testimonial />
+     <Footer />
     </div>
   );
 }

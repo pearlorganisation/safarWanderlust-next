@@ -20,6 +20,7 @@ import CustomInput from '@/components/CustomInput'
 import CustomText from '@/components/CustomText'
 import TagInput from '../components/TegInput'
 import moment from 'moment'
+import CustomModal from '@/components/CustomModal'
 
 function TripForm( {state,setState}) {
   const dispatch = useDispatch()
@@ -139,7 +140,7 @@ function TripForm( {state,setState}) {
   }
 
   return (
-    <div className="m-auto w-[100%] mx-auto z-[999]">
+    <div className=" m-auto w-[100%] mx-auto z-[999]">
       {/* Navigation Features */}
       <div className="mx-auto md:w-[70%] w-full  grid grid-cols-10 justify-center items-center">
         <NavBarFeature

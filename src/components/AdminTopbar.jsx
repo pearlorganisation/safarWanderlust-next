@@ -1,8 +1,10 @@
+"use client"
+
 import CustomInput from './CustomInput'
 import CustomText from './CustomText'
-import SearchIcon from '../assets/svgs/logo/SearchIcon'
-import ChatIcon from '../assets/svgs/logo/Chat'
-import NotificationIcon from '../assets/svgs/logo/Notification'
+import SearchIcon from '@/_assets/svgs/logo/SearchIcon'
+import ChatIcon from '@/_assets/svgs/logo/Chat'
+import NotificationIcon from '@/_assets/svgs/logo/Notification'
 import { CgProfile } from 'react-icons/cg'
 import { useEffect, useState } from 'react'
 import { localStorageHelper } from '../helper/storageHelper'
@@ -12,10 +14,12 @@ import CustomButton from './CustomButton'
 import { useDispatch } from 'react-redux'
 import { patch } from '../constants/axiosClient'
 import { API_ENDPOINTS } from '../constants/apiEndpoints'
-import { setValue } from '../redux/globalSlice'
-import { useNavigate } from 'react-router-dom'
+// import { setValue } from '../redux/globalSlice'
+// import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { PAGES } from '../constants/PagesName'
-import { showConfirmationDialog } from '../App'
+import { showConfirmationDialog } from './Dialog/ShowConfirmationDialog'
+import { setValue } from '@/lib/globalSlice'
 
 export default function AdminTopbar({ topbar_title }) {
   const [state, setState] = useState({
@@ -35,7 +39,8 @@ export default function AdminTopbar({ topbar_title }) {
     to_show_error: false
   })
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const router = useRouter()
   const changeAdminPass = async () => {
     dispatch(setValue({ key: 'to_show_loader', value: true }))
     try {
@@ -80,7 +85,7 @@ export default function AdminTopbar({ topbar_title }) {
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
         localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        router.push(PAGES.LOGIN, { replace: true })
       }
     }
   }
@@ -88,7 +93,7 @@ export default function AdminTopbar({ topbar_title }) {
     const isConfirmed = await showConfirmationDialog(dispatch)
     if (isConfirmed) {
       localStorageHelper.removeItem('login_data')
-      navigate(PAGES.LOGIN)
+      router.push(PAGES.LOGIN)
     }
   }
   useEffect(() => {

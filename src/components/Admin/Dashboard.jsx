@@ -1,34 +1,42 @@
+"use client"
+
 import React, { useEffect, useRef, useState } from 'react'
 import AdminTopbar from '../../components/AdminTopbar'
 import CustomText from '../../components/CustomText'
-import { HiMiniChartBar } from 'react-icons/hi2'
-import { light } from '../../assets/themes/themes'
-import MultiplePerson from '../../assets/svgs/logo/MultiplePerson'
-import SinglePerson from '../../assets/svgs/logo/SinglePerson'
-import PersonWithStar from '../../assets/svgs/logo/PersonWithStar'
+// import { HiMiniChartBar } from 'react-icons/hi2'
+import { light } from '@/_assets/themes/themes'
+import MultiplePerson from '@/_assets/svgs/logo/MultiplePerson'
+import SinglePerson from '@/_assets/svgs/logo/SinglePerson'
+import PersonWithStar from '@/_assets/svgs/logo/PersonWithStar'
 import { BarChart } from '@mui/x-charts'
 import CustomSelect from '../../components/CustomSelect'
 import CustomButton from '../../components/CustomButton'
-import AddIcon from '../../assets/svgs/logo/AddIcon'
-import Upgraph from '../../assets/svgs/logo/Upgraph'
-import Downgraph from '../../assets/svgs/logo/Downgraph'
+import AddIcon from '@/_assets/svgs/logo/AddIcon'
+import Upgraph from '@/_assets/svgs/logo/Upgraph'
+import Downgraph from '@/_assets/svgs/logo/Downgraph'
 import { RiArrowDropRightLine } from 'react-icons/ri'
-import { LiaEdit } from 'react-icons/lia'
-import { MdOutlinePhoto } from 'react-icons/md'
+// import { LiaEdit } from 'react-icons/lia'
+// import { MdOutlinePhoto } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
-import { setValue } from '../../redux/globalSlice'
+import { setValue } from '@/lib/globalSlice'
 import { get, post } from '../../constants/axiosClient'
 import { API_ENDPOINTS } from '../../constants/apiEndpoints'
 import moment from 'moment'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { PAGES } from '../../constants/PagesName'
 import { localStorageHelper } from '../../helper/storageHelper'
 import AddNewItiComp from '../../components/AddNewItiComp'
 import UploadNewBannerComp from '../../components/UploadNewBannerComp'
+import useAuthRedirect from '@/hooks/useAuthRedirect'
 
 function Dashboard() {
+
+  useAuthRedirect();
+
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const router = useRouter()
   const CurrentYear = moment().year()
   const CurrentMonth = moment().format('MMMM')
   const [state, setState] = useState({
@@ -80,6 +88,14 @@ function Dashboard() {
   const [dayintro, setdayintro] = useState([])
   const [hotelinfo, sethotelinfo] = useState([])
   const [packagedetails, setpackagedetails] = useState([])
+
+  // useEffect(()=> {
+  //   if(localStorageHelper.getItem('login_data') == null){
+  //     router.push(PAGES.LOGIN, { replace: true })
+  //   }
+  // }, [])
+
+
   const fetch_dashboard_data = async () => {
     dispatch(setValue({ key: 'to_show_loader', value: true }))
     try {
@@ -93,14 +109,14 @@ function Dashboard() {
           console.log('logging data', d)
         }
       })
-      // throw {
-      //   response: {
-      //     data: {
-      //       success: false,
-      //       message: 'VALIDATION_INVALID_TOKEN'
-      //     }
-      //   }
-      // }
+      throw {
+        response: {
+          data: {
+            success: false,
+            message: 'VALIDATION_INVALID_TOKEN'
+          }
+        }
+      }
     } catch (error) {
       dispatch(setValue({ key: 'to_show_loader', value: false }))
       console.error(error)
@@ -109,8 +125,10 @@ function Dashboard() {
         err_response.success == false &&
         err_response.message == 'VALIDATION_INVALID_TOKEN'
       ) {
-        localStorageHelper.removeItem('login_data')
-        navigate(PAGES.LOGIN, { replace: true })
+        // localStorageHelper.removeItem('login_data')
+        // router.push(PAGES.LOGIN, { replace: true })
+        // useAuthRedirect();
+        console.log('logging out')
       }
     }
   }
@@ -662,7 +680,7 @@ function Dashboard() {
                   className="text-sidebarborder"
                 />
                 <div
-                  onClick={() => navigate(PAGES.BOOKINGS)}
+                  onClick={() => router.push(PAGES.BOOKINGS)}
                   className="flex justify-center items-center mr-2 cursor-pointer transition-transform transform duration-75 active:scale-95 select-none"
                 >
                   <CustomText

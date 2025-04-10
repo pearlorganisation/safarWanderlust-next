@@ -1,8 +1,12 @@
+"use client"
+
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { putBanner } from '../../../../redux/thunks/updateClickCount'
-import { useNavigate } from 'react-router-dom'
-import { fetchBanner } from '../../../../redux/thunks/fetchBanner'
+
+import { useRouter } from 'next/navigation';
+import { putBanner } from '@/lib/thunks/updateClickCount';
+
+// import { fetchBanner } from '../../../../redux/thunks/fetchBanner'
 
 // Mock API call to fetch banners
 
@@ -10,7 +14,7 @@ const BannerSlider = () => {
   const banners = useSelector((state) => state.global.banners) || []
   const [currentBanner, setCurrentBanner] = useState(0)
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const router = useRouter()
 
   useEffect(() => {
     // if (banners.length === 0) dispatch(fetchBanner())
@@ -36,7 +40,7 @@ const BannerSlider = () => {
             dispatch(
               putBanner(banners[currentBanner], banners[currentBanner].id)
             )
-            navigate(`/explore/${banners[currentBanner].route_map}`)
+            router.push(`/explore/${banners[currentBanner].route_map}`)
           }}
           src={banners[currentBanner]?.image}
           alt={banners[currentBanner]?.title}

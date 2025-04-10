@@ -1,11 +1,15 @@
+"use client"
+
 import React, { useState } from 'react'
 import TripCard from '../../components/ItenerereyCard'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation';
+
 
 const TripsSection = ({ title, trips, background,routeMap }) => {
 
 
-  const navigation = useNavigate()
+  const router = useRouter()
 
   const displayedTrips =  trips// Show only 4 trips unless showAll is true
 
@@ -22,7 +26,7 @@ const TripsSection = ({ title, trips, background,routeMap }) => {
         {trips.length >= 4 && (
           <button
             className="flex items-center bg-transparent text-black"
-            onClick={() => navigation(`explore/${routeMap}`)}
+            onClick={() => router.push(`explore/${routeMap}`)}
           >
             Show More <span className="ml-2">&rarr;</span>
           </button>

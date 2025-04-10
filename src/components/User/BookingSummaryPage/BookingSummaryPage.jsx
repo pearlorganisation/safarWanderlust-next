@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState, useEffect } from 'react'
 import FinalPaymentPage from './FinalPaymentPage '
 import Summary from './PriceSummary'
@@ -5,15 +7,17 @@ import moment from 'moment'
 import CustomModal from '../../../components/CustomModal'
 import { useDispatch, useSelector } from 'react-redux'
 import TravellerForm from '../itineraryPage/TravellerForm'
-import { useNavigate } from 'react-router-dom'
-import { createBooking } from '../../../redux/thunks/createBooking'
+// import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
+// import { createBooking } from '../../../redux/thunks/createBooking'
 import AffordabilityWidget from './AffordabilityWidget'
 import TermAndConditionSection from './TermAndConditionSection'
-import { fetchTermAndCondition } from '../../../redux/thunks/fetchTermAndCondition'
+import { fetchTermAndCondition } from '@/lib/thunks/fetchTermAndCondition'
 
 function BookingSummaryPage() {
   const [isPopupOpen, setIsPopupOpen] = useState(false)
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const router = useRouter()
 
 
   const dispatch = useDispatch();
@@ -27,10 +31,10 @@ function BookingSummaryPage() {
   // Redirect to the home page if no prepeople data is found
   useEffect(() => {
     if (!prepeople[0]) {
-      navigate('/') // Redirect to home if prepeople array is empty
+      router.push('/') // Redirect to home if prepeople array is empty
     }
       dispatch(fetchTermAndCondition())
-  }, [prepeople, navigate]) // Dependency on prepeople and navigate
+  }, [prepeople, router]) // Dependency on prepeople and navigate
 
   // Open popup function
   const openPopup = () => {

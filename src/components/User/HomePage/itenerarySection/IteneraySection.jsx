@@ -1,7 +1,9 @@
+"use client"
+
 import ItenerereyCard from '../../components/ItenerereyCard'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCategoriesAndItineraries } from '../../../../redux/thunks/fetchCategoriesAndItineraries '
+// import { fetchCategoriesAndItineraries } from '../../../../redux/thunks/fetchCategoriesAndItineraries '
 
 const ItineraryPSection = () => {
     const fetchedcategories = useSelector((state) =>

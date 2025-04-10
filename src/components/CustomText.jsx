@@ -16,7 +16,7 @@ function CustomText({
   ...rest
 }) {
   return (
-    <p
+    <div
       className={`${
         primaryfontweight
           ? 'font-nunitobold700'
@@ -38,7 +38,7 @@ function CustomText({
       {...rest}
     >
       {content}
-    </p>
+    </div>
   )
 }
 

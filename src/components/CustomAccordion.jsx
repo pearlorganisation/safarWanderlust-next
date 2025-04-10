@@ -1,7 +1,9 @@
+"use client"
+
 import React, { useState } from 'react'
 import CustomButton from './CustomButton'
-import EditIcon from '../assets/svgs/logo/EditIcon'
-import ThreedotIcon from '../assets/svgs/logo/ThreedotIcon'
+import EditIcon from '@/_assets/svgs/logo/EditIcon'
+import ThreedotIcon from '@/_assets/svgs/logo/ThreedotIcon'
 import CustomText from './CustomText'
 import { MdDragIndicator } from 'react-icons/md'
 

@@ -1,6 +1,8 @@
+"use client"
+
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createBooking } from '../../../redux/thunks/createBooking'
+import { createBooking } from '@/lib/thunks/createBooking'
 
 const calculateTotalPrice = (travelers) => {
   return travelers.map((traveler) => {

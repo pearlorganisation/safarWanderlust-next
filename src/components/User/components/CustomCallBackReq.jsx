@@ -1,13 +1,16 @@
+"use client"
 import React, { useState } from 'react'
-import CustomCallbackBanner from '../../../assets/svgs/user/CustomcallBackBanner.webp'
+
+// import CustomCallbackBanner from '../../../assets/svgs/user/CustomcallBackBanner.webp'
+
 import CustomInput from '../../../components/CustomInput'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import CustomText from '../../../components/CustomText'
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
 import moment from 'moment'
-import { submitCallbackRequest } from '../../../redux/thunks/submitCallbackRequest'
 import { useDispatch } from 'react-redux'
 import Modal from '../../../components/CustomModal' // Custom modal component (assume you have one or can create one)
+import { submitCallbackRequest } from '@/lib/thunks/submitCallbackRequest'
 
 function CustomCallBackReq({ setShowCallBackForm }) {
   const [formState, setFormState] = useState({

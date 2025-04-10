@@ -1,9 +1,13 @@
+"use client"
+
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReviews } from '../.../../../../../redux/thunks/fetchReviews';
+// import { fetchReviews } from '../.../../../../../redux/thunks/fetchReviews';
+
 import ReviewCard from './components/ReviewCard';
 import ReviewSkeleton from './components/ReviewSkeleton';
 import ReviewHeader from './components/ReviewHeader';
+import { fetchReviews } from '@/lib/thunks/fetchReviews';
 
 // CSS for hiding scrollbars
 const styles = `
@@ -13,7 +17,7 @@ const styles = `
   }
   
   .reviews-scrollbar-hide::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari and Opera */x
+    display: none;  /* Chrome, Safari and Opera */
   }
 `;
 

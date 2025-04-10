@@ -1,8 +1,13 @@
+"use client"
+
 import CustomButton from '../../../components/CustomButton'
-import { light } from '../../../assets/themes/themes'
+import { light } from '@/_assets/themes/themes'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import { useRouter } from 'next/navigation';
+
+// import { light } from '../../../assets/themes/themes'
+// import { useNavigate } from 'react-router-dom'
+// import { Helmet } from 'react-helmet-async'
 
 const ItenerereyCard = ({
   name,
@@ -17,13 +22,13 @@ const ItenerereyCard = ({
   rating,
   description
 }) => {
-  const navigate = useNavigate()
+  const router = useRouter()
 
   return (
     <>
-      <Helmet>
+      {/* <Helmet> */}
         {/* <title>{`${title} - Explore ${location}`}</title> */}
-        <meta
+        {/* <meta
           name="description"
           content={`${description} Plan your ${duration}-day trip to ${location} for just ₹${price}.`}
         />
@@ -38,10 +43,10 @@ const ItenerereyCard = ({
         />
         <meta property="og:image" content={image} />
         <meta property="og:url" content={`/itinerary/${routeName}`} />
-        <meta property="og:type" content="article" />
-      </Helmet>
+        <meta property="og:type" content="article" /> */}
+      {/* </Helmet> */}
       <div
-        onClick={() => navigate(`/itinerary/${routeName}`)}
+        onClick={() => router.push(`/itinerary/${routeName}`)}
         className="  hidden max-w-[320px] max-h-[450px] shrink-0 flex-col items-center gap-y-6 overflow-hidden rounded-xl bg-white   p-2 shadow-lg md:flex"
       >
         {/* Image */}
@@ -96,7 +101,7 @@ const ItenerereyCard = ({
 
           {/* Button */}
           {/* <button
-          onClick={() => navigate(`/itinerary/${id}`)}
+          onClick={() => router.push(`/itinerary/${id}`)}
           className="w-full mt-8 bg-orange-500 text-white font-semibold py-2 rounded-full hover:bg-orange-600"
         >
           Book Now
@@ -109,13 +114,13 @@ const ItenerereyCard = ({
               md_round={false}
               pill_rounded={true}
               padding="p-[11px]"
-              onClick={() => navigate(`/itinerary/${routeName}`)}
+              onClick={() => router.push(`/itinerary/${routeName}`)}
             />
           </div>
         </div>
       </div>
       <div
-        onClick={() => navigate(`/itinerary/${routeName}`)}
+        onClick={() => router.push(`/itinerary/${routeName}`)}
         className="  flex w-[250px] mb-2 max-h-[450px] shrink-0 flex-col  items-center gap-y-6 overflow-hidden rounded-xl bg-white   p-2 shadow-lg md:hidden"
       >
         {/* Image */}
@@ -189,7 +194,7 @@ const ItenerereyCard = ({
 
           {/* Button */}
           {/* <button
-          onClick={() => navigate(`/itinerary/${id}`)}
+          onClick={() => router.push(`/itinerary/${id}`)}
           className="w-full mt-8 bg-orange-500 text-white font-semibold py-2 rounded-full hover:bg-orange-600"
         >
           Book Now
@@ -202,7 +207,7 @@ const ItenerereyCard = ({
               md_round={false}
               pill_rounded={true}
               padding="p-[11px]"
-              onClick={() => navigate(`/itinerary/${id}`)}
+              onClick={() => router.push(`/itinerary/${id}`)}
             />
           </div>
         </div>

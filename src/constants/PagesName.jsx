@@ -1,14 +1,14 @@
 export const PAGES = {
-  DASHBOARD: '/Admin/Dashboard',
-  ITINERARY: '/Admin/Itinerary',
-  CATEGORY: '/Admin/Category',
-  ADMIN: '/Admin/AdminPage',
-  ABOUT: '/User/About',
-  LOGIN: '/Admin/Login',
-  BOOKINGS: '/Admin/Bookings',
-  REQUEST: '/Admin/Request',
-  CONTENT: '/Admin/Content',
-  REVIEW: '/Admin/Review',
+  DASHBOARD: '/admin/dashboard',
+  ITINERARY: '/admin/itinerary',
+  CATEGORY: '/admin/category',
+  adMIN: '/admin/adminpage',
+  ABOUT: '/User/about',
+  LOGIN: '/admin/login',
+  BOOKINGS: '/admin/bookings',
+  REQUEST: '/admin/request',
+  CONTENT: '/admin/content',
+  REVIEW: '/admin/review',
   NOT_FOUND: '*'
 }
 export const USERS_PAGE = {
