@@ -4,62 +4,62 @@
 
 @font-face {
     font-family: 'RegularFont400';
-    src: url('@/_assets/fonts/Nunito-Regular400.ttf') format('truetype');
+    src: url('../_assets/fonts/Nunito-Regular400.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'BoldFont700';
-    src: url('@/_assets/fonts/Nunito-Bold700.ttf') format('truetype');
+    src: url('../_assets/fonts/Nunito-Bold700.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SemiBoldFont600';
-    src: url('@/_assets/fonts/Nunito-SemiBold600.ttf') format('truetype');
+    src: url('../_assets/fonts/Nunito-SemiBold600.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SFProDisplayRegular';
-    src: url('@/_assets/fonts/titleFont/SFPRODISPLAYREGULAR.ttf') format('truetype');
+    src: url('../_assets/fonts/titleFont/SFPRODISPLAYREGULAR.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SFProDisplayUltraLightItalic';
-    src: url('@/_assets/fonts/titleFont/SFPRODISPLAYULTRALIGHTITALIC.ttf') format('truetype');
+    src: url('../_assets/fonts/titleFont/SFPRODISPLAYULTRALIGHTITALIC.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SFProDisplayThinItalic';
-    src: url('@/_assets/fonts/titleFont/SFPRODISPLAYTHINITALIC.ttf') format('truetype');
+    src: url('../_assets/fonts/titleFont/SFPRODISPLAYTHINITALIC.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SFProDisplayLightItalic';
-    src: url('@/_assets/fonts/titleFont/SFPRODISPLAYLIGHTITALIC.ttf') format('truetype');
+    src: url('../_assets/fonts/titleFont/SFPRODISPLAYLIGHTITALIC.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SFProDisplayMedium';
-    src: url('@/_assets/fonts/titleFont/SFPRODISPLAYMEDIUM.ttf') format('truetype');
+    src: url('../_assets/fonts/titleFont/SFPRODISPLAYMEDIUM.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SFProDisplaySemiBoldItalic';
-    src: url('@/_assets/fonts/titleFont/SFPRODISPLAYSEMIBOLDITALIC.ttf') format('truetype');
+    src: url('../_assets/fonts/titleFont/SFPRODISPLAYSEMIBOLDITALIC.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SFProDisplayBold';
-    src: url('@/_assets/fonts/titleFont/SFPRODISPLAYBOLD.ttf') format('truetype');
+    src: url('../_assets/fonts/titleFont/SFPRODISPLAYBOLD.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SFProDisplayHeavyItalic';
-    src: url('@/_assets/fonts/titleFont/SFPRODISPLAYHEAVYITALIC.ttf') format('truetype');
+    src: url('../_assets/fonts/titleFont/SFPRODISPLAYHEAVYITALIC.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'SFProDisplayBlackItalic';
-    src: url('@/_assets/fonts/titleFont/SFPRODISPLAYBLACKITALIC.ttf') format('truetype');
+    src: url('../_assets/fonts/titleFont/SFPRODISPLAYBLACKITALIC.ttf') format('truetype');
   }
   
   

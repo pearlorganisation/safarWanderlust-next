@@ -13,7 +13,10 @@ export default function LayoutWrapper({ children }) {
   useEffect(() => {
     // console.log("Pathname:", pathname);
     // Hide navbar on any admin route
-    setShowNavbar(!pathname.startsWith("/admin"));
+    
+    setShowNavbar(()=>{
+      return pathname.startsWith('/admin') ? false :true;
+    });
   }, [pathname]);
 
   return (

@@ -7,15 +7,18 @@ const RoleRedirect = ({role}) => {
     const router = useRouter()
     const pathname = usePathname()
     console.log("the pathname of the page is", pathname)
-  
-    const [userdata, setuserdata] = useState(null)
+    
+    alert("Cummming bar bar !!")
+    
   
     useEffect(() => {
       const fetchUserData = async () => {
         try {
-        const myData = localStorage.getItem("login_data");
+        const myData = localStorage.getItem("login_data")||null;
   
-          setuserdata(myData)
+        if(!myData)
+            router.push("MAnish")
+
           const parsedData = JSON.parse(myData);
            console.log("Parsed Data:", parsedData);
           if(parsedData?.admin){
@@ -34,7 +37,6 @@ const RoleRedirect = ({role}) => {
     }, [])
     
 
-    console.log(userdata, "user data")
     return null 
   }
   

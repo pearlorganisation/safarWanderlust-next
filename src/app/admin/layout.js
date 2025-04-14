@@ -30,10 +30,10 @@ export default function AdminLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
 
-      <RoleRedirect />
+      {/* <RoleRedirect /> */}
       <div className="flex">
           <Sidebar />
-          <main className="flex-1 ml-64">{children}</main>
+          <main className="flex-1 ">{children}</main>
         </div>
         {/* {children} */}
       </body>

@@ -23,7 +23,8 @@ const initialState = {
   search_parmas: [],
   reviews: [],
   OfferHeading: '',
-  termAndCondition:[]
+  termAndCondition:[],
+  userData:null
 }
 
 const globalSlice = createSlice({
@@ -38,6 +39,9 @@ const globalSlice = createSlice({
     },
     setCategories: (state, action) => {
       state.categories = action.payload
+    },
+    setUserDataFromLocalStorage: (state, action) => {
+      state.userData = action.payload
     },
     setHomeCategories: (state, action) => {
       state.homeCategories = action.payload
@@ -64,6 +68,7 @@ export const {
   setItineraries,
   setHomeCategories,
   setBanners,
+  setUserDataFromLocalStorage,
   setFeaturedCategory,
   setTermAndCondition
 } = globalSlice.actions

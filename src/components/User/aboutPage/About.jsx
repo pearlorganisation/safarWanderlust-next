@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import AboutSectionInFeature from '../HomePage/HeroSection/AboutSectionInFeature'
 import AboutPaageHeroSection from './AboutPageHeroSection'

@@ -251,26 +251,30 @@ import Dashboard from '@/_assets/svgs/logo/Dashboard'
 import { MdRateReview } from 'react-icons/md'
 import Image from 'next/image'
 import { localStorageHelper } from '@/helper/storageHelper'
+import { useSelector } from 'react-redux'
 
 const Sidebar = ({ onHover }) => {
   const pathname = usePathname()
   const [activePage, setActivePage] = useState(pathname)
-  console.log('activePage', activePage)
-  console.log('pathname', pathname)
+  const {userData} = useSelector((state)=> state.global);
 
-  const [isVisble, setIsVisible] = useState(true);
 
+  const [isVisble, setIsVisible] = useState(userData? true:false);
 
   useEffect(() => {
     setActivePage(pathname)
   }, [pathname])
 
+
   useEffect(()=> {
       if(localStorageHelper.getItem('login_data') == null){
-        setIsVisible(false)
 
-      }
-    }, [])
+        if(!userData)
+          setIsVisible(false)
+        }
+
+
+    }, [userData])
 
   const NavItem = ({ path, Logo_path, title }) => {
     const isActive = activePage === path
@@ -316,7 +320,7 @@ const Sidebar = ({ onHover }) => {
 
   return (
   <div className=''>
-      {isVisble && (<div 
+      {userData?.admin?.role == "SUPERADMIN" && (<div 
       style={{ borderRight: '1px solid #3F3F441A' }}
       className="sm:block hidden fixed top-0 left-0 w-64 h-full bg-white text-black flex-col p-4 transition-transform duration-300 z-40"
       onMouseEnter={() => onHover(true)}
@@ -339,28 +343,7 @@ const Sidebar = ({ onHover }) => {
       </nav>
     </div>)}
   </div>
-  // <div 
-  //     style={{ borderRight: '1px solid #3F3F441A' }}
-  //     className="sm:block hidden fixed top-0 left-0 w-64 h-full bg-white text-black flex-col p-4 transition-transform duration-300 z-40"
-  //     onMouseEnter={() => onHover(true)}
-  //     onMouseLeave={() => onHover(false)}
-  //   >
-  //     <Image
-  //       src={safarlogoimg}
-  //       alt="logo"
-  //       className="w-40 h-40 self-center object-contain object-center"
-  //     />
-  //     <nav className="flex flex-col space-y-2">
-  //       <NavItem path="/admin/dashboard" Logo_path={Dashboard} title="Dashboard" />
-  //       <NavItem path="/admin/itinerary" Logo_path={Itinerary} title="Itinerary" />
-  //       <NavItem path="/admin/category" Logo_path={Category} title="Category" />
-  //       <NavItem path="/admin/content" Logo_path={Content} title="Contents" />
-  //       <NavItem path="/admin/review" Logo_path={MdRateReview} title="Review" />
-  //       <NavItem path="/admin/bookings" Logo_path={Bookings} title="Bookings" />
-  //       <NavItem path="/admin/request" Logo_path={Requests} title="Requests" />
-  //       <NavItem path="/admin/adminpage" Logo_path={Settings} title="Admins" />
-  //     </nav>
-  //   </div>
+  
   )
 }
 

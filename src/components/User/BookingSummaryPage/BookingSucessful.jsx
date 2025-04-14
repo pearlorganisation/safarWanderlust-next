@@ -52,10 +52,12 @@ import { useSearchParams } from 'next/navigation'
 import Logo from '@/_assets/svgs/user/GreenTick.svg'
 
 const BookingSuccessful = ({ status }) => {
-  const searchParams = useSearchParams()
+  // const searchParams = useSearchParams()
 
-  const txnid = searchParams.get('txnid')
-  const amount = searchParams.get('amount')
+  // const txnid = searchParams.get('txnid')
+  const txnid = "searchParams.get('txnid')"
+  // const amount = searchParams.get('amount')
+  const amount = "searchParams.get('amount')"
 
   return (
     <div className="w-full h-[50vh] flex flex-col items-center justify-center mb-10">

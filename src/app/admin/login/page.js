@@ -1,8 +1,22 @@
-// "use client"
+"use client";
 import Login from '@/components/Admin/Loginpage'
-import React from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
 
 const page = () => {
+
+  const {userData} = useSelector((state)=> state.global);
+  const router = useRouter();
+  useEffect(()=>{
+
+    if(userData)
+    {
+      router.push('/admin/dashboard') 
+    }
+
+  },[userData]);
+
   return (
     <div><Login />
     </div>
