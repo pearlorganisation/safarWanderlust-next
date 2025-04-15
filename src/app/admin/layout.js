@@ -35,7 +35,6 @@ export default function AdminLayout({ children }) {
           <Sidebar />
           <main className="flex-1 ">{children}</main>
         </div>
-        {/* {children} */}
       </body>
     </html>
     

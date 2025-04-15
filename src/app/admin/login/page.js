@@ -10,7 +10,7 @@ const page = () => {
   const router = useRouter();
   useEffect(()=>{
 
-    if(userData)
+    if(userData && userData?.admin?.role == 'SUPERADMIN')
     {
       router.push('/admin/dashboard') 
     }

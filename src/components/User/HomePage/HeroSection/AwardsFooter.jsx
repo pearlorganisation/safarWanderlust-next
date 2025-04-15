@@ -3,11 +3,12 @@
 import React from 'react'
 
 // Import your SVGs here
-import MSMESvg from '@/_assets/svgs/user/msme_icon.svg'
-import YourStorySvg from '@/_assets/svgs/user/yourstory_icon.svg'
-import IndiaSvg from '@/_assets/svgs/user/mnp_icon.svg'
-import GoogleSvg from '@/_assets/svgs/user/google_icon.svg'
-import StartupSvg from '@/_assets/svgs/user/startup_icon.svg'
+import MSMESvg from '../../../../_assets/svgs/user/msme_icon.svg'
+import YourStorySvg from '../../../../_assets/svgs/user/yourstory_icon.svg'
+import IndiaSvg from '../../../../_assets/svgs/user/mnp_icon.svg'
+import GoogleSvg from '../../../../_assets/svgs/user/google_icon.svg'
+import StartupSvg from '../../../../_assets/svgs/user/startup_icon.svg'
+
 import Image from 'next/image';
 
 const AwardFooter = () => {
