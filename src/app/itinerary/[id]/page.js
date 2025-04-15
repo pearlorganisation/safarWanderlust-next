@@ -102,6 +102,12 @@ const ItineraryPage = () => {
   const [selectedPackage, setSelectedPackage] = useState(null) // State for selected package
   const [selectedStartingPoint, setSelectedStartingPoint] = useState(null) // State for full selected starting point object
   const [selectedDroppingPoint, setSelectedDroppingPoint] = useState(null) // State for full selected dropping point object
+  
+  function openPopup()
+  {
+     setIsPopupOpen((prev)=> !prev);
+  }
+
   useEffect(() => {
     if (id) {
       dispatch(fetchItenerayByName(id));
@@ -155,7 +161,8 @@ const ItineraryPage = () => {
         <div className="w-full lg:w-1/4 sticky top-0 h-screen overflow-y-auto flex flex-col bg-white shadow-lg ">
           {/* Pricing Component */}
           <PricingComponent
-            selectedBatch=""
+           openPopup={openPopup}
+            selectedBatch={selectedBatch}
             showCallBackForm={showCallBackForm}
             setShowCallBackForm={setShowCallBackForm}
             selectedDroppingPoint={selectedDroppingPoint}

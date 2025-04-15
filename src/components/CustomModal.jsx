@@ -61,10 +61,10 @@ const CustomModal = ({
           </div>
         )}
         <div className="custom-scrollbar relative flex max-h-[85vh]  flex-col  justify-start overflow-y-auto p-5 text-center">
-          {/* <h2 className="font-nunitoregular400  text-[34px]">{title}</h2> */}
-          <div className="font-nunitoregular400 text-[34px]">{title}</div>
+          <h2 className="font-nunitoregular400  text-[34px]">{title}</h2>
+          {/* <div className="font-nunitoregular400 text-[34px]">{title}</div> */}
           <div className="font-nunitoregular400 text-[12px]">{description}</div>
-          {/* <h2 className="font-nunitoregular400  text-[12px]">{description}</h2> */}
+          <h2 className="font-nunitoregular400  text-[12px]">{description}</h2>
           {restContent}
         </div>
       </Box>

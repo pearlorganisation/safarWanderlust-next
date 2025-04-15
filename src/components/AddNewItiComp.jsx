@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import React, { useEffect } from 'react'
-import CustomModal from './CustomModal'
-import CustomInput from './CustomInput'
-import CustomMultiItiSelect from './CustomMultiItiSelect'
-import CustomText from './CustomText'
-import { Box, IconButton } from '@mui/material'
-import { FaPlus, FaMinus } from 'react-icons/fa'
-import DraggableInputList from './DraggableInputList'
-import DraggableHotelList from './DraggableHotelList'
-import PackageComp from './PackageComp'
-import CustomButton from './CustomButton'
+import React, { useEffect } from "react";
+import CustomModal from "./CustomModal";
+import CustomInput from "./CustomInput";
+import CustomMultiItiSelect from "./CustomMultiItiSelect";
+import CustomText from "./CustomText";
+import { Box, IconButton } from "@mui/material";
+import { FaPlus, FaMinus } from "react-icons/fa";
+import DraggableInputList from "./DraggableInputList";
+import DraggableHotelList from "./DraggableHotelList";
+import PackageComp from "./PackageComp";
+import CustomButton from "./CustomButton";
 // import { setValue } from '@lib/globalSlice'
-import { API_ENDPOINTS } from '../constants/apiEndpoints'
-import { get, post, put } from '../constants/axiosClient'
-import { localStorageHelper } from '../helper/storageHelper'
-import { PAGES } from '../constants/PagesName'
-import { useDispatch } from 'react-redux'
-import { useRouter } from 'next/navigation'
-import InfiniteInputBox from './InfiniteInputBox'
-import moment from 'moment-timezone'
+import { API_ENDPOINTS } from "../constants/apiEndpoints";
+import { get, post, put } from "../constants/axiosClient";
+import { localStorageHelper } from "../helper/storageHelper";
+import { PAGES } from "../constants/PagesName";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import InfiniteInputBox from "./InfiniteInputBox";
+import moment from "moment-timezone";
 import {
   CLOUD_NAME,
-  UPLOAD_PRESET_NAME
-} from '../constants/CloudinaryConstants'
-import { setValue } from '@/lib/globalSlice'
+  UPLOAD_PRESET_NAME,
+} from "../constants/CloudinaryConstants";
+import { setValue } from "@/lib/globalSlice";
 
 function AddNewItiComp({
   state,
@@ -35,203 +35,203 @@ function AddNewItiComp({
   sethotelinfo,
   packagedetails,
   setpackagedetails,
-  fetch_iti = () => {}
+  fetch_iti = () => {},
 }) {
-  const dispatch = useDispatch()
-  const router = useRouter()
+  const dispatch = useDispatch();
+  const router = useRouter();
   const getAllCategories = async () => {
-    dispatch(setValue({ key: 'to_show_loader', value: true }))
+    dispatch(setValue({ key: "to_show_loader", value: true }));
     try {
       await get(API_ENDPOINTS.COMMON.GET_ALL_CATEGORIES).then((d) => {
-        if (d.message == 'CATEGORIES_FETCHED' && d.success == true) {
-          dispatch(setValue({ key: 'to_show_loader', value: false }))
+        if (d.message == "CATEGORIES_FETCHED" && d.success == true) {
+          dispatch(setValue({ key: "to_show_loader", value: false }));
           setState((prevs) => ({
             ...prevs,
             categories_data: d?.data?.categories,
             categories_list: d?.data?.categories?.map(
               (category) => category?.name
-            )
-          }))
+            ),
+          }));
           console.log(
-            'logging data from cat list',
+            "logging data from cat list",
             d?.data?.categories?.map((category) => category?.name)
-          )
+          );
         }
-      })
+      });
     } catch (error) {
-      dispatch(setValue({ key: 'to_show_loader', value: false }))
-      console.error(error)
-      const err_response = error?.response?.data
+      dispatch(setValue({ key: "to_show_loader", value: false }));
+      console.error(error);
+      const err_response = error?.response?.data;
       if (
         err_response.success == false &&
-        err_response.message == 'VALIDATION_INVALID_TOKEN'
+        err_response.message == "VALIDATION_INVALID_TOKEN"
       ) {
-        localStorageHelper.removeItem('login_data')
-        router.push(PAGES.LOGIN, { replace: true })
+        localStorageHelper.removeItem("login_data");
+        router.push(PAGES.LOGIN, { replace: true });
       }
     }
-  }
+  };
   const compressImage = async (imageFile) => {
     return new Promise((resolve, reject) => {
-      const img = new Image()
-      img.src = URL.createObjectURL(imageFile)
+      const img = new Image();
+      img.src = URL.createObjectURL(imageFile);
 
       img.onload = () => {
-        const canvas = document.createElement('canvas')
-        const maxWidth = 800
-        const scaleSize = maxWidth / img.width
-        canvas.width = maxWidth
-        canvas.height = img.height * scaleSize
+        const canvas = document.createElement("canvas");
+        const maxWidth = 800;
+        const scaleSize = maxWidth / img.width;
+        canvas.width = maxWidth;
+        canvas.height = img.height * scaleSize;
 
-        const ctx = canvas.getContext('2d')
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
         canvas.toBlob(
           (blob) => {
-            resolve(blob)
+            resolve(blob);
           },
-          'image/jpeg',
+          "image/jpeg",
           0.7
-        )
-      }
+        );
+      };
 
-      img.onerror = (error) => reject(error)
-    })
-  }
+      img.onerror = (error) => reject(error);
+    });
+  };
   const handleUpload = async (fileIndex) => {
-    const selectedImage = state.iti_img[fileIndex]
+    const selectedImage = state.iti_img[fileIndex];
 
     // Check if the selected item is already a URL or if it's an empty string
-    if (typeof selectedImage === 'string' && selectedImage) {
-      console.log(`Image already uploaded: ${selectedImage}`)
-      return // Skip if it's already uploaded
+    if (typeof selectedImage === "string" && selectedImage) {
+      console.log(`Image already uploaded: ${selectedImage}`);
+      return; // Skip if it's already uploaded
     }
 
     // Proceed with upload only if it's a File object
-    if (!selectedImage || selectedImage === '') {
-      console.error(`No file selected at index ${fileIndex}`)
-      return // Skip if no file is selected
+    if (!selectedImage || selectedImage === "") {
+      console.error(`No file selected at index ${fileIndex}`);
+      return; // Skip if no file is selected
     }
 
-    const compressedImageBlob = await compressImage(selectedImage)
+    const compressedImageBlob = await compressImage(selectedImage);
     const compressedImageFile = new File(
       [compressedImageBlob],
       selectedImage.name,
-      { type: 'image/jpeg' }
-    )
-    console.log(`Uploading image at index ${fileIndex}:`, selectedImage)
+      { type: "image/jpeg" }
+    );
+    console.log(`Uploading image at index ${fileIndex}:`, selectedImage);
 
-    const formData = new FormData()
-    formData.append('file', compressedImageFile) // Make sure selectedImage is indeed a File object
-    formData.append('upload_preset', UPLOAD_PRESET_NAME)
+    const formData = new FormData();
+    formData.append("file", compressedImageFile); // Make sure selectedImage is indeed a File object
+    formData.append("upload_preset", UPLOAD_PRESET_NAME);
 
     fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-      method: 'POST',
-      body: formData
+      method: "POST",
+      body: formData,
     })
       .then((response) => {
-        if (!response.ok) throw new Error('Network response was not ok')
-        return response.json()
+        if (!response.ok) throw new Error("Network response was not ok");
+        return response.json();
       })
       .then((data) => {
         // Update the specific index with the newly uploaded image URL
-        const updatedimgs = [...state.iti_img]
-        updatedimgs[fileIndex] = data.secure_url // Store the URL
-        setState((prevState) => ({ ...prevState, iti_img: updatedimgs }))
+        const updatedimgs = [...state.iti_img];
+        updatedimgs[fileIndex] = data.secure_url; // Store the URL
+        setState((prevState) => ({ ...prevState, iti_img: updatedimgs }));
       })
       .catch((error) => {
-        console.error('Upload failed', error)
-      })
-  }
+        console.error("Upload failed", error);
+      });
+  };
   const handleUpload22 = async (fileIndex, localSelectedImages) => {
-    const selectedImage = localSelectedImages[fileIndex] // Fetch from local variable
+    const selectedImage = localSelectedImages[fileIndex]; // Fetch from local variable
 
     // Check if the selected item is already a URL or an empty string
-    if (typeof selectedImage === 'string' && selectedImage) {
-      console.log(`Image already uploaded: ${selectedImage}`)
-      return // Skip if it's already uploaded
+    if (typeof selectedImage === "string" && selectedImage) {
+      console.log(`Image already uploaded: ${selectedImage}`);
+      return; // Skip if it's already uploaded
     }
 
     // Check if the selected image is a valid File object
-    if (!selectedImage || selectedImage === '') {
-      console.error(`No valid file selected at index ${fileIndex}`)
-      return
+    if (!selectedImage || selectedImage === "") {
+      console.error(`No valid file selected at index ${fileIndex}`);
+      return;
     }
-    const compressedImageBlob = await compressImage(selectedImage)
+    const compressedImageBlob = await compressImage(selectedImage);
     const compressedImageFile = new File(
       [compressedImageBlob],
       selectedImage.name,
-      { type: 'image/jpeg' }
-    )
-    console.log(`Uploading image at index ${fileIndex}:`, compressedImageFile)
+      { type: "image/jpeg" }
+    );
+    console.log(`Uploading image at index ${fileIndex}:`, compressedImageFile);
 
-    const formData = new FormData()
-    formData.append('file', compressedImageFile)
-    formData.append('upload_preset', UPLOAD_PRESET_NAME)
+    const formData = new FormData();
+    formData.append("file", compressedImageFile);
+    formData.append("upload_preset", UPLOAD_PRESET_NAME);
 
     fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
-      method: 'POST',
-      body: formData
+      method: "POST",
+      body: formData,
     })
       .then((response) => {
-        if (!response.ok) throw new Error('Network response was not ok')
-        return response.json()
+        if (!response.ok) throw new Error("Network response was not ok");
+        return response.json();
       })
       .then((data) => {
         // Update the specific index in the local variable with the newly uploaded image URL
-        localSelectedImages[fileIndex] = data.secure_url // Store the URL locally
+        localSelectedImages[fileIndex] = data.secure_url; // Store the URL locally
 
         // After upload, update the state with the new image array
         setState((prevState) => ({
           ...prevState,
-          iti_img: localSelectedImages
-        }))
+          iti_img: localSelectedImages,
+        }));
 
-        console.log(`Image uploaded successfully: ${data.secure_url}`)
+        console.log(`Image uploaded successfully: ${data.secure_url}`);
       })
       .catch((error) => {
-        console.error('Upload failed', error)
-      })
-  }
+        console.error("Upload failed", error);
+      });
+  };
   const handleFileInputChange = (fileIndex, file) => {
-    const updatedimgs = [...state.iti_img]
-    updatedimgs[fileIndex] = file
-    setState((prevs) => ({ ...prevs, iti_img: updatedimgs }))
-    let localSelectedImages = [...state.iti_img]
-    localSelectedImages[fileIndex] = file
+    const updatedimgs = [...state.iti_img];
+    updatedimgs[fileIndex] = file;
+    setState((prevs) => ({ ...prevs, iti_img: updatedimgs }));
+    let localSelectedImages = [...state.iti_img];
+    localSelectedImages[fileIndex] = file;
 
-    handleUpload22(fileIndex, localSelectedImages)
-  }
+    handleUpload22(fileIndex, localSelectedImages);
+  };
   const handleImageChange = (fileIndex, e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     if (file) {
-      handleFileInputChange(fileIndex, file)
+      handleFileInputChange(fileIndex, file);
     }
-  }
+  };
   const removeFileInput = (fileIndex) => {
     setState((prevState) => ({
       ...prevState,
-      iti_img: prevState.iti_img.filter((_, index) => index !== fileIndex)
-    }))
-  }
+      iti_img: prevState.iti_img.filter((_, index) => index !== fileIndex),
+    }));
+  };
   const addFileInput = (index) => {
     setState((prevState) => ({
       ...prevState,
-      iti_img: [...prevState.iti_img, '']
-    }))
-  }
+      iti_img: [...prevState.iti_img, ""],
+    }));
+  };
   const validateDayIntro = (dayintros) => {
     for (let dayintro of dayintros) {
       if (!dayintro.day || dayintro.day <= 0) {
-        return false
+        return false;
       }
 
-      if (!dayintro.title || dayintro.title.trim() === '') {
-        return false
+      if (!dayintro.title || dayintro.title.trim() === "") {
+        return false;
       }
 
-      if (!dayintro.description || dayintro.description.trim() === '') {
-        return false
+      if (!dayintro.description || dayintro.description.trim() === "") {
+        return false;
       }
 
       //   if (!Array.isArray(dayintro.places) || dayintro.places.length === 0) {
@@ -264,8 +264,8 @@ function AddNewItiComp({
       // }
     }
 
-    return true
-  }
+    return true;
+  };
   const validateHotels = (hotels) => {
     // for (let i = 0; i < hotels.length; i++) {
     //   const hotel = hotels[i]
@@ -293,14 +293,14 @@ function AddNewItiComp({
     //   }
     // }
 
-    return true
-  }
+    return true;
+  };
   const validatePackages = (packages) => {
     for (let i = 0; i < packages.base_packages.length; i++) {
-      const basePackage = packages.base_packages[i]
+      const basePackage = packages.base_packages[i];
 
-      if (!basePackage.name || basePackage.name.trim() === '') {
-        return false
+      if (!basePackage.name || basePackage.name.trim() === "") {
+        return false;
       }
 
       if (
@@ -308,7 +308,7 @@ function AddNewItiComp({
         isNaN(basePackage.original_price) ||
         Number(basePackage.original_price) <= 0
       ) {
-        return false
+        return false;
       }
 
       if (
@@ -316,80 +316,80 @@ function AddNewItiComp({
         isNaN(basePackage.discounted_price) ||
         Number(basePackage.discounted_price) <= 0
       ) {
-        return false
+        return false;
       }
     }
 
     for (let i = 0; i < packages.pickup_point.length; i++) {
-      const pickup = packages.pickup_point[i]
+      const pickup = packages.pickup_point[i];
 
-      if (!pickup.name || pickup.name.trim() === '') {
-        return false
+      if (!pickup.name || pickup.name.trim() === "") {
+        return false;
       }
 
       if (isNaN(pickup.price) || Number(pickup.price) < 0) {
-        return false
+        return false;
       }
     }
 
     for (let i = 0; i < packages.drop_point.length; i++) {
-      const drop = packages.drop_point[i]
+      const drop = packages.drop_point[i];
 
-      if (!drop.name || drop.name.trim() === '') {
-        return false
+      if (!drop.name || drop.name.trim() === "") {
+        return false;
       }
 
       if (isNaN(drop.price) || Number(drop.price) < 0) {
-        return false
+        return false;
       }
     }
 
     for (let i = 0; i < packages.batches.length; i++) {
-      const batch = packages.batches[i]
+      const batch = packages.batches[i];
 
       if (!batch.start_date || isNaN(Date.parse(batch.start_date))) {
-        return false
+        return false;
       }
 
       if (!batch.end_date || isNaN(Date.parse(batch.end_date))) {
-        return false
+        return false;
       }
 
       if (new Date(batch.start_date) >= new Date(batch.end_date)) {
-        return false
+        return false;
       }
     }
-    return true
-  }
+    return true;
+  };
   const postItinerary = async () => {
-    dispatch(setValue({ key: 'to_show_loader', value: true }))
+    dispatch(setValue({ key: "to_show_loader", value: true }));
     try {
       const formattedBatches = packagedetails?.batches?.map((batch) => ({
         ...batch,
         start_date: moment(batch.start_date)
-          .tz('Asia/Kolkata')
-          .format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'),
+          .tz("Asia/Kolkata")
+          .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
         end_date: moment(batch.end_date)
-          .tz('Asia/Kolkata')
-          .format('YYYY-MM-DDTHH:mm:ss.SSS[Z]')
-      }))
+          .tz("Asia/Kolkata")
+          .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
+      }));
       const formated_base_packages = packagedetails?.base_packages?.map(
         (base) => ({
           ...base,
           original_price: Number(base.original_price),
-          discounted_price: Number(base.discounted_price)
+          discounted_price: Number(base.discounted_price),
         })
-      )
+      );
       const formatted_pickup_point = packagedetails?.pickup_point?.map(
         (pick) => ({
           ...pick,
-          price: Number(pick.price)
+          price: Number(pick.price),
         })
-      )
+      );
       const formatted_drop_point = packagedetails?.drop_point?.map((drop) => ({
         ...drop,
-        price: Number(drop.price)
-      }))
+        price: Number(drop.price),
+      }));
       const data_to_send = {
         title: state.iti_name,
         description: state.iti_desc,
@@ -413,73 +413,73 @@ function AddNewItiComp({
         categoryId: state.selected_category,
         inclusions_exclusions: {
           inclusions: state.iti_inclusion,
-          exclusions: state.iti_exclusion
-        }
-      }
-      console.log('logging every details', data_to_send)
+          exclusions: state.iti_exclusion,
+        },
+      };
+      console.log("logging every details", data_to_send);
       await post(API_ENDPOINTS.ADMIN.POST_NEW_ITINERARY, data_to_send).then(
         (d) => {
-          if (d.message == 'ITINERARY_ADDED' && d.success == true) {
-            dispatch(setValue({ key: 'to_show_loader', value: false }))
-            setState((prevs) => ({ ...prevs, is_modalopen: false }))
+          if (d.message == "ITINERARY_ADDED" && d.success == true) {
+            dispatch(setValue({ key: "to_show_loader", value: false }));
+            setState((prevs) => ({ ...prevs, is_modalopen: false }));
             dispatch(
               setValue({
-                key: 'to_show_alert',
-                value: true
+                key: "to_show_alert",
+                value: true,
               })
             ),
               dispatch(
                 setValue({
-                  key: 'alert_content',
-                  value: 'Itinerary Added Successfully'
+                  key: "alert_content",
+                  value: "Itinerary Added Successfully",
                 })
-              )
-            fetch_iti(state.fetched_data[0]?.id)
+              );
+            fetch_iti(state.fetched_data[0]?.id);
           }
         }
-      )
+      );
     } catch (error) {
-      dispatch(setValue({ key: 'to_show_loader', value: false }))
-      console.error(error)
-      const err_response = error?.response?.data
+      dispatch(setValue({ key: "to_show_loader", value: false }));
+      console.error(error);
+      const err_response = error?.response?.data;
       if (
         err_response.success == false &&
-        err_response.message == 'VALIDATION_INVALID_TOKEN'
+        err_response.message == "VALIDATION_INVALID_TOKEN"
       ) {
-        localStorageHelper.removeItem('login_data')
-        router.push(PAGES.LOGIN, { replace: true })
+        localStorageHelper.removeItem("login_data");
+        router.push(PAGES.LOGIN, { replace: true });
       }
     }
-  }
+  };
   const editItinerary = async () => {
-    dispatch(setValue({ key: 'to_show_loader', value: true }))
+    dispatch(setValue({ key: "to_show_loader", value: true }));
     try {
       const formattedBatches = packagedetails?.batches?.map((batch) => ({
         ...batch,
         start_date: moment(batch.start_date)
-          .tz('Asia/Kolkata')
-          .format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'),
+          .tz("Asia/Kolkata")
+          .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
         end_date: moment(batch.end_date)
-          .tz('Asia/Kolkata')
-          .format('YYYY-MM-DDTHH:mm:ss.SSS[Z]')
-      }))
+          .tz("Asia/Kolkata")
+          .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
+      }));
       const formated_base_packages = packagedetails?.base_packages?.map(
         (base) => ({
           ...base,
           original_price: Number(base.original_price),
-          discounted_price: Number(base.discounted_price)
+          discounted_price: Number(base.discounted_price),
         })
-      )
+      );
       const formatted_pickup_point = packagedetails?.pickup_point?.map(
         (pick) => ({
           ...pick,
-          price: Number(pick.price)
+          price: Number(pick.price),
         })
-      )
+      );
       const formatted_drop_point = packagedetails?.drop_point?.map((drop) => ({
         ...drop,
-        price: Number(drop.price)
-      }))
+        price: Number(drop.price),
+      }));
       const data_to_send = {
         title: state.iti_name,
         description: state.iti_desc,
@@ -506,45 +506,45 @@ function AddNewItiComp({
         categoryId: state.selected_category,
         inclusions_exclusions: {
           inclusions: state.iti_inclusion,
-          exclusions: state.iti_exclusion
-        }
-      }
-      console.log('logging every details for edit', data_to_send)
+          exclusions: state.iti_exclusion,
+        },
+      };
+      console.log("logging every details for edit", data_to_send);
       await put(
         API_ENDPOINTS.ADMIN.POST_NEW_ITINERARY + `/${state.iti_id}`,
         data_to_send
       ).then((d) => {
-        if (d.message == 'ITINERARY_UPDATED' && d.success == true) {
-          dispatch(setValue({ key: 'to_show_loader', value: false }))
-          setState((prevs) => ({ ...prevs, is_modalopen: false }))
+        if (d.message == "ITINERARY_UPDATED" && d.success == true) {
+          dispatch(setValue({ key: "to_show_loader", value: false }));
+          setState((prevs) => ({ ...prevs, is_modalopen: false }));
           dispatch(
             setValue({
-              key: 'to_show_alert',
-              value: true
+              key: "to_show_alert",
+              value: true,
             })
           ),
             dispatch(
               setValue({
-                key: 'alert_content',
-                value: 'Itinerary Added Successfully'
+                key: "alert_content",
+                value: "Itinerary Added Successfully",
               })
-            )
-          fetch_iti(state.fetched_data[0]?.id)
+            );
+          fetch_iti(state.fetched_data[0]?.id);
         }
-      })
+      });
     } catch (error) {
-      dispatch(setValue({ key: 'to_show_loader', value: false }))
-      console.error(error)
-      const err_response = error?.response?.data
+      dispatch(setValue({ key: "to_show_loader", value: false }));
+      console.error(error);
+      const err_response = error?.response?.data;
       if (
         err_response.success == false &&
-        err_response.message == 'VALIDATION_INVALID_TOKEN'
+        err_response.message == "VALIDATION_INVALID_TOKEN"
       ) {
-        localStorageHelper.removeItem('login_data')
-        router.push(PAGES.LOGIN, { replace: true })
+        localStorageHelper.removeItem("login_data");
+        router.push(PAGES.LOGIN, { replace: true });
       }
     }
-  }
+  };
   return (
     <div>
       <CustomModal
@@ -555,17 +555,17 @@ function AddNewItiComp({
         }
         title={
           state.current_modal_page_count == 1 ? (
-            state.modal_open_purpose == 'view_page' ? (
+            state.modal_open_purpose == "view_page" ? (
               <span>
                 Viewing this
                 <strong> {state.iti_name}</strong>
               </span>
-            ) : state.modal_open_purpose == 'edit_iti' ? (
+            ) : state.modal_open_purpose == "edit_iti" ? (
               <span>
                 Editing this
                 <strong> {state.iti_name}</strong>
               </span>
-            ) : state.modal_open_purpose == 'duplicate_iti' ? (
+            ) : state.modal_open_purpose == "duplicate_iti" ? (
               <span>
                 Duplicating this
                 <strong> {state.iti_name}</strong>
@@ -592,9 +592,9 @@ function AddNewItiComp({
         }
         description={
           state.current_modal_page_count == 1 &&
-          state.modal_open_purpose != 'edit_iti' &&
-          state.modal_open_purpose != 'view_page' &&
-          'Create a new itinerary by filling out details including destinations, dates, transportation, and activities.'
+          state.modal_open_purpose != "edit_iti" &&
+          state.modal_open_purpose != "view_page" &&
+          "Create a new itinerary by filling out details including destinations, dates, transportation, and activities."
         }
         restContent={
           <div className="">
@@ -609,13 +609,13 @@ function AddNewItiComp({
                     onchange={(e) =>
                       setState((prevs) => ({
                         ...prevs,
-                        iti_name: e.target.value
+                        iti_name: e.target.value,
                       }))
                     }
                     error_text={
                       state.to_show_error &&
                       state.iti_name?.length == 0 &&
-                      'Enter the name of itinerary to continue'
+                      "Enter the name of itinerary to continue"
                     }
                   />
                   <CustomInput
@@ -626,19 +626,19 @@ function AddNewItiComp({
                     onchange={(e) =>
                       setState((prevs) => ({
                         ...prevs,
-                        iti_city: e.target.value
+                        iti_city: e.target.value,
                       }))
                     }
                     error_text={
                       state.to_show_error &&
                       state.iti_city?.length == 0 &&
-                      'Enter the city to continue'
+                      "Enter the city to continue"
                     }
                   />
 
                   <div>
                     <CustomMultiItiSelect
-                      top_title={'Choose Categories'}
+                      top_title={"Choose Categories"}
                       option_data={state.categories_data}
                       multiple={true}
                       selectedValue={state.selected_category}
@@ -651,7 +651,7 @@ function AddNewItiComp({
                       onChange={(selectedIds) =>
                         setState((prevs) => ({
                           ...prevs,
-                          selected_category: selectedIds
+                          selected_category: selectedIds,
                         }))
                       }
                     />
@@ -674,7 +674,7 @@ function AddNewItiComp({
                       <CustomText
                         secondaryfontsize
                         secondaryfontweight
-                        content={'View Images :'}
+                        content={"View Images :"}
                         className={`mb-3  `}
                       />
                     </div>
@@ -683,9 +683,9 @@ function AddNewItiComp({
                         <Box
                           key={fileIndex}
                           sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            mb: 2
+                            display: "flex",
+                            alignItems: "center",
+                            mb: 2,
                           }}
                         >
                           <div
@@ -697,24 +697,24 @@ function AddNewItiComp({
                                 if (image?.name == null) {
                                   document
                                     .getElementById(`inputfile-${fileIndex}`)
-                                    .click()
+                                    .click();
                                 } else {
-                                  handleUpload(fileIndex)
+                                  handleUpload(fileIndex);
                                 }
                               }}
                               disabled={
-                                typeof image === 'string' && image !== ''
+                                typeof image === "string" && image !== ""
                               }
                             >
-                              {typeof image === 'string' && image !== ''
-                                ? 'Image Uploaded'
+                              {typeof image === "string" && image !== ""
+                                ? "Image Uploaded"
                                 : image && image.name
-                                  ? 'Upload'
-                                  : 'Browse...'}
+                                  ? "Upload"
+                                  : "Browse..."}
                             </button>
 
                             {(!image ||
-                              (typeof image !== 'string' && image !== '')) && (
+                              (typeof image !== "string" && image !== "")) && (
                               <button
                                 className="font-nunitoregular400 text-black py-3 px-8 rounded-md"
                                 onClick={() =>
@@ -725,7 +725,7 @@ function AddNewItiComp({
                               >
                                 {image && image.name
                                   ? image.name
-                                  : 'Or drop Brochure Activity Images here'}
+                                  : "Or drop Brochure Activity Images here"}
                               </button>
                             )}
 
@@ -734,7 +734,7 @@ function AddNewItiComp({
                               type="file"
                               className="hidden"
                               onChange={(e) => {
-                                handleImageChange(fileIndex, e)
+                                handleImageChange(fileIndex, e);
                               }}
                             />
                           </div>
@@ -742,7 +742,7 @@ function AddNewItiComp({
                             <IconButton
                               onClick={() => removeFileInput(fileIndex)}
                               color="error"
-                              sx={{ marginLeft: '8px' }}
+                              sx={{ marginLeft: "8px" }}
                             >
                               <FaMinus />
                             </IconButton>
@@ -810,7 +810,7 @@ function AddNewItiComp({
                         state.iti_img?.[0]?.length == 0 && (
                           <div className="flex justify-start my-2">
                             <CustomText
-                              content={'Please add a image to continue'}
+                              content={"Please add a image to continue"}
                               className="text-red-500"
                               fontsize="12px"
                             />
@@ -829,13 +829,13 @@ function AddNewItiComp({
                       onchange={(e) =>
                         setState((prevs) => ({
                           ...prevs,
-                          iti_short_desc: e.target.value
+                          iti_short_desc: e.target.value,
                         }))
                       }
                       error_text={
                         state.to_show_error &&
                         state.iti_short_desc?.length == 0 &&
-                        'Enter the short description to continue'
+                        "Enter the short description to continue"
                       }
                     />
                   </div>
@@ -852,13 +852,13 @@ function AddNewItiComp({
                     onchange={(e) =>
                       setState((prevs) => ({
                         ...prevs,
-                        iti_desc: e.target.value
+                        iti_desc: e.target.value,
                       }))
                     }
                     error_text={
                       state.to_show_error &&
                       state.iti_desc?.length == 0 &&
-                      'Enter the description to continue'
+                      "Enter the description to continue"
                     }
                   />
                 </div>
@@ -874,13 +874,13 @@ function AddNewItiComp({
                     onchange={(e) =>
                       setState((prevs) => ({
                         ...prevs,
-                        iti_duration: e.target.value
+                        iti_duration: e.target.value,
                       }))
                     }
                     error_text={
                       state.to_show_error &&
                       state.iti_duration == 0 &&
-                      'Enter the duration to continue'
+                      "Enter the duration to continue"
                     }
                   />
                   <CustomInput
@@ -892,7 +892,7 @@ function AddNewItiComp({
                     onchange={(e) =>
                       setState((prevs) => ({
                         ...prevs,
-                        iti_altitude: e.target.value
+                        iti_altitude: e.target.value,
                       }))
                     }
                     // error_text={
@@ -910,7 +910,7 @@ function AddNewItiComp({
                     onchange={(e) =>
                       setState((prevs) => ({
                         ...prevs,
-                        iti_scenary: e.target.value
+                        iti_scenary: e.target.value,
                       }))
                     }
                     // error_text={
@@ -929,7 +929,7 @@ function AddNewItiComp({
                     onchange={(e) =>
                       setState((prevs) => ({
                         ...prevs,
-                        iti_cultural_site: e.target.value
+                        iti_cultural_site: e.target.value,
                       }))
                     }
                     // error_text={
@@ -949,13 +949,13 @@ function AddNewItiComp({
                     onchange={(e) =>
                       setState((prevs) => ({
                         ...prevs,
-                        iti_brochure_banner: e.target.value
+                        iti_brochure_banner: e.target.value,
                       }))
                     }
                     error_text={
                       state.to_show_error &&
                       state.iti_brochure_banner?.length == 0 &&
-                      'Enter the brochure banner link to continue'
+                      "Enter the brochure banner link to continue"
                     }
                   />
                 </div>
@@ -1011,17 +1011,17 @@ function AddNewItiComp({
                       onChange={(e) =>
                         setState((prevs) => ({
                           ...prevs,
-                          iti_inclusion: e
+                          iti_inclusion: e,
                         }))
                       }
                       top_title="Inclusion"
                       minW="250px"
                       placeholder_text="inclusion"
                     />
-                    {state.to_show_error && state.iti_inclusion[0] == '' && (
+                    {state.to_show_error && state.iti_inclusion[0] == "" && (
                       <div className="flex justify-start my-2">
                         <CustomText
-                          content={'Enter the inclusions to continue'}
+                          content={"Enter the inclusions to continue"}
                           className="text-red-500"
                           fontsize="12px"
                         />
@@ -1055,17 +1055,17 @@ function AddNewItiComp({
                       onChange={(e) =>
                         setState((prevs) => ({
                           ...prevs,
-                          iti_exclusion: e
+                          iti_exclusion: e,
                         }))
                       }
                       top_title="Exclusion"
                       minW="250px"
                       placeholder_text="exclusion"
                     />
-                    {state.to_show_error && state.iti_exclusion[0] == '' && (
+                    {state.to_show_error && state.iti_exclusion[0] == "" && (
                       <div className="flex justify-start my-2">
                         <CustomText
-                          content={'Enter the exclusions to continue'}
+                          content={"Enter the exclusions to continue"}
                           className="text-red-500"
                           fontsize="12px"
                         />
@@ -1101,17 +1101,17 @@ function AddNewItiComp({
                     onChange={(e) =>
                       setState((prevs) => ({
                         ...prevs,
-                        iti_notes: e
+                        iti_notes: e,
                       }))
                     }
                     top_title="Notes"
                     minW="250px"
                     placeholder_text="note"
                   />
-                  {state.to_show_error && state.iti_notes[0] == '' && (
+                  {state.to_show_error && state.iti_notes[0] == "" && (
                     <div className="flex justify-start my-2">
                       <CustomText
-                        content={'Enter the inclusions to continue'}
+                        content={"Enter the inclusions to continue"}
                         className="text-red-500"
                         fontsize="12px"
                       />
@@ -1126,7 +1126,7 @@ function AddNewItiComp({
                   }
                 </h2>
                 <div className="w-full text-start mt-4">
-                  <CustomText content={'Package Details'} fontsize="16px" />
+                  <CustomText content={"Package Details"} fontsize="16px" />
                 </div>
                 <PackageComp
                   state={packagedetails}
@@ -1141,15 +1141,15 @@ function AddNewItiComp({
                 <div className=" mt-4 mr-4">
                   <CustomButton
                     className="mt-3 border-2 border-[#3A3A3A]"
-                    text_color={'text-[#3A3A3A]'}
-                    content={'Previous'}
+                    text_color={"text-[#3A3A3A]"}
+                    content={"Previous"}
                     onClick={() =>
                       setState((prevs) => ({
                         ...prevs,
                         current_modal_page_count:
                           prevs.current_modal_page_count > 1
                             ? prevs.current_modal_page_count - 1
-                            : prevs.current_modal_page_count
+                            : prevs.current_modal_page_count,
                       }))
                     }
                   />
@@ -1157,22 +1157,22 @@ function AddNewItiComp({
               )}
 
               {!(
-                state.modal_open_purpose === 'view_page' &&
+                state.modal_open_purpose === "view_page" &&
                 state.current_modal_page_count === 4
               ) && (
                 <div className=" mt-4">
                   <CustomButton
                     className="mt-3 bg-gradient-to-r from-[#FF8D38] to-[#FF5F06] "
-                    text_classname={'text-white'}
+                    text_classname={"text-white"}
                     content={
                       state.current_modal_page_count < 4
-                        ? 'Next'
+                        ? "Next"
                         : state.current_modal_page_count == 4 &&
-                            state.modal_open_purpose == 'edit_iti'
-                          ? 'Edit this ' + state.iti_name
-                          : state.modal_open_purpose == 'duplicate_iti'
-                            ? 'Duplicate this' + state.iti_name
-                            : 'Create new Itinerary'
+                            state.modal_open_purpose == "edit_iti"
+                          ? "Edit this " + state.iti_name
+                          : state.modal_open_purpose == "duplicate_iti"
+                            ? "Duplicate this" + state.iti_name
+                            : "Create new Itinerary"
                     }
                     onClick={() => {
                       if (state.current_modal_page_count < 4) {
@@ -1180,7 +1180,7 @@ function AddNewItiComp({
                           state.current_modal_page_count == 1 &&
                           (state.iti_name?.length == 0 ||
                             state.iti_city?.length == 0 ||
-                            state.iti_img[0] == '' ||
+                            state.iti_img[0] == "" ||
                             state.iti_short_desc?.length == 0 ||
                             state.iti_desc?.length == 0 ||
                             state.iti_duration?.length == 0 ||
@@ -1188,26 +1188,26 @@ function AddNewItiComp({
                         ) {
                           setState((prevs) => ({
                             ...prevs,
-                            to_show_error: true
-                          }))
-                          return
+                            to_show_error: true,
+                          }));
+                          return;
                         } else if (state.current_modal_page_count == 2) {
-                          console.log('logging dayintro', dayintro)
+                          console.log("logging dayintro", dayintro);
                           if (validateDayIntro(dayintro) == false) {
                             setState((prevs) => ({
                               ...prevs,
-                              page2_error: true
-                            }))
-                            return
+                              page2_error: true,
+                            }));
+                            return;
                           }
                         } else if (state.current_modal_page_count == 3) {
-                          console.log('logging ', validateHotels(hotelinfo))
+                          console.log("logging ", validateHotels(hotelinfo));
                           if (validateHotels(hotelinfo) == false) {
                             setState((prevs) => ({
                               ...prevs,
-                              page3_error: true
-                            }))
-                            return
+                              page3_error: true,
+                            }));
+                            return;
                           }
                         }
                         setState((prevs) => ({
@@ -1215,8 +1215,8 @@ function AddNewItiComp({
                           current_modal_page_count:
                             prevs.current_modal_page_count < 4
                               ? prevs.current_modal_page_count + 1
-                              : prevs.current_modal_page_count
-                        }))
+                              : prevs.current_modal_page_count,
+                        }));
                       } else {
                         if (
                           validatePackages(packagedetails) == false ||
@@ -1227,15 +1227,15 @@ function AddNewItiComp({
                           setState((prevs) => ({
                             ...prevs,
                             to_show_error: true,
-                            page4_error: true
-                          }))
-                          return
+                            page4_error: true,
+                          }));
+                          return;
                         }
-                        state.modal_open_purpose == 'add_new' ||
-                        state.modal_open_purpose == 'duplicate_iti'
+                        state.modal_open_purpose == "add_new" ||
+                        state.modal_open_purpose == "duplicate_iti"
                           ? postItinerary()
-                          : state.modal_open_purpose == 'edit_iti' &&
-                            editItinerary()
+                          : state.modal_open_purpose == "edit_iti" &&
+                            editItinerary();
                       }
                     }}
                   />
@@ -1246,7 +1246,7 @@ function AddNewItiComp({
         }
       />
     </div>
-  )
+  );
 }
 
-export default AddNewItiComp
+export default AddNewItiComp;
