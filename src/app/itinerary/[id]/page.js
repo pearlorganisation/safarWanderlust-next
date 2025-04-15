@@ -97,7 +97,11 @@ const ItineraryPage = () => {
 
   const [showCallBackForm, setShowCallBackForm] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
+  
+  const [selectedBatch, setSelectedBatch] = useState('')
+  const [selectedPackage, setSelectedPackage] = useState(null) // State for selected package
+  const [selectedStartingPoint, setSelectedStartingPoint] = useState(null) // State for full selected starting point object
+  const [selectedDroppingPoint, setSelectedDroppingPoint] = useState(null) // State for full selected dropping point object
   useEffect(() => {
     if (id) {
       dispatch(fetchItenerayByName(id));
@@ -154,6 +158,13 @@ const ItineraryPage = () => {
             selectedBatch=""
             showCallBackForm={showCallBackForm}
             setShowCallBackForm={setShowCallBackForm}
+            selectedDroppingPoint={selectedDroppingPoint}
+            selectedPackage={selectedPackage}
+            selectedStartingPoint={selectedStartingPoint}
+            setSelectedBatch={setSelectedBatch}
+            setSelectedDroppingPoint={setSelectedDroppingPoint}
+            setSelectedPackage={setSelectedPackage}
+            setSelectedStartingPoint={setSelectedStartingPoint}
             base_packages={iteneray.base_packages}
             batches={iteneray.batches}
             drop_point={iteneray.drop_point}
