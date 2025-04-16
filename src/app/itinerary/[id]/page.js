@@ -88,6 +88,7 @@ import ItinerarySection from "@/components/User/itineraryPage/ItinerarySection";
 import PricingComponent from "@/components/User/itineraryPage/PricingSection";
 import TripPdfDownloadBanner from "@/components/User/itineraryPage/TripPdfDownloadBanner";
 import { useParams } from "next/navigation";
+import TravellerForm from "@/components/User/itineraryPage/TravellerForm";
 
 const ItineraryPage = () => {
   const dispatch = useDispatch();
@@ -107,7 +108,10 @@ const ItineraryPage = () => {
   {
      setIsPopupOpen((prev)=> !prev);
   }
-
+  const closePopup = () => {
+    setIsPopupOpen(false) // Close popup
+    setShowCallBackForm(true)
+  }
   useEffect(() => {
     if (id) {
       dispatch(fetchItenerayByName(id));
@@ -190,6 +194,21 @@ const ItineraryPage = () => {
         open={isPopupOpen}
         handleClose={() => setIsPopupOpen(false)}
         title={<span>Add Traveller Information</span>}
+        description = "The information you fill below is needed to quote and book your trip."
+        restContent={   
+        <div className="w-[65vw] max-w-screen-xl ">
+            <TravellerForm
+              isOpen={isPopupOpen}
+              onClose={closePopup}
+              base_packages={iteneray.base_packages}
+              drop_point={iteneray.drop_point}
+              pickup_point={iteneray.pickup_point}
+              selectedBatch={selectedBatch}
+              selectedDroppingPoint={selectedDroppingPoint}
+              selectedPackage={selectedPackage}
+              selectedStartingPoint={selectedStartingPoint}
+            />
+          </div>}
       />
       <BannerSlider />
       <PartnersSection />
