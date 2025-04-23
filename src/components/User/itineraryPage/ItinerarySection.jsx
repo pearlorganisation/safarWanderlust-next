@@ -21,9 +21,9 @@ const ItinerarySection = ({
 
   return (
     <>
-      <div className="bg-gray-900 font-titleRegular p-5 my-2 text-white min-h-screen md:block hidden">
+      <div className="bg-gray-900 font-titleRegular p-3  text-white min-h-screen md:block hidden">
         {/* Sticky Navigation */}
-        <nav className="bg-gray-800 mx-12  mt-10   rounded-full p-4  top-20 z-50">
+        <nav className="bg-gray-800   mt-10   rounded-full p-4  top-20 z-50">
           <ul className="flex justify-evenly items-center space-x-6">
             <li>
               <a

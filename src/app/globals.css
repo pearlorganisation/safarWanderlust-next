@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* Scrollbar styles for WebKit browsers (Chrome, Safari) */
+.scrollbar-orange::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-orange::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-orange::-webkit-scrollbar-thumb {
+  background-color: #fdba74; /* Tailwind orange-300 */
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Firefox */
+.scrollbar-orange {
+  scrollbar-width: thin;
+  scrollbar-color: #fdba74 transparent;
+}
 @font-face {
     font-family: 'RegularFont400';
     src: url('../_assets/fonts/Nunito-Regular400.ttf') format('truetype');
