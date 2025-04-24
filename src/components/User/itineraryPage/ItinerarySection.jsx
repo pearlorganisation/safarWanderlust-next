@@ -161,7 +161,7 @@ const ItinerarySection = ({
           </div>
         </section>
       </div>
-      <div className="bg-gray-900 font-titleRegular my-4 py-2 text-white min-h-screen md:hidden block">
+      <div className="bg-gray-900 font-titleRegular md:my-4 py-6  md:py-2 text-white min-h-screen md:hidden block">
         {/* Sticky Navigation */}
         <nav className="bg-gray-800 sticky top-5  rounded-full p-4 my-4 mx-4  z-50">
           <ul className="flex justify-around text-sm items-center space-x-4">
