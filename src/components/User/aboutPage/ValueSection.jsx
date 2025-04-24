@@ -1,5 +1,7 @@
 import React from 'react'
-import Backgroud from '@/_assets/svgs/user/AboutPageBg.svg'
+
+import Background from "../../../../public/assets/svgs/user/AboutPageBg.png"
+import Image from 'next/image'
 
 const ValuesSection = () => {
   return (
@@ -16,10 +18,12 @@ const ValuesSection = () => {
           </p>
         </div>
       </section>
+
+    
       <div
-        className=" bg-cover bg-no-repeat"
+        className=" bg-contain bg-no-repeat bg-center"
         style={{
-          backgroundImage: `url(${Backgroud})`
+          backgroundImage: `url(${Background.src})`
         }}
       >
         {/* Images and Captions */}
@@ -31,7 +35,7 @@ const ValuesSection = () => {
               src="https://picsum.photos/200/300"
               alt="Book your itinerary"
             />
-            <p className="text-lg">Book your itinerary</p>
+            <p className="text-lg">Book your itinerary </p>
           </div>
 
           {/* Second Image */}
