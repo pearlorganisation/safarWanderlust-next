@@ -78,13 +78,25 @@ function ItineraryPage() {
         <meta property="og:url" content={window.location.href} />
       </Helmet> */}
 
-      <ItenerayImageSection
-        allImages={iteneray.allImages}
-        title={iteneray.title}
-        description={iteneray.description}
-        city={iteneray.city}
-      />
-      <FeaturesIcons
+      <div className="container mx-auto py-8">
+      {/* <CallBackForm showCallBackForm={showCallBackForm} setShowCallBackForm={setShowCallBackForm} /> */}
+      {/* <Popup openPopup={openPopup} setOpenPopup={setOpenPopup} /> */}
+      <h1 className="text-3xl font-bold mb-4">{iteneray.title}</h1>
+      
+      {/* Modified the grid layout to properly stack on mobile and handle overflow */}
+      <div className="grid lg:grid-cols-[65%_35%] gap-4">
+        {/* Left Content Section */}
+        <div className="">
+          <ItinerarySection
+            notes={iteneray.notes}
+            dayDetails={iteneray.day_details}
+            hotels={iteneray.hotels}
+            inclusions_exclusions={iteneray.inclusions_exclusions}
+            cancellation_policy={iteneray.cancellation_policy}
+          />
+        </div>
+
+      {/* <FeaturesIcons
         altitude={iteneray.altitude}
         cultural_sites={iteneray.cultural_sites}
         duration={iteneray.duration}
@@ -97,55 +109,73 @@ function ItineraryPage() {
         hotels={iteneray.hotels}
         inclusions_exclusions={iteneray.inclusions_exclusions}
         cancellation_policy={iteneray.cancellation_policy}
-      />
-      <PricingComponent
-        selectedBatch={selectedBatch}
-        showCallBackForm={showCallBackForm}
-        setShowCallBackForm={setShowCallBackForm}
-        selectedDroppingPoint={selectedDroppingPoint}
-        selectedPackage={selectedPackage}
-        selectedStartingPoint={selectedStartingPoint}
-        setSelectedBatch={setSelectedBatch}
-        setSelectedDroppingPoint={setSelectedDroppingPoint}
-        setSelectedPackage={setSelectedPackage}
-        setSelectedStartingPoint={setSelectedStartingPoint}
-        base_packages={iteneray.base_packages}
-        batches={iteneray.batches}
-        drop_point={iteneray.drop_point}
-        pickup_point={iteneray.pickup_point}
-        openPopup={openPopup}
-      />
-      <CustomModal
-        open={isPopupOpen}
-        backdropvalue="0.1"
-        handleClose={closePopup}
-        title={
-          <span className="md:text-4xl text-lg">
-            Add <span className="text-orange-500">Traveller</span> Information
-          </span>
-        }
-        description=" The information you fill below is needed to quote and book your trip."
-        restContent={
-          <div className="w-[65vw] max-w-screen-xl ">
-            <TravellerForm
-              isOpen={isPopupOpen}
-              onClose={closePopup}
-              base_packages={iteneray.base_packages}
-              drop_point={iteneray.drop_point}
-              pickup_point={iteneray.pickup_point}
+      /> */}
+
+
+        {/* Right Pricing Section (Sticky + Scrollable) */}
+        
+        <div className="justify-start md:px-16 md:p-2 sticky top-0 h-auto md:h-screen flex flex-col bg-gray-900 shadow-lg overflow-y-auto">
+          <div className="sticky top-0 max-h-screen overflow-y-auto">
+            {/* Pricing Component */}
+            <PricingComponent
+              openPopup={openPopup}
               selectedBatch={selectedBatch}
+              showCallBackForm={showCallBackForm}
+              setShowCallBackForm={setShowCallBackForm}
               selectedDroppingPoint={selectedDroppingPoint}
               selectedPackage={selectedPackage}
               selectedStartingPoint={selectedStartingPoint}
+              setSelectedBatch={setSelectedBatch}
+              setSelectedDroppingPoint={setSelectedDroppingPoint}
+              setSelectedPackage={setSelectedPackage}
+              setSelectedStartingPoint={setSelectedStartingPoint}
+              base_packages={iteneray.base_packages}
+              batches={iteneray.batches}
+              drop_point={iteneray.drop_point}
+              pickup_point={iteneray.pickup_point}
+              
             />
+
+          {/* <CustomModal
+                  open={isPopupOpen}
+                  backdropvalue="0.1"
+                  handleClose={closePopup}
+                  title={
+                    <span className="md:text-4xl text-lg">
+                      Add <span className="text-orange-500">Traveller</span> Information
+                    </span>
+                  }
+                  description=" The information you fill below is needed to quote and book your trip."
+                  restContent={
+                    <div className="w-[65vw] max-w-screen-xl ">
+                      <TravellerForm
+                        isOpen={isPopupOpen}
+                        onClose={closePopup}
+                        base_packages={iteneray.base_packages}
+                        drop_point={iteneray.drop_point}
+                        pickup_point={iteneray.pickup_point}
+                        selectedBatch={selectedBatch}
+                        selectedDroppingPoint={selectedDroppingPoint}
+                        selectedPackage={selectedPackage}
+                        selectedStartingPoint={selectedStartingPoint}
+                      />
+                    </div>
+                  }
+                />
+                <BannerSlider />
+                <PartnersSection />
+                {iteneray && <Testimonial page="itinerary" itineraryId={iteneray.id} />}
+                 */}
+            
+            <div className="relative z-10 p-4 ">
+              <TripPdfDownloadBanner pdfLink={iteneray.itin_pdf} />
+            </div>
           </div>
-        }
-      />
-      <BannerSlider />
-      <PartnersSection />
-      {iteneray && <Testimonial page="itinerary" itineraryId={iteneray.id} />}
-      
+        </div>
+      </div>
     </div>
+    </div>
+    
   )
 }
 

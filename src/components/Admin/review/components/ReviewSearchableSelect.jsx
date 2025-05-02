@@ -43,7 +43,7 @@ const ReviewSearchableSelect = ({
             onDropdownOpenChange(true);
           }}
           onFocus={() => onDropdownOpenChange(true)}
-          className="w-full px-4 py-2.5 text-gray-700 bg-white border border-gray-300 
+          className="w-full  px-4 py-2.5 text-gray-700 bg-white border border-gray-300 
             rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent
             transition-all duration-200 ease-in-out
             hover:border-orange-400
@@ -60,7 +60,8 @@ const ReviewSearchableSelect = ({
       </div>
       
       {isDropdownOpen && (
-        <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-auto">
+        <div className=" w-full overflow-hidden">
+        <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-14 overflow-auto">
           {filteredItineraries.length > 0 ? (
             filteredItineraries.map(itinerary => (
               <div
@@ -79,6 +80,7 @@ const ReviewSearchableSelect = ({
           ) : (
             <div className="px-4 py-2 text-sm text-gray-500">No itineraries found</div>
           )}
+        </div>
         </div>
       )}
     </div>

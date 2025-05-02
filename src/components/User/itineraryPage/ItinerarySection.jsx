@@ -54,7 +54,7 @@ const ItinerarySection = ({
         {/* Itinerary Section */}
         <section
           id="itinerary"
-          className="mx-12 p-10 my-4 bg-gray-800 rounded-3xl"
+          className="mx-6 p-10 my-4 bg-gray-800 rounded-3xl"
         >
           <h2 className="text-2xl font-bold mb-4 ml-4">Itinerary</h2>
 
@@ -90,10 +90,10 @@ const ItinerarySection = ({
         {/* Inclusion & Exclusion Section */}
         <section
           id="inclusion"
-          className="mx-12 px-20 py-10 my-4 bg-gray-800 rounded-3xl"
+          className="mx-6 px-12 py-10 my-4 bg-gray-800 rounded-3xl"
         >
           <h2 className="text-2xl font-bold mb-4">Inclusion & Exclusion</h2>
-          <div className="rounded-lg bg-gray-700/85  mx-auto py-10 px-20">
+          <div className="rounded-lg bg-gray-700/85  mx-auto py-10 px-14">
             <div className="grid grid-cols-2">
               <div className="space-y-2">
                 {inclusions_exclusions?.inclusions?.map((i, index) => (
@@ -102,7 +102,7 @@ const ItinerarySection = ({
                   </div>
                 ))}
               </div>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {inclusions_exclusions?.exclusions?.map((i, index) => (
                   <div key={`exc-${index}`} className="flex items-start">
                     <div>❌</div> <p> {i}</p>
@@ -116,7 +116,7 @@ const ItinerarySection = ({
         {/* Cancellation Policy Section */}
         <section
           id="cancellation"
-          className="mx-12 px-20 py-10 my-4 bg-gray-800  rounded-3xl"
+          className="mx-6 px-12 py-10 my-4 bg-gray-800  rounded-3xl"
         >
           <div className="flex items-center mb-4">
             <FaRegListAlt color="white" className="text-white text-xl mr-2" />
@@ -124,7 +124,7 @@ const ItinerarySection = ({
               Cancellation Policy
             </h2>
           </div>
-          <div className="rounded-lg bg-gray-700/85  mx-auto py-10 px-20">
+          <div className="rounded-lg bg-gray-700/85  mx-auto py-10 px-14">
             <ul className="space-y-4">
               {cancellation_policy?.policies.map((policy, index) => (
                 <li
@@ -142,13 +142,13 @@ const ItinerarySection = ({
         {/* Note Section */}
         <section
           id="note"
-          className="mx-12 px-20 py-10 my-4 bg-gray-800 rounded-3xl"
+          className="mx-6 px-12 py-10 my-4 bg-gray-800 rounded-3xl"
         >
           <div className="flex items-center mb-4">
             <div className="bg-white text-xl min-h-4 min-w-4 mr-2"></div>
             <h2 className="text-2xl font-semibold text-white">Note</h2>
           </div>
-          <div className="rounded-lg bg-gray-700/85 mx-auto py-10 px-20">
+          <div className="rounded-lg bg-gray-700/85 mx-auto py-10 px-14">
             <ul className="space-y-2">
               {/* Dynamically map notes */}
               {notes?.map((noteItem, index) => (

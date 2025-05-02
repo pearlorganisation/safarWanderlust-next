@@ -87,8 +87,8 @@ const ItineraryPage = () => {
         </div>
 
         {/* Right Pricing Section (Sticky + Scrollable) */}
-        <div className="   justify-start  md:px-16 md:p-2 sticky top-0 h-full md:h-screen  flex flex-col bg-gray-900 shadow-lg ">
-          {/* Pricing Component */}
+        <div className="   justify-start   md:p-2 sticky top-0 h-full md:h-max  flex flex-col bg-gray-900 shadow-lg ">
+          {/* Pricing Component md:px-16 */}
           <PricingComponent
            openPopup={openPopup}
             selectedBatch={selectedBatch}
