@@ -3,7 +3,7 @@
 import React from 'react'
 
 // Import your SVGs here
-import MSMESvg from '../../../../_assets/svgs/user/msme_icon.svg'
+import  MSMESvg from '../../../../_assets/svgs/user/msme_icon.svg'
 import YourStorySvg from '../../../../_assets/svgs/user/yourstory_icon.svg'
 import IndiaSvg from '../../../../_assets/svgs/user/mnp_icon.svg'
 import GoogleSvg from '../../../../_assets/svgs/user/google_icon.svg'
@@ -20,7 +20,7 @@ const AwardFooter = () => {
       <div className="flex gap-4 flex-wrap justify-around items-center ">
         <div className=" flex items-center justify-center">
           <Image
-            src={MSMESvg}
+            src='/assets/svgs/user/msme_icon.svg'
             alt="MSME Logo"
             width={1000}
             height={1000}
@@ -30,7 +30,7 @@ const AwardFooter = () => {
 
         <div className="  md:h-28 flex items-center justify-center">
           <Image
-            src={YourStorySvg}
+            src='/assets/svgs/user/yourstory_icon.svg'
             alt="YourStory Logo"
             width={1000}
             height={1000}
@@ -39,7 +39,7 @@ const AwardFooter = () => {
         </div>
         <div className=" flex items-center justify-center">
           <Image
-            src={IndiaSvg}
+            src='/assets/svgs/user/mnp_icon.svg'
             alt="Incredible India Logo"
             width={1000}
             height={1000}
@@ -48,7 +48,7 @@ const AwardFooter = () => {
         </div>
         <div className=" flex items-center justify-center pt-6">
           <Image
-            src={GoogleSvg}
+            src='/assets/svgs/user/google_icon.svg'
             alt="Google"
             width={1000}
             height={1000}
@@ -58,7 +58,7 @@ const AwardFooter = () => {
         <div className="md:w-[10rem]  md:h-28  flex items-center justify-center">
           <div>
             <Image
-              src={StartupSvg}
+              src='/assets/svgs/user/startup_icon.svg'
               alt="Startup India Logo"
               width={1000}
               height={1000}
