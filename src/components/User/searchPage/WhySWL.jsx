@@ -63,9 +63,9 @@ const WhySafarWandarLust = () => {
   return (
     <>
       <div className="py-10 md:block sm:hidden hidden bg-white text-center">
-        <h2 className="text-5xl font-titleMedium mb-10">
+        <h3 className="text-5xl font-titleMedium mb-10">
           Why Choose <span className="text-orange-500">Safar Wandarlust</span>
-        </h2>
+        </h3>
         <div className="border rounded-2xl mx-32 w-[85%]">
           <div className=" flex justify-center items-center mx-auto  flex-shrink-0  px-5 py-5 ">
             {(benefits1 || [])?.map((benefit, index) => (
@@ -75,9 +75,9 @@ const WhySafarWandarLust = () => {
                   className="flex w-[25%] flex-col items-start justify-center text-left p-5 "
                 >
                   <img src={benefit.icon} alt="" />
-                  <h3 className="text-xl font-bold mt-3 mb-3">
+                  <h4 className="text-xl font-bold mt-3 mb-3">
                     {benefit.title}
-                  </h3>
+                  </h4>
                   <p className="text-gray-600 text-sm">{benefit.description}</p>
                 </div>
                 {index != 3 && (
@@ -97,9 +97,9 @@ const WhySafarWandarLust = () => {
                   className="flex w-[25%] flex-col items-start justify-center text-left p-5 "
                 >
                   <img src={benefit.icon} alt="" />
-                  <h3 className="text-xl font-bold mt-3 mb-3">
+                  <h4 className="text-xl font-bold mt-3 mb-3">
                     {benefit.title}
-                  </h3>
+                  </h4>
                   <p className="text-gray-600 text-sm">{benefit.description}</p>
                 </div>
                 {index != 3 && (

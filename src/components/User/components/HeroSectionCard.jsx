@@ -29,7 +29,7 @@ const HeroSectionCard = ({
         style={{ backgroundImage: `url(${imageUrl})` }}
       >
         <div className=" w-full h-full flex flex-col justify-end items-center  rounded-lg">
-          <h3 className="text-white text-center text-lg">{title}</h3>
+          <h4 className="text-white text-center text-lg">{title}</h4>
           <button
             onClick={onButtonClick}
             className="text-white text-xs font-bold my-2 flex items-start justify-center"
@@ -49,7 +49,7 @@ const HeroSectionCard = ({
         style={{ backgroundImage: `url(${imageUrl})` }}
       >
         <div className=" w-full h-full  flex flex-col justify-end items-center  rounded-lg">
-          {/* <h3 className="text-white text-center text-[8px]">{title}</h3> */}
+          {/* <h4 className="text-white text-center text-[8px]">{title}</h4> */}
           {children}
           {/* <button
             onClick={onButtonClick}

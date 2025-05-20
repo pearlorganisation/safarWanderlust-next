@@ -56,7 +56,7 @@ const ItinerarySection = ({
           id="itinerary"
           className="mx-6 p-10 my-4 bg-gray-800 rounded-3xl"
         >
-          <h2 className="text-2xl font-bold mb-4 ml-4">Itinerary</h2>
+          <h3 className="text-2xl font-bold mb-4 ml-4">Itinerary</h3>
 
           {/* Dynamic Day Accordions */}
           {dayDetails?.map((day, index) => (
@@ -81,7 +81,7 @@ const ItinerarySection = ({
           id="hotels"
           className="mx-12 px-10 my-4 bg-gray-800  rounded-3xl"
         >
-          {/* <h2 className="text-3xl mb-4">Hotels</h2> */}
+          {/* <h3 className="text-3xl mb-4">Hotels</h3> */}
           {hotels && hotels.length > 0 && hotels[0].name != "" && (
             <HotelCarousel hotels={hotels} />
           )}
@@ -92,7 +92,7 @@ const ItinerarySection = ({
           id="inclusion"
           className="mx-6 px-12 py-10 my-4 bg-gray-800 rounded-3xl"
         >
-          <h2 className="text-2xl font-bold mb-4">Inclusion & Exclusion</h2>
+          <h3 className="text-2xl font-bold mb-4">Inclusion & Exclusion</h3>
           <div className="rounded-lg bg-gray-700/85  mx-auto py-10 px-14">
             <div className="grid grid-cols-2">
               <div className="space-y-2">
@@ -120,9 +120,9 @@ const ItinerarySection = ({
         >
           <div className="flex items-center mb-4">
             <FaRegListAlt color="white" className="text-white text-xl mr-2" />
-            <h2 className="text-2xl font-semibold text-white">
+            <h3 className="text-2xl font-semibold text-white">
               Cancellation Policy
-            </h2>
+            </h3>
           </div>
           <div className="rounded-lg bg-gray-700/85  mx-auto py-10 px-14">
             <ul className="space-y-4">
@@ -146,7 +146,7 @@ const ItinerarySection = ({
         >
           <div className="flex items-center mb-4">
             <div className="bg-white text-xl min-h-4 min-w-4 mr-2"></div>
-            <h2 className="text-2xl font-semibold text-white">Note</h2>
+            <h3 className="text-2xl font-semibold text-white">Note</h3>
           </div>
           <div className="rounded-lg bg-gray-700/85 mx-auto py-10 px-14">
             <ul className="space-y-2">
@@ -202,7 +202,7 @@ const ItinerarySection = ({
           id="itineraryMobile"
           className="mx-4  px-4 py-8   my-4 bg-gray-800 rounded-lg"
         >
-          <h2 className="text-base font-bold mb-4">Itinerary</h2>
+          <h3 className="text-base font-bold mb-4">Itinerary</h3>
 
           {/* Dynamic Day Accordions */}
           {dayDetails?.map((day, index) => {
@@ -241,9 +241,9 @@ const ItinerarySection = ({
           id="inclusionMobile"
           className=" mx-4 px-1 my-2 py-8 bg-gray-800 rounded-lg"
         >
-          <h2 className="text-base font-titleRegular  mb-4 pl-2">
+          <h3 className="text-base font-titleRegular  mb-4 pl-2">
             Inclusion & Exclusion
-          </h2>
+          </h3>
           <div className="rounded-lg bg-gray-700/85  mx-2  px-2 py-3">
             <div className="space-y-4 text-sm">
               <div className="space-y-1 font-titleRegular">
@@ -274,9 +274,9 @@ const ItinerarySection = ({
         >
           <div className="flex items-center mb-4 pl-2">
             <FaRegListAlt color="white" className="text-white text-xl mr-2" />
-            <h2 className="text-base  text-white font-titleRegular ">
+            <h3 className="text-base  text-white font-titleRegular ">
               Cancellation Policy
-            </h2>
+            </h3>
           </div>
           <div className="rounded-lg bg-gray-700/85  mx-2 px-5 ">
             <ol className="space-y-2 font-titleRegular list-disc py-5">
@@ -295,7 +295,7 @@ const ItinerarySection = ({
           className="mx-4 px-4 py-8 my-2 bg-gray-800 rounded-lg"
         >
           <div className="flex items-center mb-4">
-            <h2 className="text-base font-titleRegular text-white">Note</h2>
+            <h3 className="text-base font-titleRegular text-white">Note</h3>
           </div>
           <div
             className="rounded-lg bg-gray-700/85 text-sm  mx-auto  px-5"

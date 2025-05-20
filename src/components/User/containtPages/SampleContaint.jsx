@@ -3,9 +3,9 @@ import React from 'react'
 function SampleContent({ title, subtitle, listPoints }) {
   return (
     <div className="m-10 space-y-6 shadow-lg p-3 mb-5 bg-white rounded">
-      <h1 className="md:text-4xl text-3xl text-black font-titleMedium w-full text-center">
+      <h2 className="md:text-4xl text-3xl text-black font-titleMedium w-full text-center">
         {title}
-      </h1>
+      </h2>
       {subtitle && (
         <p className="text-center text-lg font-titleRegular text-gray-600 max-w-3xl mx-auto">
           {subtitle}

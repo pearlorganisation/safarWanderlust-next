@@ -134,9 +134,9 @@
 //           <div>
 //             {/* Title and Discount Badge */}
 //             <div className="flex items-center space-x-2">
-//               <h3 className="text-lg font-semibold text-gray-900">
+//               <h4 className="text-lg font-semibold text-gray-900">
 //                 Starting From
-//               </h3>
+//               </h4>
 //               <span className="text-xs bg-blue-100 text-blue-600 font-semibold px-2 pt-1 rounded-full">
 //                 Upto ₹2,500 OFF
 //               </span>
@@ -185,10 +185,10 @@
 
 //         {/* Pricing */}
 //         <div className="">
-//           <h4 className="text-lg font-semibold mt-2 text-gray-700">
+//           <h5 className="text-lg font-semibold mt-2 text-gray-700">
 //             Pricing
 //             <span className="ml-0.5 font-normal text-red-600">*</span>
-//           </h4>
+//           </h5>
 //           <div className="relative mt-1 border p-4 rounded-lg max-h-full overflow-auto border-gray-300">
 //             {base_packages?.map((packages, index) => (
 //               <div
@@ -228,10 +228,10 @@
 //         {/* Batches */}
 //         <div className="mb-6 ">
 //           <div className="flex border-green-400 items-center-center gap-2 py-4 justify-between">
-//             <h4 className="text-lg font-semibold text-gray-700">
+//             <h5 className="text-lg font-semibold text-gray-700">
 //               Batches
 //               <span className="ml-0.5 font-normal text-red-600">*</span>
-//             </h4>
+//             </h5>
 
 //             <div className=" w-40 scrollbar-orange flex gap-2 uppercase px-2  overflow-x-scroll bg-white/25   text-slate-800 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] cursor-pointer m-1 p-1 text-sm font-bold backdrop-blur-md rounded-[10px]">
 //               {mapToHoldBatches && (
@@ -564,7 +564,7 @@ const PricingComponent = ({
           <div>
             {/* Title and Discount Badge */}
             <div className="flex items-center space-x-2">
-              <h3 className="text-lg font-semibold text-gray-900">Starting From</h3>
+              <h4 className="text-lg font-semibold text-gray-900">Starting From</h4>
               <span className="text-xs bg-blue-100 text-blue-600 font-semibold px-2 pt-1 rounded-full">
                 Upto ₹2,500 OFF
               </span>
@@ -609,10 +609,10 @@ const PricingComponent = ({
 
         {/* Pricing */}
         <div className="">
-          <h4 className="text-lg font-semibold mt-2 text-gray-700">
+          <h5 className="text-lg font-semibold mt-2 text-gray-700">
             Pricing
             <span className="ml-0.5 font-normal text-red-600">*</span>
-          </h4>
+          </h5>
           <div className="relative mt-1 border p-4 rounded-lg max-h-full overflow-auto border-gray-300">
             {base_packages?.map((packages, index) => (
               <div
@@ -638,10 +638,10 @@ const PricingComponent = ({
         {/* Batches */}
         <div className="mb-6 ">
           <div className="flex flex-col sm:flex-row border-green-400 items-start sm:items-center gap-2 py-4 sm:justify-between">
-            <h4 className="text-lg font-semibold text-gray-700">
+            <h5 className="text-lg font-semibold text-gray-700">
               Batches
               <span className="ml-0.5 font-normal text-red-600">*</span>
-            </h4>
+            </h5>
 
             <div className="w-full sm:w-40 scrollbar-orange flex gap-2 uppercase px-2 overflow-x-scroll bg-white/25 text-slate-800 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] cursor-pointer m-1 p-1 text-sm font-bold backdrop-blur-md rounded-[10px]">
               {mapToHoldBatches && (

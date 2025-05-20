@@ -77,6 +77,7 @@ function Home() {
           backgroundImage: `url(${Background.src})`
         }}
       >
+        <h1 className="invisible">Safar Wanderlust</h1>
         <div className="mt-[45rem] max-w-screen sm:mt-[40rem] lg:mt-[45rem] xl:mt-[45rem]">
           <FeaturedSection />
         </div>
@@ -99,7 +100,7 @@ function Home() {
       <JourneySection />
       <Gallery />
      <Testimonial />
-     <Footer />
+     {/* <Footer /> */}
     </div>
   );
 }

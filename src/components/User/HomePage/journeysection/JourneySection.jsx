@@ -29,37 +29,37 @@ const JourneySection = () => {
         <div className="relative">
           <Image src={MapIcon} alt="Map Icon" layout="fill" objectFit="cover" />
           <div>
-            <h1 className="mx-auto font-titleMedium text-2xl md:text-5xl">
+            <h2 className="mx-auto font-titleMedium text-2xl md:text-5xl">
               Experiences that Last
               <span className="text-orange-500"> Beyond </span>the Trip
-            </h1>
+            </h2>
 
             <div className="mt-10  md:mx-20">
               <div className=" flex h-[32%] flex-col items-center justify-center  sm:flex-col md:mb-20 md:flex-row ">
                 <div className=" mb-8 flex flex-col items-center justify-center text-center sm:mb-8 md:mb-0">
                   <Image className="my-2.5" src={Memories} alt="" />
 
-                  <h1 className="mb-2 text-xl  font-bold md:text-2xl ">
+                  <h2 className="mb-2 text-xl  font-bold md:text-2xl ">
                     Shared Moments, Amplified Joy
-                  </h1>
+                  </h2>
                   <p className="w-auto  whitespace-pre-line text-xs md:w-[50%]">
                     {`Every adventure is better when shared. From the first step to the last laugh, group travel turns ordinary trips into extraordinary memories, sparking joy that lingers.`}
                   </p>
                 </div>
                 <div className=" mb-8 flex flex-col items-center justify-center text-center sm:mb-8 md:mb-0">
                   <Image className="my-2.5" src={PerfectTrip} alt="" />
-                  <h1 className="mb-2 text-xl  font-bold md:text-2xl ">
+                  <h2 className="mb-2 text-xl  font-bold md:text-2xl ">
                     Connections That Go Deeper
-                  </h1>
+                  </h2>
                   <p className="w-auto whitespace-pre-line text-xs md:w-[50%]">
                     {`Our journeys are designed to bring people together. Through shared experiences, each traveler becomes part of a story, creating bonds that feel like they were always meant to be.`}
                   </p>
                 </div>
                 <div className="  mx-auto  flex flex-col items-center justify-center text-center md:hidden">
                   <Image className="my-2.5" src={SeamlessTravel} alt="" />
-                  <h1 className="mb-2 text-xl font-bold md:text-2xl ">
+                  <h2 className="mb-2 text-xl font-bold md:text-2xl ">
                     Memories That Stay Long After
-                  </h1>
+                  </h2>
                   <p className="whitespace-pre-line text-xs ">
                     {`It’s not just about where we go; it’s about the lasting impact. Each journey leaves behind stories, friendships, and experiences that live on, well beyond the trip.`}
                   </p>
@@ -68,9 +68,9 @@ const JourneySection = () => {
               <div className="hidden h-[32%] md:block ">
                 <div className=" mx-auto flex flex-col items-center justify-center text-center">
                   <Image className="my-2.5" src={SeamlessTravel} alt="" />
-                  <h1 className="mb-2 text-xl font-bold md:text-2xl ">
+                  <h2 className="mb-2 text-xl font-bold md:text-2xl ">
                     Memories That Stay Long After
-                  </h1>
+                  </h2>
                   <p className="w-auto whitespace-pre-line text-xs md:w-[23%]">
                     {`It’s not just about where we go; it’s about the lasting impact. Each journey leaves behind stories, friendships, and experiences that live on, well beyond the trip.`}
                   </p>
@@ -135,7 +135,7 @@ const FeatureCard = ({ icon, title, description }) => {
       <div className="mb-4 flex justify-start">
         <Image src={icon} alt="" />
       </div>
-      <h3 className="mb-2 text-xl font-semibold">{title}</h3>
+      <h4 className="mb-2 text-xl font-semibold">{title}</h4>
       <p className="w-[55vw] text-justify text-sm text-gray-600 md:w-auto">
         {description}
       </p>
