@@ -18,9 +18,9 @@ jobs:
 
       - name: Copy files to VPS using sshpass and scp
         env:
-          VPS_HOST: 88.222.241.171      # Hostinger VPS IP or domain
-          VPS_USER: root       # VPS username
-          VPS_PASS: G.6yiP(Sw4i7-@q3(KkK       # VPS password
-          DEST_PATH: /frontend           # destination folder on VPS
+          VPS_HOST: ${{ secrets.VPS_HOST }}      # e.g., 88.222.241.171
+          VPS_USER: ${{ secrets.VPS_USER }}      # e.g., root
+          VPS_PASS: ${{ secrets.VPS_PASS }}      # your password
+          DEST_PATH: ${{ secrets.DEST_PATH }}    # e.g., /frontend
         run: |
-          sshpass -p "$VPS_PASS" scp -r ./ $VPS_USER@$VPS_HOST:$DEST_PATH
+          sshpass -p "$VPS_PASS" scp -o StrictHostKeyChecking=no -r ./ $VPS_USER@$VPS_HOST:$DEST_PATH
