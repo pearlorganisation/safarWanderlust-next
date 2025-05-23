@@ -103,9 +103,9 @@ function ItenerayImageSection({ allImages, title, description, city }) {
             </span>{' '}
             {secondWord}
           </h1>
-          <h3 className="m-5 flex items-center justify-center text-2xl  ">
+          <h4 className="m-5 flex items-center justify-center text-2xl  ">
             <IoLocationSharp /> {city}
-          </h3>
+          </h4>
           <p className="mb-4 ">Overview :{description}</p>
         </div>
         <CustomModal
@@ -219,15 +219,15 @@ function ItenerayImageSection({ allImages, title, description, city }) {
           )}
         </div>
         <div className="mx-auto my-4 text-center">
-          <h1 className="text-2xl">
+          <h2 className="text-2xl">
             <span className="text-tertiaryText">
               {titleSplit && titleSplit[0]}
             </span>{' '}
             {secondWord}
-          </h1>
-          <h3 className=" mb-2 flex items-center justify-center text-base  ">
+          </h2>
+          <h4 className=" mb-2 flex items-center justify-center text-base  ">
             <IoLocationSharp /> <span className="ml-2">{city}</span>
-          </h3>
+          </h4>
           <p className="mb-4 text-justify text-xs ">Overview :{description}</p>
         </div>
         <CustomModal

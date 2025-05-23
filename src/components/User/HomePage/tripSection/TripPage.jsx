@@ -19,9 +19,9 @@ const TripsPage = () => {
   return (
     categories.length != 0 && (
       <div className="my-10 md:my-20">
-        <h1 className="mb-2.5 text-center  font-titleMedium text-2xl md:text-5xl">
+        <h2 className="mb-2.5 text-center  font-titleMedium text-2xl md:text-5xl">
         Your Next  <span className="text-orange-500">Adventure Awaits</span>
-        </h1>
+        </h2>
         <div className="mx-auto mb-10 px-5 text-center  font-titleRegular text-sm text-gray-500">
           <p>
           Dive into breathtaking experiences across the globe.

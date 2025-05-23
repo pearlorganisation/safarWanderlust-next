@@ -5,16 +5,16 @@ const FinalPaymentPage = ({ prepeople, openPopup}) => {
   return (
     <>
       <div className="  bg-white p-8 md:block hidden w-[65%] rounded-md shadow-lg">
-        <h1 className="text-center text-2xl font-semibold mb-8">
+        <h2 className="text-center text-2xl font-semibold mb-8">
           Passenger Details
-        </h1>
+        </h2>
 
         {prepeople.map((person, index) => (
           <div
             key={index}
             className="border border-gray-300 p-4 rounded-md mb-6"
           >
-            <h2 className="font-semibold text-lg mb-4">Person {index + 1} :</h2>
+            <h3 className="font-semibold text-lg mb-4">Person {index + 1} :</h3>
 
             <div className="grid grid-cols-2 gap-4 mb-2">
               <div>
@@ -107,16 +107,16 @@ const FinalPaymentPage = ({ prepeople, openPopup}) => {
         </div>
       </div>
       <div className="  bg-white p-4 rounded-md md:hidden block shadow-lg">
-        <h1 className="text-center text-lg font-semibold mb-8">
+        <h2 className="text-center text-lg font-semibold mb-8">
           Passenger Details
-        </h1>
+        </h2>
 
         {prepeople.map((person, index) => (
           <div
             key={index}
             className="border border-gray-300 p-4 rounded-md mb-6"
           >
-            <h2 className="font-semibold text-lg mb-4">Person {index + 1} :</h2>
+            <h3 className="font-semibold text-lg mb-4">Person {index + 1} :</h3>
 
             <div className="grid grid-cols-1 gap-4 mb-2">
               <div>

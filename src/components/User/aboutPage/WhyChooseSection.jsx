@@ -31,9 +31,9 @@ const WhyChooseSection = () => {
   return (
     <section className="my-10">
       <div className="text-center my-12 ">
-        <h2 className="text-4xl font-bold  ">
+        <h3 className="text-4xl font-bold  ">
           Why <span className="text-orange-600">Choose</span> us?
-        </h2>
+        </h3>
       </div>
       <div
         className="bg-cover bg-center py-16"
@@ -48,7 +48,7 @@ const WhyChooseSection = () => {
               className="bg-white p-6 rounded-lg shadow-lg text-left"
             >
               <div className="text-6xl mb-4">{service.icon}</div>{' '}
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+              <h4 className="text-xl font-semibold mb-2">{service.title}</h4>
               <p className="text-gray-600">{service.description}</p>
             </div>
           ))}

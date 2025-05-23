@@ -265,9 +265,9 @@ function CustomCallBackReq({ setShowCallBackForm }) {
                 modal.status === 'success' ? 'text-green-600' : 'text-red-600'
               }`}
             >
-              <h2 className="text-lg font-bold">
+              <h3 className="text-lg font-bold">
                 {modal.status === 'success' ? 'Success' : 'Error'}
-              </h2>
+              </h3>
               <p className="mt-2">{modal.message}</p>
               <button
                 onClick={closeModal}

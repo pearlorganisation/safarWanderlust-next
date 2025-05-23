@@ -62,11 +62,11 @@ const AboutSectionInFeature = ({ title, description, activeIndexM, id,routeMap }
       <div className="flex sm:hidden md:hidden flex-col items-center justify-center flex-shrink-0">
         {/* Content Section (dynamic text based on active index) */}
         <div className="flex flex-col items-center justify-center overflow-hidden p-8">
-          <h2 className="text-xl font-nunitoregular400 text-white mb-1 sm:text-start md:text-center text-center">
+          <h3 className="text-xl font-nunitoregular400 text-white mb-1 sm:text-start md:text-center text-center">
             <span className="text-white font-nunitoregular400 sm:text-start md:text-center text-center">
               {title}
             </span>
-          </h2>
+          </h3>
           <p className="text-white text-xs text-center mb-4">{description}</p>
           <button
             onClick={() => router.push(`${USERS_PAGE.ITINERARY}/${routeMap}`)}

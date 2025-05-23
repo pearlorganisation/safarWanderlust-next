@@ -100,9 +100,9 @@ const Summary = ({ prepeople }) => {
 
   return (
     <div className="w-full rounded-lg bg-white p-6 shadow-lg md:w-[25%]">
-      <h2 className="mb-4 text-center text-2xl font-semibold">
+      <h3 className="mb-4 text-center text-2xl font-semibold">
         Booking Summary
-      </h2>
+      </h3>
       <p className="mb-6 text-center text-gray-500">
         To confirm your booking, pay 10% of the total amount. 40% will be
         collected before the trip, and the remaining 50% at the start of your
@@ -113,7 +113,7 @@ const Summary = ({ prepeople }) => {
 
       {prepeople.map((traveler, index) => (
         <div key={index} className="mb-2 text-xs">
-          <h3 className="mb-2 font-semibold">Person {index + 1}</h3>
+          <h4 className="mb-2 font-semibold">Person {index + 1}</h4>
 
           <div className="mb-1 flex items-center justify-between">
             <span>Starting Point: {traveler.startingPoint.name}</span>
