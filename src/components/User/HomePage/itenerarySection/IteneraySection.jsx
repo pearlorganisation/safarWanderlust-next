@@ -58,9 +58,9 @@ const ItineraryPSection = () => {
 
   return (
     <div className=" md:p-14">
-      <h1 className="mb-10 text-center font-titleMedium text-2xl md:text-5xl">
+      <h2 className="mb-10 text-center font-titleMedium text-2xl md:text-5xl">
          Explore all <span className="text-orange-500">Packages</span>
-      </h1>
+      </h2>
 
       {/* Category Scroll Section */}
       <div className="mb-10 flex items-center justify-between">

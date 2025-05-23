@@ -23,6 +23,7 @@ import Gallery from "./User/HomePage/galaryView/GalaryView";
 import Testimonial from './User/HomePage/reviewSection/ReviewSection'
 import Footer from "./User/Footer/Footer";
 import { fetchTermAndCondition } from "@/lib/thunks/fetchTermAndCondition";
+import Head from "next/head";
 
 
 function Home() {
@@ -65,12 +66,18 @@ function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
       </Helmet> */}
+      {/* <Head>
+        <title>My Awesome Website</title>
+        <meta name="description" content="Welcome to my awesome website built with Next.js!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head> */}
       <div
         className="hidden flex-col items-center bg-cover bg-top bg-no-repeat pb-10 sm:bg-center md:flex md:bg-top"
         style={{
           backgroundImage: `url(${Background.src})`
         }}
       >
+        <h1 className="invisible">Safar Wanderlust</h1>
         <div className="mt-[45rem] max-w-screen sm:mt-[40rem] lg:mt-[45rem] xl:mt-[45rem]">
           <FeaturedSection />
         </div>
@@ -93,7 +100,7 @@ function Home() {
       <JourneySection />
       <Gallery />
      <Testimonial />
-     <Footer />
+     {/* <Footer /> */}
     </div>
   );
 }

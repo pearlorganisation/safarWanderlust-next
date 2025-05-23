@@ -85,12 +85,12 @@ const DayAccordion = ({ dayDetail,activeDay,setActiveDay }) => {
             {activiteis && activiteis[0].description != '' && (
               <div className="p-4  mx-auto">
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-2xl flex items-center font-titleMedium">
+                  <h3 className="text-2xl flex items-center font-titleMedium">
                     <span className="mr-4">
                       <FaSkiing color="white" />
                     </span>
                     Activities
-                  </h2>
+                  </h3>
                 </div>
                 <div className=" md:flex-row">
                   <div className="p-4">
@@ -264,7 +264,7 @@ const DayAccordion = ({ dayDetail,activeDay,setActiveDay }) => {
             <p>{description}</p>
             {activiteis && activiteis[0].description != '' && (
               <div className="py-3 px-0  mx-auto">
-                <h2 className="text-base font-titleRegular">Activities</h2>
+                <h3 className="text-base font-titleRegular">Activities</h3>
                 <div className=" md:flex-row">
                   <div className="p-2">
                     <ul>

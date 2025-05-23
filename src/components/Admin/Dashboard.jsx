@@ -233,8 +233,8 @@ function Dashboard() {
 
   return (
     <div className=" h-screen w-full flex  bg-white">
-      <div className="w-full bg-white p-16 rounded-2xl animate-fadeIn ml-0 sm:ml-60 ">
-        <div className="flex justify-end   mb-6 cursor-pointer select-none">
+      <div className="w-[80%]   pl-16 pt-8 rounded-2xl animate-fadeIn ml-0 sm:ml-60 ">
+        <div className="flex justify-end  mr-72 mb-6 cursor-pointer select-none">
           <div
             className="transition-transform transform duration-75 active:scale-95"
             onClick={fetch_dashboard_data}
@@ -246,8 +246,8 @@ function Dashboard() {
           </div>
         </div>
         <AdminTopbar topbar_title={'My Dashboard'} />
-        <div className="w-full flex ">
-          <div className="w-full mr-6">
+        <div className="w-[70%] flex ">
+          <div className="w-[70%]  mr-6">
             <div className="flex gap-7 mt-6 ">
               <div className="flex flex-1 flex-wrap justify-between px-4 pr-6 py-4 bg-white z-20 shadow-md shadow-[rgba(0, 0, 0, 0.25)] rounded-md">
                 <div className="mr-9">
@@ -388,7 +388,7 @@ function Dashboard() {
                 to_disable={true}
               /> */}
             </div>
-            <div className="chart-container">
+            <div className="chart-container ">
               <BarChart
                 xAxis={[
                   {
@@ -430,7 +430,7 @@ function Dashboard() {
                   disableTicks: true
                 }}
                 grid={{ horizontal: true }}
-                width={800}
+                width={500}
                 height={300}
               />
               <style>{`

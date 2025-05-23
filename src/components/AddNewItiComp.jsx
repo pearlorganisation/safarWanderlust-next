@@ -1118,13 +1118,13 @@ function AddNewItiComp({
                     </div>
                   )}
                 </div>
-                <h2 className="font-nunitoregular400 mt-4  text-[34px]">
+                <h3 className="font-nunitoregular400 mt-4  text-[34px]">
                   {
                     <span>
                       Itinerary <strong>Pricing</strong>
                     </span>
                   }
-                </h2>
+                </h3>
                 <div className="w-full text-start mt-4">
                   <CustomText content={"Package Details"} fontsize="16px" />
                 </div>

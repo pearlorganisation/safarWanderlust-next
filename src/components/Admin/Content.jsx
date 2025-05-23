@@ -1226,8 +1226,8 @@ function Content() {
     <div className=" h-screen w-full flex  bg-white">
       <div className="w-full bg-white p-16 rounded-2xl animate-fadeIn ml-0 sm:ml-52 ">
         <AdminTopbar topbar_title={'Content'} />
-        <div className="flex gap-10  ">
-          <div>
+        <div className="flex gap-10  w-[80%]">
+          <div className=''>
             <div className="flex  justify-start gap-4 mt-10">
               <div className="flex  flex-wrap justify-between px-4 pr-6 py-8 bg-white z-20 shadow-md shadow-[rgba(0, 0, 0, 0.25)] rounded-md">
                 <div className="flex">

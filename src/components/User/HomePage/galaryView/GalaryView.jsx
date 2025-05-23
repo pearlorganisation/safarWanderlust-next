@@ -24,9 +24,9 @@ const Gallery = () => {
       <div className=" mb-0  md:p-24  ">
         <div className="relative"></div>
         <div className="mx-auto text-center">
-          <h2 className="mb-4 font-titleMedium  text-2xl md:text-5xl">
+          <h3 className="mb-4 font-titleMedium  text-2xl md:text-5xl">
             Snapshots of <span className="text-orange-500">Safar</span>
-          </h2>
+          </h3>
           <p className="text-[rgba(20, 20, 22, 0.4)] mx-auto mb-8 whitespace-pre-line font-titleRegular text-sm md:text-base">
             {`With Safar Wanderlust, every photo tells a tale of adventure, connection, and discovery. Step into our travelers' journeys,\n and let their captured moments inspire your next adventure`}
           </p>

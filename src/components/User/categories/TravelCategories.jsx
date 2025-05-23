@@ -18,10 +18,10 @@ const TravelCategories = () => {
   return (
     <div className=" mx-auto md:p-6 ">
       <div className="text-center">
-        <h2 className="text-3xl font-bold mb-4">
+        <h3 className="text-3xl font-bold mb-4">
         Discover Group Travel by 
           <span className="text-orange-500"> Category</span>
-        </h2>
+        </h3>
         <p className="text-gray-600 mb-8">
         Discover curated categories with Safar Wanderlust for adventures that inspire and connect.
         </p>

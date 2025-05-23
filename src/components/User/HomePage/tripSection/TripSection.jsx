@@ -21,7 +21,7 @@ const TripsSection = ({ title, trips, background,routeMap }) => {
       className="h-fit bg-cover bg-no-repeat py-5  md:px-14"
     >
       <div className="flex items-center justify-between mb-4 ml-4 py-2 h-full">
-        <h2 className="text-3xl font-semibold text-black">{title}</h2>
+        <h3 className="text-3xl font-semibold text-black">{title}</h3>
 
         {trips.length >= 4 && (
           <button

@@ -130,7 +130,7 @@ export default function AdminTopbar({ topbar_title }) {
           </div>
         }
       /> */}
-      <div className="flex gap-7 justify-around items-center sm:ml-16 mr-10 ">
+      <div className="flex gap-7 justify-around items-center sm:ml-16 mr-72 ">
         {/* <Icons Logo_path={ChatIcon} />
         <Icons Logo_path={NotificationIcon} /> */}
         <div className="relative group cursor-pointer">

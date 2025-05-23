@@ -61,10 +61,10 @@ const CategorySection = () => {
   return (
     <section className="my-10 md:mx-14  md:my-20">
       <div className="mx-auto text-center">
-        <h2 className="mb-3 font-titleMedium text-2xl md:text-5xl">
+        <h3 className="mb-3 font-titleMedium text-2xl md:text-5xl">
         Discover Group Travel by{' '}
           <span className="text-orange-500">Category</span>
-        </h2>
+        </h3>
         <div className="mx-auto  mb-20 font-titleRegular text-sm text-gray-500 md:text-base">
           <p>
           Discover curated categories with Safar Wanderlust for adventures that inspire and connect.

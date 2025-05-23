@@ -2,6 +2,7 @@
 import React from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import Logo from '@/_assets/svgs/logo/Safarlogo.svg';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -12,7 +13,7 @@ const Footer = () => {
           {/* Navigation Links */}
           <div className="flex justify-between items-end">
             <div className="flex items-end justify-end h-20 object-cover">
-              <img className="  w-[163px] object-cover" src={Logo} alt="" />
+              <Image className="  w-[163px] object-cover" src={Logo} alt="" />
             </div>
             <div className="flex justify-center font-titleRegular space-x-8 mb-4">
               <a href="/" className="text-white hover:underline">
@@ -38,25 +39,25 @@ const Footer = () => {
             <div className=" flex-wrap flex  justify-center space-x-4 mb-4">
               <a
                 href="https://www.facebook.com/safarwanderlust/"
-                className="p-3 bg-white rounded-lg hover:bg-gray-700 transition duration-300"
+                className="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300"
               >
                 <FaFacebookF />
               </a>
               <a
                 href="https://twitter.com/SafarWanderlust/"
-                className="p-3 bg-white rounded-lg hover:bg-gray-700 transition duration-300"
+                className="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300"
               >
                 <FaTwitter />
               </a>
               <a
                 href="https://www.instagram.com/safar_wanderlust/"
-                className="p-3 bg-white rounded-lg hover:bg-gray-700 transition duration-300"
+                className="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300"
               >
                 <FaInstagram />
               </a>
               <a
                 href="https://in.linkedin.com/company/safar-wanderlust/"
-                className="p-3 bg-white rounded-lg hover:bg-gray-700 transition duration-300"
+                className="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300"
               >
                 <FaLinkedinIn />
               </a>
@@ -72,7 +73,7 @@ const Footer = () => {
       <footer className="bg-gray-900 py-4 text-white md:hidden  w-full block">
         <div className=" py-4 px-8 flex justify-between items-center border-b-2 border-gray-400 ">
           <div className=" flex flex-col items-center justify-center">
-            <img className="h-20 w-full " src={Logo} alt="" />
+            <Image className="h-20 w-full " src={Logo} alt="" />
             <div className="flex  justify-center space-x-2 my-4">
               <a
                 href="https://www.facebook.com/safarwanderlust/"

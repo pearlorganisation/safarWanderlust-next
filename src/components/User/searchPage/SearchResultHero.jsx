@@ -69,10 +69,10 @@ const SearchResultsHero = () => {
     <>
       <section className="bg-white md:block hidden py-12 text-center">
         <div className="mx-auto">
-          <h1 className="text-5xl font-titleMedium">
+          <h2 className="text-5xl font-titleMedium">
             Search result for{' '}
             <span className="text-orange-500">{searchedParams.search}</span>
-          </h1>
+          </h2>
           <p className="text-gray-500 font-titleRegular w-[30%] mx-auto mt-4">
             {/* Lorem ipsum dolor sit amet consectetur. Enim semper non pretium
             dolor in blandit est venenatis metus risus. */}
@@ -193,10 +193,10 @@ const SearchResultsHero = () => {
       </section>
       <section className="bg-white md:hidden font-titleRegular block py-4 text-center">
         <div className="mx-auto">
-          <h1 className="text-2xl font-bold">
+          <h2 className="text-2xl font-bold">
             Search result for{' '}
             <span className="text-orange-500">{searchedParams.search}</span>
-          </h1>
+          </h2>
           <p className="text-gray-500 mx-auto mt-2 px-4">
             {/* Lorem ipsum dolor sit amet consectetur. Enim semper non pretium
             dolor in blandit est venenatis metus risus. */}
