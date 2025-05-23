@@ -1,0 +1,26 @@
+name: Deploy to Hostinger VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      - name: Copy files to VPS using sshpass and scp
+        env:
+          VPS_HOST: 88.222.241.171      # Hostinger VPS IP or domain
+          VPS_USER: root       # VPS username
+          VPS_PASS: G.6yiP(Sw4i7-@q3(KkK       # VPS password
+          DEST_PATH: /frontend           # destination folder on VPS
+        run: |
+          sshpass -p "$VPS_PASS" scp -r ./ $VPS_USER@$VPS_HOST:$DEST_PATH
