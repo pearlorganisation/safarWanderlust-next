@@ -48,31 +48,28 @@ export default async function Image({ params }) {
         console.log(`[OG IMAGE GEN SIMPLIFIED 1] Attempting to render image with src: ${imageUrl}`);
         return new ImageResponse(
             (
-                <div style={{ // This div is crucial for Satori to have a root layout element
+                <div style={{  
                     width: '100%',
                     height: '100%',
-                    display: 'flex', // Use flex to control image
+                    display: 'flex',  
                     justifyContent: 'center',
                     alignItems: 'center',
-                    background: 'lightgray', // So we can see the canvas
+                    background: 'lightgray',  
                 }}>
                     <img
                         src={imageUrl}
-                        alt="Project" // Simple alt
-                        // Satori/ImageResponse often requires explicit width/height on the img tag itself
-                        // especially if the parent isn't using Tailwind or more complex flex setups.
-                        width={size.width - 40} // Example: fill most of the canvas with some padding
+                        alt="Project"  
+                        width={size.width - 40} 
                         height={size.height - 40}
                         style={{
-                            objectFit: 'contain', // Important
+                            objectFit: 'contain',  
                         }}
                     />
                 </div>
             ),
             {
                 ...size,
-                // For debugging, remove custom fonts for now
-            }
+             }
         );
 
     } catch (error) {

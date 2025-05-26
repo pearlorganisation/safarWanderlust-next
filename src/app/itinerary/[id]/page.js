@@ -3,12 +3,16 @@ import ItineraryPage from "@/components/User/itineraryPage/ItineraryPage";
 export async function generateMetadata({
     params
 }) {
-    const res = await fetch(`https://65.2.122.145.nip.io/user/itineraries/${params?.id}`);
+    const id = await params?.id
+    const res = await fetch(`https://65.2.122.145.nip.io/user/itineraries/${id}`);
     const projectData = await res.json(); // Renamed to avoid conflict with 'project' variable name if you declare one later
     // console.log("the res is", projectData);
+    console.log("the projectdata is", projectData)
     const title = projectData?.data?.title ?? 'Project Preview';
     const description = projectData?.data?.description ?? "Explore this project";
-    const pageUrl = `https://safarwanderlust.com/itinerary/${params.id}`; // The canonical URL of THIS page
+    let testing = true
+    const pageUrl = testing ? `http://88.222.241.171:3000/itinerary/${id}` : `https://safarwanderlust.com/itinerary/${params.id}`; // The canonical URL of THIS page
+    
     const ogImageUrl = `${pageUrl}/opengraph-image`; // The URL for the OG image itself
 
     return {
