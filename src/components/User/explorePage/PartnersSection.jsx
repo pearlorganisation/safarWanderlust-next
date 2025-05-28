@@ -35,7 +35,7 @@ const PartnersSection = () => {
   ]
 
   return (
-    <div className="mb-2 md:py-16 py-8 w-full bg-gray-900">
+    <div className=" md:py-16 py-8 w-full bg-gray-900">
       <h2 className="text-center md:text-3xl text-2xl font-titleMedium text-white md:mb-6 mb-2">
         Our Trusted Travel Partners
       </h2>
