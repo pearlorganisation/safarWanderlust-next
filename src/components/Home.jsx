@@ -21,9 +21,10 @@ import TripsPage from "./User/HomePage/tripSection/TripPage";
 import JourneySection from "./User/HomePage/journeysection/JourneySection";
 import Gallery from "./User/HomePage/galaryView/GalaryView";
 import Testimonial from './User/HomePage/reviewSection/ReviewSection'
-import Footer from "./User/Footer/Footer";
+
 import { fetchTermAndCondition } from "@/lib/thunks/fetchTermAndCondition";
 import Head from "next/head";
+import PartnersSection from "./User/explorePage/PartnersSection";
 
 
 function Home() {
@@ -43,34 +44,7 @@ function Home() {
 
   return (
     <div className="w-full">
-      {/* <Helmet>
-        <title>Home - Safar Wanderlust</title>
-        <meta
-          name="description"
-          content="Discover curated categories with Safar Wanderlust for adventures that inspire and connect. Group Trips, Winter Special Trips, and Customize Trips available."
-        />
-        <meta
-          name="keywords"
-          content="trips, kashmir, group trips, winter special trips, safar wanderlust"
-        />
-        <meta name="author" content="Safar Wanderlust" />
-        <meta
-          property="og:title"
-          content="Safar Wanderlust - Explore the World with Us"
-        />
-        <meta
-          property="og:description"
-          content="Join Safar Wanderlust for unforgettable adventures. Explore categories and itineraries curated for an extraordinary experience."
-        />
-        <meta property="og:image" content={Background} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-      </Helmet> */}
-      {/* <Head>
-        <title>My Awesome Website</title>
-        <meta name="description" content="Welcome to my awesome website built with Next.js!" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head> */}
+       <h1 className="hidden">Safar Wanderlust</h1>
       <div
         className="hidden flex-col items-center bg-cover bg-top bg-no-repeat pb-10 sm:bg-center md:flex md:bg-top"
         style={{
@@ -99,7 +73,7 @@ function Home() {
       <JourneySection />
       <Gallery />
      <Testimonial />
-     <Footer />
+     <PartnersSection />
     </div>
   );
 }

@@ -67,6 +67,7 @@ const AboutSectionInFeature = ({ title, description, activeIndexM, id,routeMap }
               {title}
             </span>
           </h2>
+          
           <p className="text-white text-xs text-center mb-4">{description}</p>
           <button
             onClick={() => router.push(`${USERS_PAGE.ITINERARY}/${routeMap}`)}

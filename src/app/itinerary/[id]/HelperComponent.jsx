@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Head from "next/head";
+import Head from "next/head"; // Keep if you intend to use it, otherwise remove
 import { fetchItenerayByName } from "@/lib/thunks/fetchItenerayByName";
 import CustomModal from "@/components/CustomModal";
 import BannerSlider from "@/components/User/HomePage/banners/BannerSlider";
@@ -15,49 +15,90 @@ import TripPdfDownloadBanner from "@/components/User/itineraryPage/TripPdfDownlo
 import { useParams } from "next/navigation";
 import TravellerForm from "@/components/User/itineraryPage/TravellerForm";
 
-const ItineraryPage = () => {
+// A simple loader component (you can replace this with a spinner or a more complex skeleton loader)
+const Loader = () => (
+  <div className="flex justify-center items-center h-screen">
+    <p className="text-2xl font-semibold">Loading itinerary...</p>
+    {/* You could add a spinner SVG or component here */}
+  </div>
+);
+
+const ItineraryPage = ({ldData}) => {
   const dispatch = useDispatch();
   const params = useParams();
   const { id } = params;
-  const iteneray = useSelector((state) => state.global.itenerayByID) || [];
+  
+  // It's generally better to default to null or an empty object if you expect an object,
+  // rather than an empty array, if itenerayByID is an object.
+  // Let's assume it's an object.
+  const iteneray = useSelector((state) => state.global.itenerayByID) || {};
 
+  const [isLoading, setIsLoading] = useState(true); // Initialize loading to true
   const [showCallBackForm, setShowCallBackForm] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   
-  const [selectedBatch, setSelectedBatch] = useState('')
-  const [selectedPackage, setSelectedPackage] = useState(null) // State for selected package
-  const [selectedStartingPoint, setSelectedStartingPoint] = useState(null) // State for full selected starting point object
-  const [selectedDroppingPoint, setSelectedDroppingPoint] = useState(null) // State for full selected dropping point object
+  const [selectedBatch, setSelectedBatch] = useState('');
+  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [selectedStartingPoint, setSelectedStartingPoint] = useState(null);
+  const [selectedDroppingPoint, setSelectedDroppingPoint] = useState(null);
   
-  function openPopup()
-  {
+  function openPopup() {
      setIsPopupOpen((prev)=> !prev);
   }
   const closePopup = () => {
-    setIsPopupOpen(false) // Close popup
-    setShowCallBackForm(true)
+    setIsPopupOpen(false);
+    setShowCallBackForm(true);
   }
+
   useEffect(() => {
     if (id) {
-      dispatch(fetchItenerayByName(id));
-      console.log("Fetched data for ID:", id);
+      setIsLoading(true); // Set loading to true before dispatching
+      dispatch(fetchItenerayByName(id))
+        .then((response) => { // Assuming fetchItenerayByName returns a promise that resolves after fetching
+          console.log("Fetched data for ID:", id, response);
+          // Data is now in Redux store, useSelector will trigger a re-render
+        })
+        .catch((error) => {
+          console.error("Failed to fetch itinerary:", error);
+          // Optionally, you could set an error state here to display an error message
+        })
+        .finally(() => {
+          setIsLoading(false); // Set loading to false after the fetch attempt is complete
+        });
+    } else {
+      setIsLoading(false); // If there's no ID, nothing to load
     }
   }, [dispatch, id]);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  // It's good practice to check if essential data exists before trying to render it,
+  // especially after loading is done.
+  // This handles cases where 'id' was present, loading finished, but 'iteneray' is still empty or undefined.
+  if (!iteneray || Object.keys(iteneray).length === 0 && id) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-2xl font-semibold">Itinerary not found or data is unavailable.</p>
+      </div>
+    );
+  }
+
+
   return (
     <div>
-      {/* <Head>
-        <title>{iteneray.title || "Itinerary Details"} - Safar Wanderlust</title>
-        <meta
-          name="description"
-          content={
-            iteneray.description ||
-            "Explore detailed itineraries for your dream destinations with Safar Wanderlust."
-          }
-        />
-        <meta property="og:title" content={iteneray.title || "Itinerary Details"} />
-        <meta property="og:url" content={`https://yourdomain.com/itinerary/${id}`} />
-      </Head> */}
+    <Head>
+
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(ldData),
+        }}
+      />
+
+    </Head>
 
       {/* Image & Feature Icons Section */}
       <ItenerayImageSection
@@ -74,9 +115,9 @@ const ItineraryPage = () => {
       />
 
       {/* Main Content Layout */}
-      <div className="grid lg:grid-cols-[65%_35%]   ">
+      <div className="grid lg:grid-cols-[65%_35%]">
         {/* Left Content Section */}
-        <div className="  ">
+        <div>
           <ItinerarySection
             notes={iteneray.notes}
             dayDetails={iteneray.day_details}
@@ -87,8 +128,7 @@ const ItineraryPage = () => {
         </div>
 
         {/* Right Pricing Section (Sticky + Scrollable) */}
-        <div className="   justify-start   md:p-2 sticky top-0 h-full md:h-max  flex flex-col bg-gray-900 shadow-lg ">
-          {/* Pricing Component md:px-16 */}
+        <div className="min-h-screen justify-start md:p-2 sticky top-0 h-full md:h-max flex flex-col bg-gray-900 shadow-lg">
           <PricingComponent
            openPopup={openPopup}
             selectedBatch={selectedBatch}
@@ -107,8 +147,7 @@ const ItineraryPage = () => {
             pickup_point={iteneray.pickup_point}
           />
 
-          {/* Trip PDF Download Banner at Bottom */}
-          <div className="flex flex-col justify-center items-center ">
+          <div className="flex flex-col justify-center items-center">
             <TripPdfDownloadBanner pdfLink={iteneray.itin_pdf} />
           </div>
         </div>
@@ -121,7 +160,7 @@ const ItineraryPage = () => {
         title={<span>Add Traveller Information</span>}
         description = "The information you fill below is needed to quote and book your trip."
         restContent={   
-        <div className="w-[65vw] max-w-screen-xl ">
+        <div className="w-[65vw] max-w-screen-xl">
             <TravellerForm
               isOpen={isPopupOpen}
               onClose={closePopup}
@@ -137,11 +176,10 @@ const ItineraryPage = () => {
       />
       <BannerSlider />
       <PartnersSection />
-      {iteneray && <ReviewSection page="itinerary" itineraryId={iteneray.id} />}
+      {/* Ensure iteneray.id exists before rendering ReviewSection if it depends on it */}
+      {iteneray && iteneray.id && <ReviewSection page="itinerary" itineraryId={iteneray.id} />}
     </div>
   );
 };
 
 export default ItineraryPage;
-
-

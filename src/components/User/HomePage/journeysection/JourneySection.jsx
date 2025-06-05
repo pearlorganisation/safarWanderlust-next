@@ -3,18 +3,18 @@
 import React from 'react'
 import Image from "next/image";
 
-import MapIcon from '@/_assets/svgs/user/MapIcon.svg'
-import BackpackIcon from '@/_assets/svgs/user/backpack_icon.webp'
-import TentIcon from '@/_assets/svgs/user/camping_tent_icon.webp'
-import Icon1 from '@/_assets/svgs/user/personalized_itineraries.svg'
-import Memories from '@/_assets/svgs/user/lasting_memory.svg'
-import PerfectTrip from '@/_assets/svgs/user/perfect_trip.svg'
-import SeamlessTravel from '@/_assets/svgs/user/seamless_travel.svg'
-import LeftFoot from '@/_assets/svgs/user/Left_Foot.svg'
-import RightFoot from '@/_assets/svgs/user/Right_Foot.svg'
-import Icon2 from '@/_assets/svgs/user/seamless_experience.svg'
-import Icon3 from '@/_assets/svgs/user/seamless_experience.svg'
-import Icon4 from '@/_assets/svgs/user/unforgettable_memories.svg'
+import MapIcon from '../../../../_assets/svgs/user/MapIcon.svg'
+import BackpackIcon from '../../../../_assets/svgs/user/backpack_icon.webp'
+import TentIcon from '../../../../_assets/svgs/user/camping_tent_icon.webp'
+import Icon1 from '../../../../_assets/svgs/user/personalized_itineraries.svg'
+import Memories from '../../../../_assets/svgs/user/lasting_memory.svg'
+import PerfectTrip from '../../../../_assets/svgs/user/perfect_trip.svg'
+import SeamlessTravel from '../../../../_assets/svgs/user/seamless_travel.svg'
+import LeftFoot from '../../../../_assets/svgs/user/Left_Foot.svg'
+import RightFoot from '../../../../_assets/svgs/user/Right_Foot.svg'
+import Icon2 from '../../../../_assets/svgs/user/seamless_experience.svg'
+import Icon3 from '../../../../_assets/svgs/user/seamless_experience.svg'
+import Icon4 from '../../../../_assets/svgs/user/unforgettable_memories.svg'
 
 const JourneySection = () => {
   return (
@@ -29,37 +29,37 @@ const JourneySection = () => {
         <div className="relative">
           <Image src={MapIcon} alt="Map Icon" layout="fill" objectFit="cover" />
           <div>
-            <h1 className="mx-auto font-titleMedium text-2xl md:text-5xl">
+            <h2 className="mx-auto font-titleMedium text-2xl md:text-5xl">
               Experiences that Last
               <span className="text-orange-500"> Beyond </span>the Trip
-            </h1>
+            </h2>
 
             <div className="mt-10  md:mx-20">
               <div className=" flex h-[32%] flex-col items-center justify-center  sm:flex-col md:mb-20 md:flex-row ">
                 <div className=" mb-8 flex flex-col items-center justify-center text-center sm:mb-8 md:mb-0">
                   <Image className="my-2.5" src={Memories} alt="" />
 
-                  <h1 className="mb-2 text-xl  font-bold md:text-2xl ">
+                  <h2 className="mb-2 text-xl  font-bold md:text-2xl ">
                     Shared Moments, Amplified Joy
-                  </h1>
+                  </h2>
                   <p className="w-auto  whitespace-pre-line text-xs md:w-[50%]">
                     {`Every adventure is better when shared. From the first step to the last laugh, group travel turns ordinary trips into extraordinary memories, sparking joy that lingers.`}
                   </p>
                 </div>
                 <div className=" mb-8 flex flex-col items-center justify-center text-center sm:mb-8 md:mb-0">
                   <Image className="my-2.5" src={PerfectTrip} alt="" />
-                  <h1 className="mb-2 text-xl  font-bold md:text-2xl ">
+                  <h2 className="mb-2 text-xl  font-bold md:text-2xl ">
                     Connections That Go Deeper
-                  </h1>
+                  </h2>
                   <p className="w-auto whitespace-pre-line text-xs md:w-[50%]">
                     {`Our journeys are designed to bring people together. Through shared experiences, each traveler becomes part of a story, creating bonds that feel like they were always meant to be.`}
                   </p>
                 </div>
                 <div className="  mx-auto  flex flex-col items-center justify-center text-center md:hidden">
                   <Image className="my-2.5" src={SeamlessTravel} alt="" />
-                  <h1 className="mb-2 text-xl font-bold md:text-2xl ">
+                  <h2 className="mb-2 text-xl font-bold md:text-2xl ">
                     Memories That Stay Long After
-                  </h1>
+                  </h2>
                   <p className="whitespace-pre-line text-xs ">
                     {`It’s not just about where we go; it’s about the lasting impact. Each journey leaves behind stories, friendships, and experiences that live on, well beyond the trip.`}
                   </p>
@@ -68,9 +68,9 @@ const JourneySection = () => {
               <div className="hidden h-[32%] md:block ">
                 <div className=" mx-auto flex flex-col items-center justify-center text-center">
                   <Image className="my-2.5" src={SeamlessTravel} alt="" />
-                  <h1 className="mb-2 text-xl font-bold md:text-2xl ">
+                  <h2 className="mb-2 text-xl font-bold md:text-2xl ">
                     Memories That Stay Long After
-                  </h1>
+                  </h2>
                   <p className="w-auto whitespace-pre-line text-xs md:w-[23%]">
                     {`It’s not just about where we go; it’s about the lasting impact. Each journey leaves behind stories, friendships, and experiences that live on, well beyond the trip.`}
                   </p>

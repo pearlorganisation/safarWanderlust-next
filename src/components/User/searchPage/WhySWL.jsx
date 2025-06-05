@@ -74,7 +74,7 @@ const WhySafarWandarLust = () => {
                   key={index}
                   className="flex w-[25%] flex-col items-start justify-center text-left p-5 "
                 >
-                  <img src={benefit.icon} alt="" />
+                  <img src={benefit?.icon||'https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ='} alt="" />
                   <h3 className="text-xl font-bold mt-3 mb-3">
                     {benefit.title}
                   </h3>
@@ -96,7 +96,7 @@ const WhySafarWandarLust = () => {
                   key={index}
                   className="flex w-[25%] flex-col items-start justify-center text-left p-5 "
                 >
-                  <img src={benefit.icon} alt="" />
+                  <img src={benefit?.icon} alt="" />
                   <h3 className="text-xl font-bold mt-3 mb-3">
                     {benefit.title}
                   </h3>

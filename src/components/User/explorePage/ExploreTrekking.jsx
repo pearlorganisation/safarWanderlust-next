@@ -22,12 +22,12 @@ const ExploreTrekking = ({ description, title = '', keyPoints = [] }) => {
 
   return (
     <section className="text-center py-10 bg-white">
-      <h2 className="md:text-4xl text-2xl font-titleMedium md:mb-4 my-2">
+      <h1 className="md:text-4xl text-2xl font-titleMedium md:mb-4 my-2">
         Explore {title}
         <span role="img" aria-label="fire" className="ml-2">
           🔥
         </span>
-      </h2>
+      </h1>
       <p className="text-lg text-gray-600 font-titleRegular max-w-xl mx-auto mb-12">
         {description}
       </p>

@@ -21,9 +21,9 @@ function OtherItineraries() {
     <>
       <div className=" md:block font-titleRegular hidden  w-full my-8  px-14">
         <div className="text-center mx-auto py-5">
-          <h1 className="text-5xl font-titleMedium">
+          <h2 className="text-5xl font-titleMedium">
             Explore other <span className="text-tertiaryText">Itineraries</span>{' '}
-          </h1>
+          </h2>
         </div>
 
         {/* Display Itinerary Cards */}
@@ -58,10 +58,10 @@ function OtherItineraries() {
       </div>
       <div className=" md:hidden font-titleRegular block  w-full   px-1">
         <div className="text-center mx-auto mb-5">
-          <h1 className="text-2xl ">
+          <h2 className="text-2xl ">
             Explore other <span className="text-tertiaryText">Itineraries</span>{' '}
             near Uttarakhand
-          </h1>
+          </h2>
         </div>
 
         {/* Display Itinerary Cards */}
