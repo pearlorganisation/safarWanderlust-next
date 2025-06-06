@@ -169,7 +169,7 @@ const TravellerForm = ({
   return (
     <>
       <div className="bg-white mx-auto w-full max-w-6xl md:block hidden text-start rounded-lg relative max-h-[100vh] overflow-y-auto no-scrollbar">
-        <h3 className="text-2xl font-semibold text-gray-800 mb-4 text-center"></h3>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center"></h2>
 
         <p className="text-center text-gray-600 mb-6"></p>
 
@@ -207,7 +207,7 @@ const TravellerForm = ({
               </div>
             ) : (
               <div>
-                <h4 className="font-semibold">Person {index + 1}</h4>
+                <h3 className="font-semibold">Person {index + 1}</h3>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
                     <CustomInput
@@ -535,7 +535,7 @@ const TravellerForm = ({
               </div>
             ) : (
               <div>
-                <h4 className="font-semibold">Person {index + 1}</h4>
+                <h3 className="font-semibold">Person {index + 1}</h3>
                 <div className="grid grid-cols-1 gap-4 mb-4">
                   {/* First Name */}
                   <div>

@@ -26,7 +26,7 @@ const HotelCarousel = ({hotels}) => {
       <section id="hotels" className="relative p-8 hidden md:block">
         <div className="flex items-center mb-4">
           <FaHotel color="white" className="text-white text-xl mr-2" />
-          <h3 className="text-2xl font-titleMedium text-white">Hotel</h3>
+          <h2 className="text-2xl font-titleMedium text-white">Hotel</h2>
         </div>
         <div className="relative flex justify-center items-center">
           {/* Previous Arrow */}
@@ -81,7 +81,7 @@ const HotelCarousel = ({hotels}) => {
             size={12}
             className="text-white text-xl mr-2"
           />
-          <h3 className="  text-white font-titleRegular">Hotel</h3>
+          <h2 className="  text-white font-titleRegular">Hotel</h2>
         </div>
         <div className="relative flex justify-center items-center">
           {/* Previous Arrow */}

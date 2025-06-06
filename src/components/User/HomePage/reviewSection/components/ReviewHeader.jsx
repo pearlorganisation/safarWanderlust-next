@@ -5,9 +5,9 @@ const ReviewHeader = ({ page }) => {
     return (
       <div className="mb-4 md:mb-8 flex flex-col items-center text-center">
         <div>
-          <h3 className="mb-3 text-2xl md:text-3xl lg:text-4xl font-semibold">
+          <h2 className="mb-3 text-2xl md:text-3xl lg:text-4xl font-semibold">
             {page === 'home' ? 'What Our Travelers Say About Us' : 'Trip Reviews'}
-          </h3>
+          </h2>
           {page === 'home' && (
           <div className="mb-4 flex items-center justify-center space-x-2">
           <div className="flex space-x-1">

@@ -364,9 +364,9 @@ const Navbar = () => {
       <CustomModal
       padding={4}
         title={
-          <h2 className="md:text-4xl text-xl text-center mb-2">
+          <h1 className="md:text-4xl text-xl text-center mb-2">
             Customize <span className="text-black font-bold">Trip</span> 🔥
-          </h2>
+          </h1>
         }
         description={
           <p className="text-center md:w-[50%] mx-auto mb-6 text-gray-600">

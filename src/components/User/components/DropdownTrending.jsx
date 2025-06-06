@@ -13,7 +13,7 @@ const DropdownTrending = ({ title,  items , setState}) => {
   return (
     <div className=" w-[95%] mx-auto">
       <div className="flex items-center justify-between mb-4">
-        <h4 className="text-xl font-bold ">{title}</h4>
+        <h3 className="text-xl font-bold ">{title}</h3>
         <button
           onClick={() => router.push('/trending')}
           className="flex items-center justify-center text-sm p-2 transition duration-300 hover:rounded-full "
@@ -56,9 +56,9 @@ const DropdownTrending = ({ title,  items , setState}) => {
             key={index}
             className=" overflow-hidden  rounded-lg  flex flex-col justify-end h-32  text-white  bg-no-repeat  bg-cover bg-center hover:bg-gray-200 transition duration-300"
           >
-            <h5 className="text-sm font-semibold text-center bg-black/30 py-2 ">
+            <h4 className="text-sm font-semibold text-center bg-black/30 py-2 ">
               {item.title}
-            </h5>
+            </h4>
           
           </div>
         ))}

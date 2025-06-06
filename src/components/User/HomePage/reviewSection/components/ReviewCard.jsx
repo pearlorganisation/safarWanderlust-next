@@ -42,9 +42,9 @@ const ReviewCard = ({ review, page }) => {
               {review.reviewer_name[0]}
             </div>
           )}
-          <h4 className="text-[13px] md:text-base font-medium text-gray-800">
+          <h3 className="text-[13px] md:text-base font-medium text-gray-800">
             {review.reviewer_name}
-          </h4>
+          </h3>
         </div>
 
         <div className="flex space-x-0.5 md:space-x-1">
@@ -71,9 +71,9 @@ const ReviewCard = ({ review, page }) => {
                       className="h-10 w-10 rounded-lg object-cover flex-shrink-0"
                     />
                   )}
-                  <h5 className="text-xs md:text-sm font-medium text-gray-700 truncate">
+                  <h4 className="text-xs md:text-sm font-medium text-gray-700 truncate">
                     {review.itinerary.title}
-                  </h5>
+                  </h4>
                 </>
               ) : (
                 // Default content for discovering similar trips

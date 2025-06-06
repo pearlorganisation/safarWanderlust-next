@@ -55,7 +55,7 @@ function BookingSummaryPage() {
     <>
       <div className="md:block hidden">
         <div className="w-full text-center">
-          <h2 className="text-4xl">Himalayan Highlights Adventure</h2>
+          <h1 className="text-4xl">Himalayan Highlights Adventure</h1>
           <p className="my-4">
             From {prepeople[0]?.startingPoint.name} to{' '}
             {prepeople[0]?.droppingPoint.name} | Batch :{' '}
@@ -103,7 +103,7 @@ function BookingSummaryPage() {
       </div>
       <div className="md:hidden block">
         <div className="w-full text-center">
-          <h2 className="text-2xl">Himalayan Highlights Adventure</h2>
+          <h1 className="text-2xl">Himalayan Highlights Adventure</h1>
           <p className="my-2 text-xs">
             From {prepeople[0]?.startingPoint.name} to{' '}
             {prepeople[0]?.droppingPoint.name} | Batch :{' '}

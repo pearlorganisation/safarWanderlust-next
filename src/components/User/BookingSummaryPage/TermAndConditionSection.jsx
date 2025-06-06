@@ -18,9 +18,9 @@ function TermAndConditionSection() {
 
   return (
     <div className=" space-y-6 shadow-lg p-3 mb-5 mx-16 bg-white rounded">
-      <h2 className="md:text-4xl text-3xl text-black font-titleMedium w-full text-center">
+      <h1 className="md:text-4xl text-3xl text-black font-titleMedium w-full text-center">
         Term and Conditions
-      </h2>
+      </h1>
       {(
         <p className="text-center text-lg font-titleRegular text-gray-600 max-w-3xl mx-auto">
           If you proceed to pay you will be agreeing to our terms and conditions
@@ -34,7 +34,7 @@ function TermAndConditionSection() {
           </li>
         ))} */}
 
-        <h2> Array of Terms and Conditions</h2>
+        <h1> Array of Terms and Conditions</h1>
       </ol>
     </div>
   )

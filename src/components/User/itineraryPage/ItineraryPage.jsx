@@ -15,51 +15,7 @@ import FeaturesIcons from './featureIcons'
 import { useParams } from "next/navigation";
 import { fetchItenerayByName } from '@/lib/thunks/fetchItenerayByName'
 import CustomModal from '@/components/CustomModal'
-
-
-export async function generateMetadata({ params }) {
-  try {
-    // const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-    // const res = await getPerfumeById(params?.productId);
-
-    // if (!res || !res.data || Object.keys(res.data).length === 0) {
-    //   return {
-    //     title: "Not Found",
-    //     description: "The page you are looking for does not exist.",
-    //   };
-    // }
-
-    // const { perfume, details, banner, slug, gallery, keywords } = res.data;
-
-    // const gallerImages =
-      // gallery.length == 0 ? [] : gallery?.map((img) => img.path);
-
-    return {
-      metadataBase: new URL(`${baseUrl}`),
-      alternates: {
-        canonical: `${baseUrl}/api/v1/perfume/${slug}`,
-        languages: {
-          "en-US": "/en-US",
-          "de-DE": "/de-DE",
-        },
-      },
-      title:  "Perfume Details",
-      description:
-        "Explore our collection of exclusive perfumes.",
-      openGraph: {
-        title: "Perfume Details",
-        description:"Explore our collection of exclusive perfumes.",
-      },
-    };
-  } catch (err) {
-    console.error("Error Occurred in Metadata Generation:", err);
-    return {
-      title: "Not Found",
-      description: "The page you are looking for does not exist.",
-    };
-  }
-}
-
+// import { Helmet } from 'react-helmet-async'
 
 function ItineraryPage() {
   const dispatch = useDispatch()
@@ -125,7 +81,7 @@ function ItineraryPage() {
       <div className="container mx-auto py-8">
       {/* <CallBackForm showCallBackForm={showCallBackForm} setShowCallBackForm={setShowCallBackForm} /> */}
       {/* <Popup openPopup={openPopup} setOpenPopup={setOpenPopup} /> */}
-      <h2 className="text-3xl font-bold mb-4">{iteneray.title}</h2>
+      <h1 className="text-3xl font-bold mb-4">{iteneray.title}</h1>
       
       {/* Modified the grid layout to properly stack on mobile and handle overflow */}
       <div className="grid lg:grid-cols-[65%_35%] gap-4">

@@ -44,9 +44,9 @@ const CategoryPageCard = ({
           <div className=" absolute bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 h-full w-full"></div>
           <div className="relative z-10 flex flex-col justify-end items-center text-center h-full ">
             <div className="text-white p-2 bg-black w-full">
-              <h4 className="text-xl font-titleRegular  mx-auto  text-center">
+              <h3 className="text-xl font-titleRegular  mx-auto  text-center">
                 {title}
-              </h4>
+              </h3>
               {/* <p className="text-xs  mb-4">{description}</p> */}
             </div>
             {/* <div>

@@ -6,9 +6,9 @@ import Image from 'next/image'
 const AboutPaageHeroSection = () => {
   return (
     <section className="md:block hidden text-center py-16 bg-white">
-      <h2 className="text-4xl font-bold  mb-4">
+      <h1 className="text-4xl font-bold  mb-4">
         About <span className="text-orange-600"> Safar Wandarlust</span>
-      </h2>
+      </h1>
       <p className="text-xl text-gray-600 max-w-3xl mx-auto">
         Embark on thrilling trekking adventures through diverse landscapes, from
         rugged mountains to lush forests, and experience nature's beauty up

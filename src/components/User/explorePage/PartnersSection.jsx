@@ -35,10 +35,10 @@ const PartnersSection = () => {
   ]
 
   return (
-    <div className="mb-2 md:py-16 py-8 w-full bg-gray-900">
-      <h3 className="text-center md:text-3xl text-2xl font-titleMedium text-white md:mb-6 mb-2">
+    <div className=" md:py-16 py-8 w-full bg-gray-900">
+      <h2 className="text-center md:text-3xl text-2xl font-titleMedium text-white md:mb-6 ">
         Our Trusted Travel Partners
-      </h3>
+      </h2>
       <p className="text-center md:text-base text-sm mx-4 font-titleRegular md:mx-auto text-gray-400 md:mb-12 mb-4">
         At Safar Wanderlust, we believe group travel is all about shared
         memories and new adventures. <br />

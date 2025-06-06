@@ -3,7 +3,7 @@ import React from 'react'
 const PrivacyPolicy = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-4xl font-bold text-center mb-6">Privacy Policy</h2>
+      <h1 className="text-4xl font-bold text-center mb-6">Privacy Policy</h1>
       <p className="text-gray-600 mb-4">
         At Safar Wanderlust, your privacy is of utmost importance to us. This
         Privacy Policy outlines how we collect, use, and safeguard your personal
@@ -12,9 +12,9 @@ const PrivacyPolicy = () => {
         described in this policy.
       </p>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">
+      <h2 className="text-2xl font-semibold mt-6 mb-4">
         1. Information We Collect
-      </h3>
+      </h2>
       <p className="text-gray-600 mb-2">
         We collect the following types of information to provide and improve our
         services:
@@ -41,9 +41,9 @@ const PrivacyPolicy = () => {
         </li>
       </ul>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">
+      <h2 className="text-2xl font-semibold mt-6 mb-4">
         2. How We Use Your Information
-      </h3>
+      </h2>
       <p className="text-gray-600 mb-4">
         We use your information for the following purposes:
       </p>
@@ -70,9 +70,9 @@ const PrivacyPolicy = () => {
         </li>
       </ul>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">
+      <h2 className="text-2xl font-semibold mt-6 mb-4">
         3. Sharing Your Information
-      </h3>
+      </h2>
       <p className="text-gray-600 mb-4">
         We do not sell, rent, or share your personal information with third
         parties, except:
@@ -88,30 +88,30 @@ const PrivacyPolicy = () => {
         </li>
       </ul>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">4. Payment Security</h3>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">4. Payment Security</h2>
       <p className="text-gray-600 mb-4">
         All payment transactions are processed through secure, PCI-compliant
         third-party gateways. We do not store your payment details on our
         servers.
       </p>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">
+      <h2 className="text-2xl font-semibold mt-6 mb-4">
         5. Cookies and Tracking Technologies
-      </h3>
+      </h2>
       <p className="text-gray-600 mb-4">
         Our website uses cookies to enhance user experience, analyze website
         traffic, and remember preferences. You can manage cookie preferences
         through your browser settings.
       </p>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">6. Data Retention</h3>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">6. Data Retention</h2>
       <p className="text-gray-600 mb-4">
         We retain your personal information as long as necessary to fulfill the
         purposes outlined in this policy unless a longer retention period is
         required by law.
       </p>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">7. Your Rights</h3>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">7. Your Rights</h2>
       <p className="text-gray-600 mb-4">You have the right to:</p>
       <ul className="list-disc list-inside mb-4">
         <li>Access, update, or delete your personal information.</li>
@@ -129,22 +129,22 @@ const PrivacyPolicy = () => {
         .
       </p>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">8. Third-Party Links</h3>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">8. Third-Party Links</h2>
       <p className="text-gray-600 mb-4">
         Our website may contain links to third-party websites. We are not
         responsible for the privacy practices or content of these external
         sites.
       </p>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">
+      <h2 className="text-2xl font-semibold mt-6 mb-4">
         9. Changes to This Policy
-      </h3>
+      </h2>
       <p className="text-gray-600 mb-4">
         We may update this Privacy Policy from time to time. Changes will be
         posted on this page with the updated effective date.
       </p>
 
-      <h3 className="text-2xl font-semibold mt-6 mb-4">10. Contact Us</h3>
+      <h2 className="text-2xl font-semibold mt-6 mb-4">10. Contact Us</h2>
       <p className="text-gray-600 mb-4">
         If you have any questions or concerns about this Privacy Policy or your
         data, please contact us at:

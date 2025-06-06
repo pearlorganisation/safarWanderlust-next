@@ -50,7 +50,7 @@ const HomeCategoryCard = ({
       <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-50 transition duration-300"></div>
       <div className="relative z-10  flex flex-col items-start justify-end h-full ">
         <div className="text-white w-full bg-black p-2 text-center">
-          <h4 className="text-base  ">{title}</h4>
+          <h3 className="text-base  ">{title}</h3>
           {/* <p className="text-xs pl-5 pr-5 mb-4">{description}</p> */}
         </div>
         <div>

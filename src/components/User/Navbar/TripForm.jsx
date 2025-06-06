@@ -469,9 +469,9 @@ function TripForm( {state,setState}) {
         restContent={
           submitFormData.isSuccess ? (
             <div>
-              <h2 className="text-2xl font-bold my-5">
+              <h1 className="text-2xl font-bold my-5">
                 We have recieved your request
-              </h2>
+              </h1>
               <p className="mb-5">
                 Your customized itinerary has been successfully submitted. We
                 will review and adjust it as per your requirements and give you
@@ -497,7 +497,7 @@ function TripForm( {state,setState}) {
             </div>
           ) : (
             <div>
-              <h2 className="text-2xl font-bold my-5">Submission Failed</h2>
+              <h1 className="text-2xl font-bold my-5">Submission Failed</h1>
               <p className="mb-5">
                 Unfortunately, we were unable to submit your customized
                 itinerary request. Please check your internet connection and try

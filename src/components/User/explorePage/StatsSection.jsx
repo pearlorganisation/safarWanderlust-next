@@ -10,9 +10,9 @@ const Stats = () => {
 
   return (
     <div className="mb-10 bg-white">
-      <h3 className="text-center lg:text-5xl md:text-3xl text-2xl  font-titleMedium lg:mb-12  mb-5">
+      <h2 className="text-center lg:text-5xl md:text-3xl text-2xl  font-titleMedium lg:mb-12  mb-5">
         More about <span className="text-orange-600">trips</span>
-      </h3>
+      </h2>
       <div className="max-w-5xl px-4 mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
         {stats.map((stat) => (
           <div key={stat.id} className="text-center">

@@ -9,7 +9,7 @@ const ValuesSection = () => {
       <section className=" mx-14 my-auto h-[40vh]">
         {/* Title */}
         <div className="  mb-8 mx-auto text-left w-[60%]">
-          <h3 className="text-3xl font-bold">Values</h3>
+          <h2 className="text-3xl font-bold">Values</h2>
           <p className="text-lg mt-4 w-[65%] ">
             Our values are there to remind us of who we are, and what we want to
             be. They guide everything we do, from our approach to work, to how
@@ -59,10 +59,10 @@ const ValuesSection = () => {
           </div>
         </div>
         <div className="p-28 w-[70%] mx-auto ">
-          <h2 className="text-7xl md:block hidden text-left">
+          <h1 className="text-7xl md:block hidden text-left">
             {/* Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. */}
-          </h2>
+          </h1>
           <button className="bg-white p-4 rounded-full mt-10">
             Start Your Journy
           </button>

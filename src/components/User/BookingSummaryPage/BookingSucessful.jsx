@@ -17,9 +17,9 @@
 //       <Image className="h-[60%] block" src={Logo} alt="" />
 //       <div className="text-center   ">
 //         <p>Itinerary transection ID : {txnid}</p>
-//         <h2 className="text-3xl text-center font-bold">
+//         <h1 className="text-3xl text-center font-bold">
 //           Your payment of {amount}/- was {status === 'success' ? 'Successful' : 'Failed'}
-//         </h2>
+//         </h1>
 //         {status === 'success' ? (
 //           <p className="text-center ">
 //             Thank you for your payment. We will send you a conformation mail 
@@ -64,9 +64,9 @@ const BookingSuccessful = ({ status }) => {
       <Image className="h-[60%] block" src={Logo} alt="Success Logo" />
       <div className="text-center">
         <p>Itinerary transaction ID: {txnid}</p>
-        <h2 className="text-3xl text-center font-bold">
+        <h1 className="text-3xl text-center font-bold">
           Your payment of {amount}/- was {status === 'success' ? 'Successful' : 'Failed'}
-        </h2>
+        </h1>
         {status === 'success' ? (
           <p className="text-center">
             Thank you for your payment. We will send you a confirmation mail shortly.

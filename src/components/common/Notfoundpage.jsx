@@ -25,9 +25,9 @@ function NotFound() {
             <Image src={NotFoundImage} alt="not_found_img" />
           </div>
           <div className="w-full">
-            <h2 className="font-nunitobold700 text-center text-2xl mb-5 ">
+            <h1 className="font-nunitobold700 text-center text-2xl mb-5 ">
               Looks like you've got lost....
-            </h2>
+            </h1>
             <button
               onClick={handleBackToDashboardClick}
               className={`font-nunitobold700 w-full p-2 bg-buttonBackground rounded-lg text-buttonText`}

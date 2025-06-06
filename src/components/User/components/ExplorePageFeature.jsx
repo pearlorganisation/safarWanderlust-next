@@ -12,7 +12,7 @@ const Feature = ({ title, imageUrl }) => (
           className="w-full h-full object-cover"
         />
       </div>
-      <h4 className="text  text-gray-800">{title}</h4>
+      <h3 className="text  text-gray-800">{title}</h3>
     </div>
   </>
 )

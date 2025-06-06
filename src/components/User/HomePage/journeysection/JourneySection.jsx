@@ -3,18 +3,18 @@
 import React from 'react'
 import Image from "next/image";
 
-import MapIcon from '@/_assets/svgs/user/MapIcon.svg'
-import BackpackIcon from '@/_assets/svgs/user/backpack_icon.webp'
-import TentIcon from '@/_assets/svgs/user/camping_tent_icon.webp'
-import Icon1 from '@/_assets/svgs/user/personalized_itineraries.svg'
-import Memories from '@/_assets/svgs/user/lasting_memory.svg'
-import PerfectTrip from '@/_assets/svgs/user/perfect_trip.svg'
-import SeamlessTravel from '@/_assets/svgs/user/seamless_travel.svg'
-import LeftFoot from '@/_assets/svgs/user/Left_Foot.svg'
-import RightFoot from '@/_assets/svgs/user/Right_Foot.svg'
-import Icon2 from '@/_assets/svgs/user/seamless_experience.svg'
-import Icon3 from '@/_assets/svgs/user/seamless_experience.svg'
-import Icon4 from '@/_assets/svgs/user/unforgettable_memories.svg'
+import MapIcon from '../../../../_assets/svgs/user/MapIcon.svg'
+import BackpackIcon from '../../../../_assets/svgs/user/backpack_icon.webp'
+import TentIcon from '../../../../_assets/svgs/user/camping_tent_icon.webp'
+import Icon1 from '../../../../_assets/svgs/user/personalized_itineraries.svg'
+import Memories from '../../../../_assets/svgs/user/lasting_memory.svg'
+import PerfectTrip from '../../../../_assets/svgs/user/perfect_trip.svg'
+import SeamlessTravel from '../../../../_assets/svgs/user/seamless_travel.svg'
+import LeftFoot from '../../../../_assets/svgs/user/Left_Foot.svg'
+import RightFoot from '../../../../_assets/svgs/user/Right_Foot.svg'
+import Icon2 from '../../../../_assets/svgs/user/seamless_experience.svg'
+import Icon3 from '../../../../_assets/svgs/user/seamless_experience.svg'
+import Icon4 from '../../../../_assets/svgs/user/unforgettable_memories.svg'
 
 const JourneySection = () => {
   return (
@@ -135,7 +135,7 @@ const FeatureCard = ({ icon, title, description }) => {
       <div className="mb-4 flex justify-start">
         <Image src={icon} alt="" />
       </div>
-      <h4 className="mb-2 text-xl font-semibold">{title}</h4>
+      <h3 className="mb-2 text-xl font-semibold">{title}</h3>
       <p className="w-[55vw] text-justify text-sm text-gray-600 md:w-auto">
         {description}
       </p>

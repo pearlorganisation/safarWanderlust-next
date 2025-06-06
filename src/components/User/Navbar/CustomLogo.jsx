@@ -25,12 +25,12 @@ function CustomLogo({logoOnly,className='',imageStyle=''}) {
         />
       {!logoOnly && (
         <div className="">
-          <h2
+          <p
             className="font-nunitobold700 lg:text-lg md:text-xs lg:block sm:hidden "
             style={{ maxWidth: '10rem' ,  letterSpacing: '0.01rem'}}
           >
             Safar Wanderlust
-          </h2>
+          </p>
           <p
             className="lg:text-xs md:text-[8px]  lg:block sm:hidden  hidden "
             style={{ maxWidth: '10rem', letterSpacing: '' }}

@@ -9,7 +9,7 @@ const ConfirmationDialog = ({ isOpen, onClose, onConfirm, title, message }) => {
         bg-white rounded-lg shadow-xl w-[90%] max-w-[500px] outline-none">
         {/* Modal Header */}
         <div className="px-6 py-4 border-b flex justify-between items-center">
-          <h3 className="text-2xl font-semibold text-gray-800">{title}</h3>
+          <h2 className="text-2xl font-semibold text-gray-800">{title}</h2>
           <button 
             onClick={onClose}
             className="p-1 hover:bg-gray-100 rounded-full transition-colors"
